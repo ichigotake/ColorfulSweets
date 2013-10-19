@@ -14,7 +14,7 @@ import com.google.common.base.Optional;
  * API Level 1
  * Shown menu list.
  */
-public class MenuList {
+public class SimpleMenuList {
 
 	final private Context mContext;
 	
@@ -24,7 +24,7 @@ public class MenuList {
 	 * API level 1
 	 * @param context
 	 */
-	public MenuList(Context context) {
+	public SimpleMenuList(Context context) {
 		mContext = context;
 	}
 	
@@ -42,11 +42,11 @@ public class MenuList {
 	 * Shown menu list
 	 * @param Menu item list
 	 * @param anchor base {@link ListView}
-	 * @param listItemLayout List item resource for {@link MenuListAdapter}
+	 * @param listItemLayout List item resource for {@link MenuItemListAdapter}
 	 */
-	public void show(List<MenuListItem> menus, ListView anchor, int listItemLayout) {
+	public void show(List<MenuItem> menus, ListView anchor, int listItemLayout) {
 		ListView listView = getListView();
-		MenuListAdapter adapter = new MenuListAdapter(mContext, R.layout.menu_item, menus);
+		MenuItemListAdapter adapter = new MenuItemListAdapter(mContext, R.layout.menu_item, menus);
 		listView.setAdapter(adapter);
 		adapter.notifyDataSetChanged();
 	}

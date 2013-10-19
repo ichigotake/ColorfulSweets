@@ -12,7 +12,7 @@ import android.widget.ListView;
  */
 public class SimpleMenuListFactory implements MenuItemListFactory {
 
-	final private Menu[] mMenu;
+	final private SimpleMenu[] mMenu;
 	
 	final private OnClickListener mListener;
 	
@@ -22,7 +22,7 @@ public class SimpleMenuListFactory implements MenuItemListFactory {
 	 * @param menu
 	 * @param listener
 	 */
-	public SimpleMenuListFactory(Menu[] menu, OnClickListener listener) {
+	public SimpleMenuListFactory(SimpleMenu[] menu, OnClickListener listener) {
 		mMenu = menu;
 		mListener = listener;
 	}
@@ -32,12 +32,12 @@ public class SimpleMenuListFactory implements MenuItemListFactory {
 	 * 
 	 */
 	@Override
-	public List<MenuListItem> create() {
-		final List<MenuListItem> menus = new ArrayList<MenuListItem>();
+	public List<MenuItem> create() {
+		final List<MenuItem> menus = new ArrayList<MenuItem>();
 		
 		int length = mMenu.length;
 		for (int i=0; i<length; i++) {
-			MenuListItem item = new MenuListItem(mMenu[i]);
+			MenuItem item = new MenuItem(mMenu[i]);
 			item.setOnClickListener(mListener);
 			menus.add(item);
 		}
@@ -52,7 +52,7 @@ public class SimpleMenuListFactory implements MenuItemListFactory {
 	 */
 	@Override
 	public void show(Activity activity, ListView listView) {
-		MenuListAdapter adapter = new MenuListAdapter(activity, create());
+		MenuItemListAdapter adapter = new MenuItemListAdapter(activity, create());
 		listView.setAdapter(adapter);
 		adapter.notifyDataSetChanged();
 	}

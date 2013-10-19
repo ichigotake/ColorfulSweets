@@ -16,7 +16,7 @@ import android.widget.TextView;
  * Shown menu list with {@link ArrayAdapter}
  * TODO replacement extends class {@link ArrayAdapter} to {@link BaseAdapter} ?
  */
-public class MenuListAdapter extends ArrayAdapter<MenuListItem> {
+public class MenuItemListAdapter extends ArrayAdapter<MenuItem> {
 	
 	final private LayoutInflater mInflater;
 	
@@ -29,7 +29,7 @@ public class MenuListAdapter extends ArrayAdapter<MenuListItem> {
 	 * @param context The current context.
 	 * @param menus The shown menu list.
 	 */
-	public MenuListAdapter(Context context, List<MenuListItem> menus) {
+	public MenuItemListAdapter(Context context, List<MenuItem> menus) {
 		this(context, R.layout.menu_item, menus);
 	}
 	
@@ -40,9 +40,9 @@ public class MenuListAdapter extends ArrayAdapter<MenuListItem> {
 	 * @param context The current context.
 	 * The resource ID for a layout file containing a TextView to use when instantiating views.
 	 * @param itemLayoutRes The resource ID for a layout file containing a {@link TextView} to use when instantiating views.
-	 * @param menus The shown menu list from {@link MenuListItem}
+	 * @param menus The shown menu list from {@link MenuItem}
 	 */
-	public MenuListAdapter(Context context, int itemLayoutRes, List<MenuListItem> menus) {
+	public MenuItemListAdapter(Context context, int itemLayoutRes, List<MenuItem> menus) {
 		super(context, itemLayoutRes, menus);
 		mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		mItemLayoutRes = itemLayoutRes;
@@ -54,7 +54,7 @@ public class MenuListAdapter extends ArrayAdapter<MenuListItem> {
 			convertView = mInflater.inflate(mItemLayoutRes, null);
 		}
 		
-		MenuListItem item = getItem(position);
+		MenuItem item = getItem(position);
 		
 		TextView itemText = (TextView) convertView;
 		if (item.isLabelNamePresent()) {

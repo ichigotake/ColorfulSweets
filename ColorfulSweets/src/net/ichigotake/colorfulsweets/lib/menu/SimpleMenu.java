@@ -3,9 +3,9 @@ package net.ichigotake.colorfulsweets.lib.menu;
 
 /**
  * API Level 1
- * Interface used for {@link MenuList} item.
+ * Interface used for {@link SimpleMenuList} item.
  */
-public interface Menu {
+public interface SimpleMenu {
 	
 	/**
 	 * Return the text for list item label.

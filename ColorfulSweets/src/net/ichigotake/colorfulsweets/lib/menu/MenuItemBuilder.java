@@ -25,8 +25,8 @@ public class MenuItemBuilder {
 	 * Returns the contents of builder
 	 * @return the object representation of the data in this builder.
 	 */
-	public MenuListItem create() {
-		final MenuListItem item = new MenuListItem(mDefaultIcon, mDefaultLabelName);
+	public MenuItem create() {
+		final MenuItem item = new MenuItem(mDefaultIcon, mDefaultLabelName);
 		if (mLabelName.isPresent()) {
 			item.setLabelName(mLabelName.get());
 		}

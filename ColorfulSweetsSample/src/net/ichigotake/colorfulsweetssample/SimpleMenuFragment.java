@@ -2,8 +2,8 @@ package net.ichigotake.colorfulsweetssample;
 
 import java.util.List;
 
-import net.ichigotake.colorfulsweets.lib.menu.Menu;
-import net.ichigotake.colorfulsweets.lib.menu.MenuListItem;
+import net.ichigotake.colorfulsweets.lib.menu.SimpleMenu;
+import net.ichigotake.colorfulsweets.lib.menu.MenuItem;
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenuListFactory;
 import android.content.Context;
 import android.os.Bundle;
@@ -37,7 +37,7 @@ public class SimpleMenuFragment extends Fragment {
 	/**
 	 * item list
 	 */
-	private enum SimpleMenuSample implements Menu {
+	private enum SimpleMenuSample implements SimpleMenu {
 
 		SMAPLE1(R.string.simple_menu_item_sample1),
 		SMAPLE2(R.string.simple_menu_item_sample2),

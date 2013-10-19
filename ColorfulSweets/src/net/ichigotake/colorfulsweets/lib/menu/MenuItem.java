@@ -7,9 +7,9 @@ import com.google.common.base.Optional;
 /**
  * API level 1
  * 
- * Provide item to {@link MenuList}
+ * Provide item to {@link SimpleMenuList}
  */
-public class MenuListItem {
+public class MenuItem {
 
 	final private int mDefaultIcon;
 	
@@ -25,7 +25,7 @@ public class MenuListItem {
 	 * @param defaultIcon The identifier for resource
 	 * @param defaultName The identifier for resource
 	 */
-	public MenuListItem(int defaultIcon, int defaultName) {
+	public MenuItem(int defaultIcon, int defaultName) {
 		mDefaultIcon = defaultIcon;
 		mDefaultLabelName = defaultName;
 	}
@@ -33,10 +33,10 @@ public class MenuListItem {
 	/**
 	 * API level 1
 	 * 
-	 * Constructs a new instance of {@link MenuListItem} containing the elements of the specified menu item.
+	 * Constructs a new instance of {@link MenuItem} containing the elements of the specified menu item.
 	 * @param the item of elements to set.
 	 */
-	public MenuListItem(Menu item) {
+	public MenuItem(SimpleMenu item) {
 		mDefaultIcon = item.getIconResource();
 		mDefaultLabelName = item.getLabelName();
 	}
@@ -65,7 +65,7 @@ public class MenuListItem {
 	 * API level 1
 	 * 
 	 * Returns if this LabelName contains is not null.
-	 * @return true if this {@link MenuListItem} has LabelName is not null.
+	 * @return true if this {@link MenuItem} has LabelName is not null.
 	 */
 	public boolean isLabelNamePresent() {
 		return mLabelName.isPresent();
@@ -74,7 +74,7 @@ public class MenuListItem {
 	/**
 	 * API level1
 	 * 
-	 * Sets the text that this {@link MenuListItem} is to display.
+	 * Sets the text that this {@link MenuItem} is to display.
 	 * @param 
 	 */
 	public void setLabelName(String name) {
@@ -104,7 +104,7 @@ public class MenuListItem {
 	/**
 	 * API level 1
 	 * 
-	 * Sets the listener that this {@link MenuListItem} is to set item view.
+	 * Sets the listener that this {@link MenuItem} is to set item view.
 	 * @param listener
 	 */
 	public void setOnClickListener(OnClickListener listener) {

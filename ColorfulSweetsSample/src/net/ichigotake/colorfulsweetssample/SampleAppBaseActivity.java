@@ -1,7 +1,7 @@
 package net.ichigotake.colorfulsweetssample;
 
 import net.ichigotake.colorfulsweets.lib.context.NavigationDrawerActivity;
-import net.ichigotake.colorfulsweets.lib.menu.Menu;
+import net.ichigotake.colorfulsweets.lib.menu.SimpleMenu;
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenuListFactory;
 import net.ichigotake.colorfulsweets.lib.navigation.NavigationDrawer;
 import android.content.Context;
@@ -34,7 +34,7 @@ public abstract class SampleAppBaseActivity extends NavigationDrawerActivity {
 	/**
 	 * item list
 	 */
-	private enum NavigationSample implements Menu {
+	private enum NavigationSample implements SimpleMenu {
 
 		SMAPLE1(R.string.simple_menu_item_sample1, R.drawable.abc_ic_ab_back_holo_light),
 		SMAPLE2(R.string.simple_menu_item_sample2, R.drawable.abc_ic_cab_done_holo_light),

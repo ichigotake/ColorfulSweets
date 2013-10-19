@@ -11,7 +11,7 @@ import android.widget.ListView;
  */
 public interface MenuItemListFactory {
 
-	public List<MenuListItem> create();
+	public List<MenuItem> create();
 	
 	public void show(Activity activity, ListView listView);
 }
