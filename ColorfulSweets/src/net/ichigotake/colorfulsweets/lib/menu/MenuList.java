@@ -44,7 +44,7 @@ public class MenuList {
 	 * @param anchor base {@link ListView}
 	 * @param listItemLayout List item resource for {@link MenuListAdapter}
 	 */
-	public void show(List<MenuItem> menus, ListView anchor, int listItemLayout) {
+	public void show(List<MenuListItem> menus, ListView anchor, int listItemLayout) {
 		ListView listView = getListView();
 		MenuListAdapter adapter = new MenuListAdapter(mContext, R.layout.menu_item, menus);
 		listView.setAdapter(adapter);

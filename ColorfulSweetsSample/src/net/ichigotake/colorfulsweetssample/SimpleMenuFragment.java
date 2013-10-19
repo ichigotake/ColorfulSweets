@@ -3,34 +3,40 @@ package net.ichigotake.colorfulsweetssample;
 import java.util.List;
 
 import net.ichigotake.colorfulsweets.lib.menu.Menu;
-import net.ichigotake.colorfulsweets.lib.menu.MenuItem;
 import net.ichigotake.colorfulsweets.lib.menu.MenuListAdapter;
+import net.ichigotake.colorfulsweets.lib.menu.MenuListItem;
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenuListFactory;
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SimpleMenuSampleActivity extends Activity {
+public class SimpleMenuFragment extends Fragment {
+
+	public static SimpleMenuFragment newInstance() {
+		return new SimpleMenuFragment();
+	}
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main_menu);
+	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
+		View view = inflater.inflate(R.layout.simple_menu_list, null);
 		
+		OnClickListener listener = new SimpleMenuSampleOnClickListener(getActivity());
+		SimpleMenuListFactory menuFactory = new SimpleMenuListFactory(SimpleMenuSample.values(), listener);
+		List<MenuListItem> menus = menuFactory.create();
+		MenuListAdapter adapter = new MenuListAdapter(getActivity(), menus);
 		
-		SimpleMenuListFactory menuFactory =
-				new SimpleMenuListFactory(SimpleMenuSample.values(), new SimpleMenuSampleOnClickListener(this));
-		
-		ListView menuListView = (ListView) findViewById(R.id.menuList);
-		List<MenuItem> menus = menuFactory.create();
-		MenuListAdapter adapter = new MenuListAdapter(this, menus);
+		ListView menuListView = (ListView) view.findViewById(R.id.menu_list);
 		menuListView.setAdapter(adapter);
 		adapter.notifyDataSetChanged();
+		
+		return view;
 	}
 
 	/**
@@ -47,11 +53,11 @@ public class SimpleMenuSampleActivity extends Activity {
 		;
 
 		final private int mTitle;
-		
+
 		private SimpleMenuSample(int title) {
 			mTitle = title;
 		}
-		
+
 		@Override
 		public int getLabelName() {
 			return mTitle;
@@ -63,26 +69,24 @@ public class SimpleMenuSampleActivity extends Activity {
 		}
 
 	}
-	
+
 	/**
 	 * item on click listener
 	 */
 	private class SimpleMenuSampleOnClickListener implements OnClickListener {
 
 		final private Context mContext;
-		
+
 		public SimpleMenuSampleOnClickListener(Context context) {
 			mContext = context;
 		}
+
 		@Override
 		public void onClick(View view) {
 			TextView itemView = (TextView) view;
-			String message = new StringBuilder()
-				.append("clicked item: ")
-				.append(itemView.getText().toString())
-				.toString();
+			String message = new StringBuilder().append("clicked item: ")
+					.append(itemView.getText().toString()).toString();
 			Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
 		}
-		
 	}
 }
