@@ -3,7 +3,9 @@ package net.ichigotake.colorfulsweets.lib.menu;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Activity;
 import android.view.View.OnClickListener;
+import android.widget.ListView;
 
 /**
  * API level 1
@@ -42,5 +44,18 @@ public class SimpleMenuListFactory implements MenuItemListFactory {
 		
 		return menus;
 	}
+
+	/**
+	 * API level 1
+	 * 
+	 * Show the menu.
+	 */
+	@Override
+	public void show(Activity activity, ListView listView) {
+		MenuListAdapter adapter = new MenuListAdapter(activity, create());
+		listView.setAdapter(adapter);
+		adapter.notifyDataSetChanged();
+	}
+	
 
 }

@@ -3,7 +3,6 @@ package net.ichigotake.colorfulsweetssample;
 import java.util.List;
 
 import net.ichigotake.colorfulsweets.lib.menu.Menu;
-import net.ichigotake.colorfulsweets.lib.menu.MenuListAdapter;
 import net.ichigotake.colorfulsweets.lib.menu.MenuListItem;
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenuListFactory;
 import android.content.Context;
@@ -27,14 +26,10 @@ public class SimpleMenuFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.simple_menu_list, null);
 		
+		ListView menuListView = (ListView) view.findViewById(R.id.menu_list);
 		OnClickListener listener = new SimpleMenuSampleOnClickListener(getActivity());
 		SimpleMenuListFactory menuFactory = new SimpleMenuListFactory(SimpleMenuSample.values(), listener);
-		List<MenuListItem> menus = menuFactory.create();
-		MenuListAdapter adapter = new MenuListAdapter(getActivity(), menus);
-		
-		ListView menuListView = (ListView) view.findViewById(R.id.menu_list);
-		menuListView.setAdapter(adapter);
-		adapter.notifyDataSetChanged();
+		menuFactory.show(getActivity(), menuListView);
 		
 		return view;
 	}

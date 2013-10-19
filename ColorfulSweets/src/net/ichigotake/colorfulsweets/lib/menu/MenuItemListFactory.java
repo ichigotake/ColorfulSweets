@@ -2,6 +2,9 @@ package net.ichigotake.colorfulsweets.lib.menu;
 
 import java.util.List;
 
+import android.app.Activity;
+import android.widget.ListView;
+
 /**
  * API level 1
  *
@@ -9,4 +12,6 @@ import java.util.List;
 public interface MenuItemListFactory {
 
 	public List<MenuListItem> create();
+	
+	public void show(Activity activity, ListView listView);
 }

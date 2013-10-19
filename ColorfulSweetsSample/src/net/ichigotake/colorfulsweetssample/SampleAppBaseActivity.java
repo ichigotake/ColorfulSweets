@@ -1,10 +1,9 @@
 package net.ichigotake.colorfulsweetssample;
 
-import net.ichigotake.colorfulsweetssample.R;
 import net.ichigotake.colorfulsweets.lib.context.NavigationDrawerActivity;
 import net.ichigotake.colorfulsweets.lib.menu.Menu;
+import net.ichigotake.colorfulsweets.lib.menu.SimpleMenuListFactory;
 import net.ichigotake.colorfulsweets.lib.navigation.NavigationDrawer;
-import net.ichigotake.colorfulsweets.lib.navigation.SimpleNavigationListFactory;
 import android.content.Context;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
@@ -24,7 +23,9 @@ public abstract class SampleAppBaseActivity extends NavigationDrawerActivity {
 	protected NavigationDrawer createNavigationDrawer() {
 		ListView menuListView = (ListView) findViewById(R.id.left_drawer);
 		OnClickListener listener = new NavigationSampleOnClickListener(this);
-		new SimpleNavigationListFactory(this).create(menuListView, NavigationSample.values(), listener);
+		SimpleMenuListFactory menuFactory =
+				new SimpleMenuListFactory(NavigationSample.values(), listener);
+		menuFactory.show(this, menuListView);
 		
 		DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		return new NavigationDrawer(this, mDrawerLayout);
