@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ColorfulSweetsSample</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+    <string name="simple_menu_item_sample1">item 1</string>
+    <string name="simple_menu_item_sample2">item 2</string>
+    <string name="simple_menu_item_sample3">item 3</string>
+    <string name="simple_menu_item_sample4">item 4</string>
+    <string name="simple_menu_item_sample5">item 5</string>
+    <string name="simple_menu_item_sample6">item 6</string>
+</resources>

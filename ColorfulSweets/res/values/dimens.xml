@@ -4,4 +4,15 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="text_size_middle">20sp</dimen>
+    <dimen name="text_size_small">16sp</dimen>
+    <dimen name="text_size_x_small">12sp</dimen>
+    
+    <color name="text_blight">#222222</color>
+    <color name="text_midium">#555555</color>
+    <color name="text_light">#888888</color>
+    
+    <dimen name="menu_item_padding_vertical">20dp</dimen>
+    <dimen name="menu_item_padding_horizontal">12dp</dimen>
+    <dimen name="menu_item_dwarable_padding">4dp</dimen>
 </resources>
