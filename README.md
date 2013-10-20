@@ -4,6 +4,11 @@ ColorfulSweets
 Lightweight Android application framework
 
 
+!!Caution!!
+==========
+
+__This software is still alpha quality. Its API may change without notice.__
+
 Feature
 ==========
 
