@@ -5,6 +5,10 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
 
+    <string name="sample_menu_simple_menu">SimpleMenu</string>
+    <string name="sample_menu_tab_fragment_pager">SimpleViewPagerFragment</string>
+    <string name="sample_menu_tab_fragment_pager_item">tab %d</string>
+    
     <string name="simple_menu_item_sample1">item 1</string>
     <string name="simple_menu_item_sample2">item 2</string>
     <string name="simple_menu_item_sample3">item 3</string>

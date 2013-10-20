@@ -37,6 +37,7 @@ public abstract class SampleAppBaseActivity extends NavigationDrawerActivity {
 	private enum NavigationSample implements SimpleMenu {
 
 		SIMPLE_MENU(R.string.sample_menu_simple_menu),
+		SIMPLE_TAB_FRAGMENT_PAGER(R.string.sample_menu_tab_fragment_pager),
 		;
 
 		final private int mTitle;
@@ -73,8 +74,10 @@ public abstract class SampleAppBaseActivity extends NavigationDrawerActivity {
 			NavigationSample menu = NavigationSample.values()[position];
 			switch (menu) {
 			case SIMPLE_MENU:
-				final Fragment nextFragment = SimpleMenuFragment.newInstance();
-				transit(mContext, nextFragment);
+				transit(mContext, SimpleMenuFragment.newInstance());
+				break;
+			case SIMPLE_TAB_FRAGMENT_PAGER:
+				transit(mContext, SimpleViewPagerFragmentSampleFragment.newInstance());
 				break;
 			}
 			
