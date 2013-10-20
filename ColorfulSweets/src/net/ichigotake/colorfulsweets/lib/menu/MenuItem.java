@@ -1,5 +1,6 @@
 package net.ichigotake.colorfulsweets.lib.menu;
 
+import net.ichigotake.colorfulsweets.lib.view.ListItemOnClickListener;
 import android.view.View.OnClickListener;
 
 import com.google.common.base.Optional;
@@ -17,7 +18,7 @@ public class MenuItem {
 	
 	private Optional<String> mLabelName = Optional.absent();
 	
-	private OnClickListener mListener;
+	private ListItemOnClickListener mListener;
 	
 	/**
 	 * API level 1
@@ -97,7 +98,7 @@ public class MenuItem {
 	 * Return the listener for list item.
 	 * @return The listener for {@link OnClickListener}
 	 */
-	public OnClickListener getOnClickListener() {
+	public ListItemOnClickListener getOnClickListener() {
 		return mListener;
 	}
 	
@@ -107,7 +108,7 @@ public class MenuItem {
 	 * Sets the listener that this {@link MenuItem} is to set item view.
 	 * @param listener
 	 */
-	public void setOnClickListener(OnClickListener listener) {
+	public void setOnClickListener(ListItemOnClickListener listener) {
 		mListener = listener;
 	}
 	

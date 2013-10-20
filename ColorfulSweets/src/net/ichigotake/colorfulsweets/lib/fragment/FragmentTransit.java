@@ -1,6 +1,7 @@
 package net.ichigotake.colorfulsweets.lib.fragment;
 
 import net.ichigotake.colorfulsweets.R;
+import android.content.Context;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -37,6 +38,21 @@ public class FragmentTransit {
 	 */
 	public FragmentTransit(FragmentActivity activity) {
 		mFragmentManager = activity.getSupportFragmentManager();
+	}
+	
+	public static FragmentTransit from(Context context) {
+		final FragmentTransit transit;
+		if (context instanceof ActionBarActivity) {
+			ActionBarActivity activity = (ActionBarActivity) context;
+			transit = new FragmentTransit(activity);
+		} else if (context instanceof FragmentActivity) {
+			FragmentActivity activity = (FragmentActivity) context;
+			transit = new FragmentTransit(activity);
+		} else {
+			throw new IllegalStateException(
+					"Context not contain ActionBarActivity or FragmentActivity");
+		}
+		return transit;
 	}
 	
 	/**

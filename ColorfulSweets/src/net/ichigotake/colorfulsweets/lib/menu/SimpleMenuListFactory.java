@@ -3,8 +3,8 @@ package net.ichigotake.colorfulsweets.lib.menu;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.ichigotake.colorfulsweets.lib.view.ListItemOnClickListener;
 import android.app.Activity;
-import android.view.View.OnClickListener;
 import android.widget.ListView;
 
 /**
@@ -14,7 +14,7 @@ public class SimpleMenuListFactory implements MenuItemListFactory {
 
 	final private SimpleMenu[] mMenu;
 	
-	final private OnClickListener mListener;
+	final private ListItemOnClickListener mListener;
 	
 	/**
 	 * API level 1
@@ -22,7 +22,7 @@ public class SimpleMenuListFactory implements MenuItemListFactory {
 	 * @param menu
 	 * @param listener
 	 */
-	public SimpleMenuListFactory(SimpleMenu[] menu, OnClickListener listener) {
+	public SimpleMenuListFactory(SimpleMenu[] menu, ListItemOnClickListener listener) {
 		mMenu = menu;
 		mListener = listener;
 	}

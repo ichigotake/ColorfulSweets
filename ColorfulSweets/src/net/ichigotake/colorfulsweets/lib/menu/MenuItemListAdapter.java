@@ -3,11 +3,13 @@ package net.ichigotake.colorfulsweets.lib.menu;
 import java.util.List;
 
 import net.ichigotake.colorfulsweets.R;
+import net.ichigotake.colorfulsweets.lib.view.ListOnClickListener;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 /**
@@ -64,7 +66,7 @@ public class MenuItemListAdapter extends ArrayAdapter<MenuItem> {
 		}
 		
 		itemText.setCompoundDrawablesWithIntrinsicBounds(item.getDefaultIcon(), 0, 0, 0);
-		itemText.setOnClickListener(item.getOnClickListener());
+		itemText.setOnClickListener(new ListOnClickListener(position, item.getOnClickListener()));
 		
 		return convertView;
 	}

@@ -2,4 +2,5 @@
 <resources>
     
     <color name="navigarion_drawer_background">#ffffff</color>
+    <color name="common_page_background">#ffffff</color>
 </resources>

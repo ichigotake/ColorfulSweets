@@ -10,6 +10,7 @@ public class SampleActivity extends SampleAppBaseActivity {
 		super.onCreate(savedInstanceState);
 		
 		// first display on app start.
-		new FragmentTransit(this).toReplace(R.id.content, SimpleMenuFragment.newInstance());
+		new FragmentTransit(this).toReplace(R.id.content, SampleMenuFragment.newInstance());
 	}
+
 }

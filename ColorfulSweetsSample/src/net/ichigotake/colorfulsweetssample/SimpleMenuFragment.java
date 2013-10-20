@@ -1,16 +1,13 @@
 package net.ichigotake.colorfulsweetssample;
 
-import java.util.List;
-
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenu;
-import net.ichigotake.colorfulsweets.lib.menu.MenuItem;
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenuListFactory;
+import net.ichigotake.colorfulsweets.lib.view.ListItemOnClickListener;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -27,8 +24,9 @@ public class SimpleMenuFragment extends Fragment {
 		View view = inflater.inflate(R.layout.simple_menu_list, null);
 		
 		ListView menuListView = (ListView) view.findViewById(R.id.menu_list);
-		OnClickListener listener = new SimpleMenuSampleOnClickListener(getActivity());
-		SimpleMenuListFactory menuFactory = new SimpleMenuListFactory(SimpleMenuSample.values(), listener);
+		ListItemOnClickListener listener = new SimpleMenuSampleOnClickListener(getActivity());
+		SimpleMenuListFactory menuFactory =
+				new SimpleMenuListFactory(SimpleMenuSample.values(), listener);
 		menuFactory.show(getActivity(), menuListView);
 		
 		return view;
@@ -39,20 +37,23 @@ public class SimpleMenuFragment extends Fragment {
 	 */
 	private enum SimpleMenuSample implements SimpleMenu {
 
-		SMAPLE1(R.string.simple_menu_item_sample1),
-		SMAPLE2(R.string.simple_menu_item_sample2),
-		SMAPLE3(R.string.simple_menu_item_sample3),
-		SMAPLE4(R.string.simple_menu_item_sample4),
-		SMAPLE5(R.string.simple_menu_item_sample5),
-		SMAPLE6(R.string.simple_menu_item_sample6),
+		SMAPLE1(R.string.simple_menu_item_sample1, R.drawable.abc_ic_ab_back_holo_light),
+		SMAPLE2(R.string.simple_menu_item_sample2, R.drawable.abc_ic_cab_done_holo_light),
+		SMAPLE3(R.string.simple_menu_item_sample3, R.drawable.abc_ic_search),
+		SMAPLE4(R.string.simple_menu_item_sample4, R.drawable.abc_ic_commit_search_api_holo_light),
+		SMAPLE5(R.string.simple_menu_item_sample5, R.drawable.abc_ic_go),
+		SMAPLE6(R.string.simple_menu_item_sample6, R.drawable.abc_ic_clear),
 		;
 
 		final private int mTitle;
-
-		private SimpleMenuSample(int title) {
+		
+		final private int mIcon;
+		
+		private SimpleMenuSample(int title, int icon) {
 			mTitle = title;
+			mIcon = icon;
 		}
-
+		
 		@Override
 		public int getLabelName() {
 			return mTitle;
@@ -60,7 +61,7 @@ public class SimpleMenuFragment extends Fragment {
 
 		@Override
 		public int getIconResource() {
-			return 0; // non icon
+			return mIcon;
 		}
 
 	}
@@ -68,7 +69,7 @@ public class SimpleMenuFragment extends Fragment {
 	/**
 	 * item on click listener
 	 */
-	private class SimpleMenuSampleOnClickListener implements OnClickListener {
+	private class SimpleMenuSampleOnClickListener implements ListItemOnClickListener {
 
 		final private Context mContext;
 
@@ -77,7 +78,7 @@ public class SimpleMenuFragment extends Fragment {
 		}
 
 		@Override
-		public void onClick(View view) {
+		public void onClick(View view, int position) {
 			TextView itemView = (TextView) view;
 			String message = new StringBuilder().append("clicked item: ")
 					.append(itemView.getText().toString()).toString();
