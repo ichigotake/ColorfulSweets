@@ -40,6 +40,16 @@ public class FragmentTransit {
 		mFragmentManager = activity.getSupportFragmentManager();
 	}
 	
+	/**
+	 * APi level 4
+	 * 
+	 * Constructor
+	 * @param fragmentManager
+	 */
+	public FragmentTransit(FragmentManager fragmentManager) {
+		mFragmentManager = fragmentManager;
+	}
+	
 	public static FragmentTransit from(Context context) {
 		final FragmentTransit transit;
 		if (context instanceof ActionBarActivity) {
