@@ -2,7 +2,7 @@ package net.ichigotake.colorfulsweets.lib.menu;
 
 import java.util.List;
 
-import android.app.Activity;
+import android.content.Context;
 import android.widget.ListView;
 
 /**
@@ -13,5 +13,5 @@ public interface MenuItemListFactory {
 
 	public List<MenuItem> create();
 	
-	public void show(Activity activity, ListView listView);
+	public void show(Context context, ListView listView);
 }

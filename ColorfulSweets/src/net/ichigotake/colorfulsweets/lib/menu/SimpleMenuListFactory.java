@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.ichigotake.colorfulsweets.lib.view.ListItemOnClickListener;
-import android.app.Activity;
+import android.content.Context;
 import android.widget.ListView;
 
 /**
@@ -51,8 +51,8 @@ public class SimpleMenuListFactory implements MenuItemListFactory {
 	 * Show the menu.
 	 */
 	@Override
-	public void show(Activity activity, ListView listView) {
-		MenuItemListAdapter adapter = new MenuItemListAdapter(activity, create());
+	public void show(Context context, ListView listView) {
+		MenuItemListAdapter adapter = new MenuItemListAdapter(context, create());
 		listView.setAdapter(adapter);
 		adapter.notifyDataSetChanged();
 	}
