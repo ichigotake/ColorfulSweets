@@ -1,6 +1,8 @@
 package net.ichigotake.colorfulsweets.lib.actionbar;
 
+import android.content.Context;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 
 /**
  * API level 7
@@ -21,6 +23,29 @@ public class ActionBarSetting {
 		mActionBar = actionBar;
 	}
 	
+	/**
+	 * API level 7
+	 * 
+	 * Create {link {@link ActionBarSetting}} instance from {@link Context} contains {@link ActionBarActivity}.
+	 * @param context
+	 * @return
+	 */
+	public static ActionBarSetting from(Context context) {
+		if (context instanceof ActionBarActivity) {
+			ActionBar actionBar = ((ActionBarActivity) context).getSupportActionBar();
+			return new ActionBarSetting(actionBar);
+		} else {
+			throw new IllegalStateException("Context not instanceof ActionBarActivity");
+		}
+	}
+	
+	/**
+	 * API level 7
+	 * 
+	 * Show the ActionBar if it is not currently showing. 
+	 * @param actionBar
+	 * @param title
+	 */
 	public static void show(ActionBar actionBar, int title) {
 		ActionBarSetting setting = new ActionBarSetting(actionBar);
 		setting.setTitle(title);
@@ -38,6 +63,28 @@ public class ActionBarSetting {
 		ActionBarSetting setting = new ActionBarSetting(actionBar);
 		setting.setHomeAuUpEnabled(true);
 		setting.show();
+	}
+	
+	/**
+	 * API level 7
+	 * 
+	 * Set the action bar's title. This will only be displayed if {@link ActionBarSetting#show()} called.
+	 * @param title
+	 */
+	public static void setTilte(ActionBar actionBar, int title) {
+		ActionBarSetting setting = new ActionBarSetting(actionBar);
+		setting.setTitle(title);
+	}
+	
+	/**
+	 * API level 7
+	 * 
+	 * Set the action bar's title. This will only be displayed if {@link ActionBarSetting#show()} called.
+	 * @param title
+	 */
+	public static void setTilte(ActionBar actionBar, String title) {
+		ActionBarSetting setting = new ActionBarSetting(actionBar);
+		setting.setTitle(title);
 	}
 	
 	/**
