@@ -1,4 +1,4 @@
-package net.ichigotake.colorfulsweets.test.lib.view;
+package net.ichigotake.colorfulsweets.lib.view;
 
 import net.ichigotake.colorfulsweets.lib.view.ToggleView;
 import android.test.AndroidTestCase;
