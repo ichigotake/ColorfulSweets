@@ -71,6 +71,9 @@ public class ActivityTransit {
 			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 		}
 		mCurrentActivity.startActivity(intent);
+		if (mClearTop) {
+			mCurrentActivity.finish();
+		}
 	}
 	
 }
