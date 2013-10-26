@@ -71,7 +71,7 @@ public abstract class AsyncHttpAccessor extends AsyncTask<HttpRequestBase, Void,
 						
 						@Override
 						public void run() {
-							mEventBus.post(new HttpAccessErrorEvent());
+							mEventBus.post(new HttpAccessErrorEvent(response));
 						}
 					});
 				}
@@ -81,7 +81,7 @@ public abstract class AsyncHttpAccessor extends AsyncTask<HttpRequestBase, Void,
 					
 					@Override
 					public void run() {
-						mEventBus.post(new HttpAccessErrorEvent());
+						mEventBus.post(new BeforeRequestErrorEvent());
 					}
 				});
 			} catch (IOException e) {
@@ -90,7 +90,7 @@ public abstract class AsyncHttpAccessor extends AsyncTask<HttpRequestBase, Void,
 					
 					@Override
 					public void run() {
-						mEventBus.post(new HttpAccessErrorEvent());
+						mEventBus.post(new BeforeRequestErrorEvent());
 					}
 				});
 			}
