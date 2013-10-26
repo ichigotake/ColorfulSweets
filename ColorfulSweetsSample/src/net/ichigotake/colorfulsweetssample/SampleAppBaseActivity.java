@@ -1,5 +1,6 @@
 package net.ichigotake.colorfulsweetssample;
 
+import net.ichigotake.colorfulsweets.lib.context.ActivityTransit;
 import net.ichigotake.colorfulsweets.lib.context.NavigationDrawerActivity;
 import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenu;
@@ -36,6 +37,7 @@ public abstract class SampleAppBaseActivity extends NavigationDrawerActivity {
 	 */
 	private enum NavigationSample implements SimpleMenu {
 
+		ACTIVITY_TRANSIT(R.string.sample_activity_transit_title),
 		SIMPLE_MENU(R.string.sample_menu_simple_menu),
 		SIMPLE_TAB_FRAGMENT_PAGER(R.string.sample_menu_tab_fragment_pager),
 		;
@@ -73,11 +75,16 @@ public abstract class SampleAppBaseActivity extends NavigationDrawerActivity {
 		public void onClick(View view, int position) {
 			NavigationSample menu = NavigationSample.values()[position];
 			switch (menu) {
+			case ACTIVITY_TRANSIT:
+				ActivityTransit.from(mContext).toNext(ActivityTransitSampleActivity.class);
+				break;
 			case SIMPLE_MENU:
 				transit(mContext, SimpleMenuFragment.newInstance());
 				break;
 			case SIMPLE_TAB_FRAGMENT_PAGER:
 				transit(mContext, SimpleViewPagerFragmentSampleFragment.newInstance());
+				break;
+			default:
 				break;
 			}
 			

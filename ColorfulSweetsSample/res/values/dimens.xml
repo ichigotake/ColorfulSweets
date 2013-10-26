@@ -5,5 +5,11 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     
     <dimen name="text_size_large">24sp</dimen>
-
+    
+    <dimen name="code_block_text_size">16sp</dimen>
+    <dimen name="code_block_margin_vertical">20dp</dimen>
+    <dimen name="code_block_margin_horizontal">16dp</dimen>
+    <dimen name="code_block_padding">16dp</dimen>
+    
+    
 </resources>

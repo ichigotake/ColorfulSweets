@@ -21,6 +21,12 @@ public class ActionBarSetting {
 		mActionBar = actionBar;
 	}
 	
+	public static void show(ActionBar actionBar, int title) {
+		ActionBarSetting setting = new ActionBarSetting(actionBar);
+		setting.setTitle(title);
+		setting.show();
+	}
+	
 	/**
 	 * API level 7
 	 * 

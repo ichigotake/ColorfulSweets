@@ -3,4 +3,6 @@
     
     <color name="navigarion_drawer_background">#ffffff</color>
     <color name="common_page_background">#ffffff</color>
+
+    <color name="code_block_background">#eeeeee</color>
 </resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="@string/sample_activity_transit_description"
+        android:textSize="@dimen/text_size_large" />
+    <TextView
+        android:id="@+id/activity_transit_sample"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginRight="@dimen/code_block_margin_horizontal"
+        android:layout_marginLeft="@dimen/code_block_margin_horizontal"
+        android:layout_marginTop="@dimen/code_block_margin_vertical"
+        android:layout_marginBottom="@dimen/code_block_margin_vertical"
+        android:padding="@dimen/code_block_padding"
+        android:background="@color/code_block_background"
+        android:text="@string/sample_activity_transit_code"
+        android:textSize="@dimen/code_block_text_size" />
+
+</LinearLayout>
