@@ -27,6 +27,11 @@ public class SimpleMenuListFactory implements MenuItemListFactory {
 		mListener = listener;
 	}
 	
+	public SimpleMenuListFactory(SimpleMenu[] menu) {
+		mMenu = menu;
+		mListener = null;
+	}
+	
 	/**
 	 * API level 1
 	 * 
