@@ -33,7 +33,7 @@ public class PagingParameter {
 	}
 	
 	public int getLimit() {
-		return mOffset + mPerPage;
+		return mPerPage;
 	}
 	
 	public int getOffset() {
