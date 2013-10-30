@@ -5,10 +5,6 @@ import java.net.HttpURLConnection;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.net.ParseException;
 
 import com.google.common.base.Optional;
 
@@ -18,8 +14,6 @@ import com.google.common.base.Optional;
  * HTTP response object.
  */
 public class HttpAccessResponse {
-
-	final private Optional<JSONObject> mJson;
 
 	final private HttpResponse mResponse;
 
@@ -36,7 +30,6 @@ public class HttpAccessResponse {
 	public HttpAccessResponse(HttpResponse response) {
 		mResponse = response;
 		mContent = parseContent(mResponse);
-		mJson = parseJson(mContent);
 		mStatusCode = mResponse.getStatusLine().getStatusCode();
 	}
 
@@ -48,16 +41,6 @@ public class HttpAccessResponse {
 	 */
 	public boolean isSuccess() {
 		return HttpURLConnection.HTTP_OK == mStatusCode;
-	}
-
-	/**
-	 * API level 1
-	 * 
-	 * Parsed response body to {@link JSONObject}.
-	 * @return
-	 */
-	public Optional<JSONObject> getJSONObject() {
-		return mJson;
 	}
 
 	/**
@@ -92,20 +75,5 @@ public class HttpAccessResponse {
 			e.printStackTrace();
 		}
 		return content;
-	}
-	
-	private Optional<JSONObject> parseJson(Optional<String> content) {
-		try {
-			if (content.isPresent()) {
-				return Optional.of(new JSONObject(content.get()));
-			} else {
-				return Optional.absent();
-			}
-		} catch (JSONException e) {
-			e.printStackTrace();
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		return Optional.absent();
 	}
 }
