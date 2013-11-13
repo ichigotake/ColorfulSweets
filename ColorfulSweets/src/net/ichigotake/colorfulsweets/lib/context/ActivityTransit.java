@@ -3,6 +3,7 @@ package net.ichigotake.colorfulsweets.lib.context;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 
 /**
  * API level 1
@@ -12,6 +13,8 @@ import android.content.Intent;
 public class ActivityTransit {
 
 	final private Activity mCurrentActivity;
+
+    private Bundle mExtras;
 	
 	private boolean mClearTop;
 	
@@ -67,6 +70,10 @@ public class ActivityTransit {
 	 */
 	public void toNext(Class<? extends Activity> nextActivity) {
 		Intent intent = new Intent(mCurrentActivity, nextActivity);
+        if (null != mExtras) {
+            intent.putExtras(mExtras);
+        }
+
 		if (mClearTop) {
 			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 		}
@@ -75,5 +82,17 @@ public class ActivityTransit {
 			mCurrentActivity.finish();
 		}
 	}
-	
+
+    /**
+     * API level 1
+     *
+     * Set of extended data to the intent.
+     *
+     * @param extras The {@link Bundle} of extras to add this intent.
+     * @return
+     */
+    public ActivityTransit putExtras(Bundle extras) {
+        mExtras = extras;
+        return this;
+    }
 }
