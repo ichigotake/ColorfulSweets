@@ -1,12 +1,15 @@
 package net.ichigotake.colorfulsweets.lib.net.http;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
+import com.google.common.base.Optional;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import com.google.common.base.Optional;
+import java.io.IOException;
+import java.net.HttpURLConnection;
 
 /**
  * API level 1
@@ -25,7 +28,7 @@ public class HttpAccessResponse {
 	 * API level 1
 	 * 
 	 * Constructor
-	 * @param response
+	 * @param response the response body.
 	 */
 	public HttpAccessResponse(HttpResponse response) {
 		mResponse = response;
@@ -37,7 +40,8 @@ public class HttpAccessResponse {
 	 * API level 1
 	 * 
 	 * Return true if response is success.
-	 * @return
+     *
+	 * @return true if response is success
 	 */
 	public boolean isSuccess() {
 		return HttpURLConnection.HTTP_OK == mStatusCode;
@@ -47,7 +51,7 @@ public class HttpAccessResponse {
 	 * API level 1
 	 * 
 	 * Return the {@link HttpResponse}.
-	 * @return
+	 * @return the {@link org.apache.http.HttpResponse}
 	 */
 	public HttpResponse getResponse() {
 		return mResponse;
@@ -57,11 +61,47 @@ public class HttpAccessResponse {
 	 * API level 1
 	 * 
 	 * Return the response body.
-	 * @return
+	 * @return the response body.
 	 */
 	public Optional<String> getContent() {
 		return mContent;
 	}
+
+    /**
+     * API level 1
+     *
+     * Return the {@link JSONObject} from response body.
+     *
+     * @return response the {@link org.json.JSONObject} from response body.
+     */
+    public JSONObject getJSONObject() throws JSONException {
+        Optional<String> body = getContent();
+        final JSONObject json;
+        if (body.isPresent()) {
+            json = new JSONObject(body.get());
+        } else {
+            json = new JSONObject();
+        }
+        return json;
+    }
+
+    /**
+     * API level 1
+     *
+     * Return the {@link org.json.JSONArray}
+     *
+     * @return
+     */
+    public JSONArray getJSONArray() throws JSONException {
+        Optional<String> body = getContent();
+        final JSONArray json;
+        if (body.isPresent()) {
+            json = new JSONArray(body.get());
+        } else {
+            json = new JSONArray();
+        }
+        return json;
+    }
 	
 	private Optional<String> parseContent(HttpResponse response) {
 		Optional<String> content;
