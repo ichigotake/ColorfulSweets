@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 /**
  * API level 4
  * 
- * @param <T> The class extends {@link Fragment} .
  */
 public abstract class SimpleViewPagerFragment extends Fragment {
 
