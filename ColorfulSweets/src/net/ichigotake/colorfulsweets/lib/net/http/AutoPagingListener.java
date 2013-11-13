@@ -1,14 +1,11 @@
 package net.ichigotake.colorfulsweets.lib.net.http;
 
 import net.ichigotake.colorfulsweets.lib.model.PagingParameter;
-import net.ichigotake.colorfulsweets.lib.net.http.AsyncHttpAccessor;
-import net.ichigotake.colorfulsweets.lib.net.http.ErrorEvent;
-import net.ichigotake.colorfulsweets.lib.net.http.HttpAccessEventListener;
-import net.ichigotake.colorfulsweets.lib.net.http.HttpAccessResponse;
+import net.ichigotake.colorfulsweets.lib.ui.AbstractAtoPagingListener;
+
 import android.content.Context;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.google.common.eventbus.Subscribe;
 
@@ -21,58 +18,33 @@ import com.google.common.eventbus.Subscribe;
  * @param <T>
  */
 public abstract class AutoPagingListener<T>
-	implements OnScrollListener, HttpAccessEventListener {
+	extends AbstractAtoPagingListener<T>
+	implements HttpAccessEventListener {
 
-	final private ArrayAdapter<T> mAdapter;
-	
-	final private PagingParameter mPagingParameter;
-	
-	private boolean mRequesting;
-	
-	abstract protected int getPerPage();
-	
-	abstract protected ArrayAdapter<T> createArrayAdapter(Context context);
-	
+	public AutoPagingListener(Context context) {
+		super(context);
+	}
+
 	abstract protected AsyncHttpAccessor createHttpAccessor(
 			ArrayAdapter<T> adapter, PagingParameter parameter);
 	
-	public AutoPagingListener(Context context) {
-		mAdapter = createArrayAdapter(context);
-		mPagingParameter = new PagingParameter(getPerPage());
-	}
-	
-	public ArrayAdapter<T> getAdapter() {
-		return mAdapter;
-	}
-	
 	@Subscribe
 	public void onSuccess(HttpAccessResponse response) {
-		mRequesting = false;
+		setRequesting(false);
 	}
 	
 	@Subscribe
 	public void onError(ErrorEvent error) {
-		mRequesting = false;
+		setRequesting(false);
 	}
 	
 	@Override
-	public void onScroll(AbsListView view, int firstVisibleItem,
-			int visibleItemCount, int totalItemCount) {
-		if (! mRequesting
-				&& (firstVisibleItem + visibleItemCount) == totalItemCount) {
-			
-			AsyncHttpAccessor accessor =
-					createHttpAccessor(mAdapter, mPagingParameter);
-			accessor.registerListener(this);
-			accessor.start();
-			mPagingParameter.nextPage();
-		}
+	protected void onPaging() {
+		AsyncHttpAccessor accessor =
+				createHttpAccessor(getAdapter(), getParameter());
+		accessor.registerListener(this);
+		accessor.start();
 	}
 
-	@Override
-	public void onScrollStateChanged(AbsListView view, int scrollState) {
-		// do nothing
-	}
-	
 }
 
