@@ -19,11 +19,15 @@ public class ActionBarSetting {
 	 * Constructor
 	 * @param actionBar
 	 */
-	private ActionBarSetting(ActionBar actionBar) {
+	public ActionBarSetting(ActionBar actionBar) {
 		mActionBar = actionBar;
 	}
-	
-	/**
+
+    public ActionBarSetting(ActionBarActivity activity) {
+        this(activity.getSupportActionBar());
+    }
+
+    /**
 	 * API level 7
 	 * 
 	 * Create {link {@link ActionBarSetting}} instance from {@link Context} contains {@link ActionBarActivity}.
