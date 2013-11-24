@@ -5,13 +5,16 @@ import android.util.AttributeSet;
 import android.widget.Checkable;
 import android.widget.RelativeLayout;
 
+import net.ichigotake.colorfulsweets.R;
+
 /**
  * API level 1
  *
- * Checkable {@link android.widget.RelativeLayout}.
+ * Checkable {@link RelativeLayout}.
  */
 public class CheckableRelativeLayout extends RelativeLayout implements Checkable {
 
+    final private int mDefaultBackgroundResId = R.drawable.colorfulsweets_list_selector_checked;
     private boolean mChecked;
 
     private static final int[] CHECKED_STATE_SET = {android.R.attr.state_checked};
@@ -19,16 +22,25 @@ public class CheckableRelativeLayout extends RelativeLayout implements Checkable
     @SuppressWarnings("unused")
     public CheckableRelativeLayout(Context context) {
         super(context, null);
+        initialize();
     }
 
     @SuppressWarnings("unused")
     public CheckableRelativeLayout(Context context, AttributeSet attrs) {
         super(context, attrs, 0);
+        initialize();
     }
 
     @SuppressWarnings("unused")
     public CheckableRelativeLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        initialize();
+    }
+
+    private void initialize() {
+        if (null == getBackground()) {
+            setBackgroundResource(mDefaultBackgroundResId);
+        }
     }
 
     @Override
