@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 
@@ -65,6 +66,15 @@ public abstract class NavigationDrawerActivity extends ActionBarActivity {
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		    case android.R.id.home:
+		    	if (null != getSupportParentActivityIntent()) {
+	                NavUtils.navigateUpFromSameTask(this);
+	                finish();
+			    	return true;
+		    	}
+		}
+		
 		if (mDrawerToggle.onOptionsItemSelected(item)) {
 			return true;
 		}
