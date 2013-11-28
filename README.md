@@ -9,6 +9,13 @@ Lightweight Android application framework
 
 __This software is still alpha quality. Its API may change without notice.__
 
+Description
+==========
+
+ColorfulSweets is for a my own framework. The almost classes are used myself to fill up the gap before the found wonderful libraries or frameworks.
+
+and... the sandbox for Android implementation.
+
 Feature
 ==========
 
