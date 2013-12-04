@@ -13,7 +13,7 @@ import net.ichigotake.colorfulsweets.R;
  * 
  * Navigation drawer
  */
-public class NavigationDrawer {
+public class NavigationDrawer implements Drawer {
 
     final private DrawerLayout mDrawerLayout;
     
@@ -37,27 +37,27 @@ public class NavigationDrawer {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
     
-    public ActionBarDrawerToggle getToggle() {
-        return mDrawerToggle;
-    }
-    
     /**
      * API level 4
      * 
      * Close navigation drawer
      */
+    @Override
     public void close() {
         mDrawerLayout.closeDrawers();
     }
 
+    @Override
     public void onPostCreate() {
         mDrawerToggle.syncState();
     }
 
+    @Override
     public void onConfigurationChanged(Configuration newConfig) {
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return mDrawerToggle.onOptionsItemSelected(item);
     }

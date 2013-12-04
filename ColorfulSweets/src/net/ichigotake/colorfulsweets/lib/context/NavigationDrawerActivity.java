@@ -8,8 +8,12 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 
+import com.google.common.base.Optional;
+
 import net.ichigotake.colorfulsweets.R;
 import net.ichigotake.colorfulsweets.lib.actionbar.ActionBarSetting;
+import net.ichigotake.colorfulsweets.lib.navigation.Drawer;
+import net.ichigotake.colorfulsweets.lib.navigation.DummyDrawer;
 import net.ichigotake.colorfulsweets.lib.navigation.NavigationDrawer;
 
 /**
@@ -19,7 +23,7 @@ import net.ichigotake.colorfulsweets.lib.navigation.NavigationDrawer;
  */
 public abstract class NavigationDrawerActivity extends ActionBarActivity {
 
-    private NavigationDrawer mNavigationDrawer;
+    private Drawer mDrawer;
     
     /**
      * API level 1
@@ -35,30 +39,32 @@ public abstract class NavigationDrawerActivity extends ActionBarActivity {
      * Create {@link NavigationDrawer} .
      * @return
      */
-    abstract protected NavigationDrawer createNavigationDrawer();
+    abstract protected Optional<Drawer> createNavigationDrawer();
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
         setContentView(getLayoutResource());
-        
-        ActionBarSetting.withHomeUpAsEnabled(getSupportActionBar(), R.string.app_name);
-        
-        mNavigationDrawer = createNavigationDrawer();
+
+        final Optional<Drawer> drawer = createNavigationDrawer();
+        mDrawer = drawer.or(new DummyDrawer());
+        if (drawer.isPresent()) {
+            ActionBarSetting.withHomeUpAsEnabled(getSupportActionBar(), R.string.app_name);
+        }
 
     }
     
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        mNavigationDrawer.onPostCreate();
+        mDrawer.onPostCreate();
     }
     
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        mNavigationDrawer.onConfigurationChanged(newConfig);
+        mDrawer.onConfigurationChanged(newConfig);
     }
     
     @Override
@@ -72,7 +78,7 @@ public abstract class NavigationDrawerActivity extends ActionBarActivity {
                 }
         }
         
-        if (mNavigationDrawer.onOptionsItemSelected(item)) {
+        if (mDrawer.onOptionsItemSelected(item)) {
             return true;
         }
         
@@ -85,7 +91,7 @@ public abstract class NavigationDrawerActivity extends ActionBarActivity {
      * Close navigation drawer.
      */
     public void closeNavigationDrawer() {
-        mNavigationDrawer.close();
+        mDrawer.close();
     }
     
     /**
