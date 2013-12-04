@@ -1,49 +1,41 @@
 package net.ichigotake.colorfulsweets.lib.net.http;
 
+import android.content.Context;
+import android.widget.ListView;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+
 import net.ichigotake.colorfulsweets.lib.model.PagingParameter;
 import net.ichigotake.colorfulsweets.lib.ui.AbstractAtoPagingListener;
 
-import android.content.Context;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
-import com.google.common.eventbus.Subscribe;
-
 /**
- * API level 1
+ * API level 8
  * 
  * Auto paging when scroll bottom for {@link ListView}.
  *
  * TODO add document for method.
- * @param <T>
+ * @param <T> For {@link android.widget.ArrayAdapter}
+ * @param <R> Request parameter
  */
-public abstract class AutoPagingListener<T>
+public abstract class AutoPagingListener<T, R>
 	extends AbstractAtoPagingListener<T>
 	implements HttpAccessEventListener {
 
+    final private AsyncRequest<R> mRequest;
+    final private RequestQueue mQueue;
+
 	public AutoPagingListener(Context context) {
-		super(context);
+		super();
+        mRequest = createRequest(getParameter());
+        mQueue = Volley.newRequestQueue(context);
 	}
 
-	abstract protected AsyncHttpAccessor createHttpAccessor(
-			ArrayAdapter<T> adapter, PagingParameter parameter);
-	
-	@Subscribe
-	public void onSuccess(HttpAccessResponse response) {
-		setRequesting(false);
-	}
-	
-	@Subscribe
-	public void onError(ErrorEvent error) {
-		setRequesting(false);
-	}
-	
+    abstract protected AsyncRequest<R> createRequest(PagingParameter parameter);
+
 	@Override
 	protected void onPaging() {
-		AsyncHttpAccessor accessor =
-				createHttpAccessor(getAdapter(), getParameter());
-		accessor.registerListener(this);
-		accessor.start();
+        mQueue.add(mRequest.createRequest());
 	}
 
 }

@@ -1,11 +1,11 @@
 package net.ichigotake.colorfulsweets.lib.ui;
 
-import net.ichigotake.colorfulsweets.lib.model.PagingParameter;
-import android.content.Context;
 import android.os.Handler;
 import android.widget.AbsListView;
-import android.widget.ArrayAdapter;
 import android.widget.AbsListView.OnScrollListener;
+import android.widget.ArrayAdapter;
+
+import net.ichigotake.colorfulsweets.lib.model.PagingParameter;
 
 /**
  * API level 1
@@ -17,13 +17,11 @@ import android.widget.AbsListView.OnScrollListener;
  */
 public abstract class AbstractAtoPagingListener<T> implements OnScrollListener {
 
-	final private ArrayAdapter<T> mAdapter;
-	
 	final private PagingParameter mPagingParameter;
 
     final private Handler mHandler;
 	
-	private boolean mRequesting;
+	final private LoadingState mState;
 
     /**
      * API level 1
@@ -36,28 +34,20 @@ public abstract class AbstractAtoPagingListener<T> implements OnScrollListener {
 	
 	abstract protected void onPaging();
 
-    /**
-     * API level 1
-     *
-     * Create {@link ArrayAdapter} for auto paging view.
-     *
-     * @param context
-     * @return
-     */
-	abstract protected ArrayAdapter<T> createArrayAdapter(Context context);
+	abstract protected ArrayAdapter<T> getAdapter();
 
     /**
      * API level 1
      *
      * Constructor
-     *
-     * @param context
      */
-	public AbstractAtoPagingListener(Context context) {
+	public AbstractAtoPagingListener() {
         mHandler = new Handler();
-		mAdapter = createArrayAdapter(context);
 		mPagingParameter = new PagingParameter(getPerPage());
+        mState = new LoadingState();
 	}
+
+
 
     /**
      * API level 1
@@ -89,7 +79,7 @@ public abstract class AbstractAtoPagingListener<T> implements OnScrollListener {
      * @return
      */
 	protected boolean isRequesting() {
-		return mRequesting;
+		return mState.isLoading();
 	}
 
     /**
@@ -100,18 +90,7 @@ public abstract class AbstractAtoPagingListener<T> implements OnScrollListener {
      * @param requesting
      */
 	protected void setRequesting(boolean requesting) {
-		mRequesting = requesting;
-	}
-
-    /**
-     * API level 1
-     *
-     * Return the {@link ArrayAdapter} for auto paging view.
-     *
-     * @return
-     */
-	public ArrayAdapter<T> getAdapter() {
-		return mAdapter;
+		mState.setIsLoading(requesting);
 	}
 
     /**
@@ -133,7 +112,6 @@ public abstract class AbstractAtoPagingListener<T> implements OnScrollListener {
                 @Override
                 public void run() {
                     onPaging();
-                    nextPage();
                 }
             });
 		}
