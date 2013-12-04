@@ -3,11 +3,8 @@ package net.ichigotake.colorfulsweets.lib.ui;
 import android.app.Activity;
 import android.content.Context;
 import android.os.IBinder;
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-
-import java.util.List;
 
 
 /**
@@ -29,23 +26,6 @@ public class SoftInput {
                 (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
         View view = activity.findViewById(android.R.id.content);
         imManager.hideSoftInputFromInputMethod(view.getWindowToken(), 0);
-    }
-
-    /**
-     * API level 4
-     *
-     * Hide on screen keyboard.
-     *
-     * @param fragment The target fragment
-     */
-    public static void hide(Fragment fragment) {
-        try {
-            List<Fragment> fragments = fragment.getFragmentManager().getFragments();
-            hide(fragments.get(0).getView());
-        } catch (Exception e) {
-            e.printStackTrace();
-            // do nothing
-        }
     }
 
     /**
