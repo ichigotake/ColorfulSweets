@@ -111,5 +111,9 @@ public class MenuItem {
 	public void setOnClickListener(ListItemOnClickListener listener) {
 		mListener = listener;
 	}
-	
+
+	@Override
+	public String toString() {
+		return mLabelName.or("");
+	}
 }
