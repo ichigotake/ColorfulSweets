@@ -1,9 +1,12 @@
 package net.ichigotake.colorfulsweets.lib.navigation;
 
-import net.ichigotake.colorfulsweets.R;
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.view.MenuItem;
+
+import net.ichigotake.colorfulsweets.R;
 
 /**
  * API level 4
@@ -46,5 +49,16 @@ public class NavigationDrawer {
     public void close() {
         mDrawerLayout.closeDrawers();
     }
-    
+
+    public void onPostCreate() {
+        mDrawerToggle.syncState();
+    }
+
+    public void onConfigurationChanged(Configuration newConfig) {
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return mDrawerToggle.onOptionsItemSelected(item);
+    }
 }
