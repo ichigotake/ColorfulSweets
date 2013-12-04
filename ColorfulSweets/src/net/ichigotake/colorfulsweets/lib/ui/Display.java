@@ -10,17 +10,17 @@ import android.util.DisplayMetrics;
  */
 public class Display {
 
-	/**
-	 * API level 1
-	 * 
-	 * TODO Add description
-	 * @param activity
-	 * @param pixel
-	 * @return
-	 */
-	public static float calcDensity(Activity activity, int pixel) {
-		DisplayMetrics metrics = new DisplayMetrics();
-		activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
-		return pixel * metrics.density;
-	}
+    /**
+     * API level 1
+     * 
+     * TODO Add description
+     * @param activity
+     * @param pixel
+     * @return
+     */
+    public static float calcDensity(Activity activity, int pixel) {
+        DisplayMetrics metrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        return pixel * metrics.density;
+    }
 }

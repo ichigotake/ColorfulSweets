@@ -9,13 +9,13 @@ import android.os.AsyncTask;
  */
 public class AsyncRunnableTask extends AsyncTask<Runnable, Void, Void> {
 
-	@Override
-	protected Void doInBackground(Runnable... listeners) {
-		for (Runnable listener : listeners) {
+    @Override
+    protected Void doInBackground(Runnable... listeners) {
+        for (Runnable listener : listeners) {
             listener.run();
         }
-		return null;
-	}
+        return null;
+    }
 
 
 }

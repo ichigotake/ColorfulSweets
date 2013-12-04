@@ -10,24 +10,24 @@ import android.content.Context;
  * @param <T> The {@link android.widget.ArrayAdapter} item for auto paging view.
  */
 public abstract class RunnableAutoPagingListener<T>
-	extends AbstractAtoPagingListener<T> {
+    extends AbstractAtoPagingListener<T> {
 
     /**
      * API level 1
      *
      * Constructor.
      */
-	public RunnableAutoPagingListener() {
-		super();
-	}
+    public RunnableAutoPagingListener() {
+        super();
+    }
 
     /**
      * API level 3
      *
      * Run the auto paging.
      */
-	@Override
-	protected void onPaging() {
+    @Override
+    protected void onPaging() {
         if (! isRequesting()) {
             setRequesting(true);
             new AsyncRunnableTask().execute(onPagingListener());

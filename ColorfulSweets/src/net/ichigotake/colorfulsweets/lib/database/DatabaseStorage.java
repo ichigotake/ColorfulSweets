@@ -11,11 +11,11 @@ import android.content.Context;
  */
 public interface DatabaseStorage {
 
-	public Context getContext();
-	
-	public String getName();
-	
-	public int getVersion();
-	
-	public boolean isExists();
+    public Context getContext();
+    
+    public String getName();
+    
+    public int getVersion();
+    
+    public boolean isExists();
 }

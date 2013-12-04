@@ -13,41 +13,41 @@ import android.view.View;
  */
 public abstract class SimpleViewPagerTab implements ViewPagerTab {
 
-	final private ViewPager mViewPager;
-	
-	final private PagerTabStrip mPagerTabStrip;
-	
-	public SimpleViewPagerTab(View view) {
-		mViewPager = (ViewPager) view.findViewById(R.id.pager);
-		mPagerTabStrip = (PagerTabStrip) view.findViewById(R.id.pager_title_strip);
-	}
-	
-	/**
-	 * API level 4
-	 * 
-	 * Return the {@link ViewPaer} .
-	 */
-	public ViewPager getViewPager() {
-		return mViewPager;
-	}
-	
-	/**
-	 * API level 4
-	 * 
-	 * Return the {@link PagerTabStrip} .
-	 */
-	public PagerTabStrip getPagerTabStrip() {
-		return mPagerTabStrip;
-	}
-	
-	/**
-	 * API level 4
-	 * 
-	 * Set {@link FragmentPagerAdapter} to contains {@link ViewPager} .
-	 */
-	@Override
-	public void setFragmentPagerAdapter(FragmentPagerAdapter adapter) {
-		mViewPager.setAdapter(adapter);
-	}
-	
+    final private ViewPager mViewPager;
+    
+    final private PagerTabStrip mPagerTabStrip;
+    
+    public SimpleViewPagerTab(View view) {
+        mViewPager = (ViewPager) view.findViewById(R.id.pager);
+        mPagerTabStrip = (PagerTabStrip) view.findViewById(R.id.pager_title_strip);
+    }
+    
+    /**
+     * API level 4
+     * 
+     * Return the {@link ViewPaer} .
+     */
+    public ViewPager getViewPager() {
+        return mViewPager;
+    }
+    
+    /**
+     * API level 4
+     * 
+     * Return the {@link PagerTabStrip} .
+     */
+    public PagerTabStrip getPagerTabStrip() {
+        return mPagerTabStrip;
+    }
+    
+    /**
+     * API level 4
+     * 
+     * Set {@link FragmentPagerAdapter} to contains {@link ViewPager} .
+     */
+    @Override
+    public void setFragmentPagerAdapter(FragmentPagerAdapter adapter) {
+        mViewPager.setAdapter(adapter);
+    }
+    
 }

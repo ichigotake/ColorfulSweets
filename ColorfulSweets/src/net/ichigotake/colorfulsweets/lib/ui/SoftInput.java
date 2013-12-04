@@ -1,13 +1,13 @@
 package net.ichigotake.colorfulsweets.lib.ui;
 
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.IBinder;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+
+import java.util.List;
 
 
 /**
@@ -38,15 +38,15 @@ public class SoftInput {
      *
      * @param fragment The target fragment
      */
-	public static void hide(Fragment fragment) {
-		try {
-			List<Fragment> fragments = fragment.getFragmentManager().getFragments();
-			hide(fragments.get(0).getView());
-		} catch (Exception e) {
-			e.printStackTrace();
-			// do nothing
-		}
-	}
+    public static void hide(Fragment fragment) {
+        try {
+            List<Fragment> fragments = fragment.getFragmentManager().getFragments();
+            hide(fragments.get(0).getView());
+        } catch (Exception e) {
+            e.printStackTrace();
+            // do nothing
+        }
+    }
 
     /**
      * API level 1

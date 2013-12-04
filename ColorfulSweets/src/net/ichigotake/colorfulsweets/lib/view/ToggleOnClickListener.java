@@ -4,37 +4,37 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 /**
- * ƒNƒŠƒbƒN‚Åƒrƒ…[‚Ì•\¦E”ñ•\¦‚ğØ‚è‘Ö‚¦‚é
+ * ï¿½Nï¿½ï¿½ï¿½bï¿½Nï¿½Åƒrï¿½ï¿½ï¿½[ï¿½Ì•\ï¿½ï¿½ï¿½Eï¿½ï¿½\ï¿½ï¿½ï¿½ï¿½Ø‚ï¿½Ö‚ï¿½ï¿½ï¿½
  */
 public class ToggleOnClickListener implements OnClickListener {
 
-	final private static int sDefaultInvisibleMode = View.GONE;
-	
-	final private int mInvisibleMode;
-	
-	private View mTargetView;
-	
-	public ToggleOnClickListener() {
-		this(sDefaultInvisibleMode, null);
-	}
-	
-	public ToggleOnClickListener(View targetView) {
-		this(sDefaultInvisibleMode, targetView);
-	}
-	
-	public ToggleOnClickListener(int invisibleMode) {
-		this(invisibleMode, null);
-	}
-	
-	public ToggleOnClickListener(int invisibleMode, View targetView) {
-		mInvisibleMode = invisibleMode;
-		mTargetView = targetView;
-	}
-	
-	@Override
-	public void onClick(View view) {
-		final View targetView = (null == mTargetView) ? mTargetView : view;
-		ToggleView.toggle(targetView, mInvisibleMode);
-	}
+    final private static int sDefaultInvisibleMode = View.GONE;
+    
+    final private int mInvisibleMode;
+    
+    private View mTargetView;
+    
+    public ToggleOnClickListener() {
+        this(sDefaultInvisibleMode, null);
+    }
+    
+    public ToggleOnClickListener(View targetView) {
+        this(sDefaultInvisibleMode, targetView);
+    }
+    
+    public ToggleOnClickListener(int invisibleMode) {
+        this(invisibleMode, null);
+    }
+    
+    public ToggleOnClickListener(int invisibleMode, View targetView) {
+        mInvisibleMode = invisibleMode;
+        mTargetView = targetView;
+    }
+    
+    @Override
+    public void onClick(View view) {
+        final View targetView = (null == mTargetView) ? mTargetView : view;
+        ToggleView.toggle(targetView, mInvisibleMode);
+    }
 
 }

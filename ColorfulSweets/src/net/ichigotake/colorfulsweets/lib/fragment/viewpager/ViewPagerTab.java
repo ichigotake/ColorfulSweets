@@ -12,15 +12,15 @@ import android.support.v4.view.ViewPager;
  */
 public interface ViewPagerTab {
 
-	public PagerTabStrip getPagerTabStrip();
-	
-	public String getTitle(int position);
-	
-	public ViewPager getViewPager();
-	
-	public void setFragmentPagerAdapter(FragmentPagerAdapter adapter);
-	
-	public int getCount();
-	
-	public Fragment getItem(int position);
+    public PagerTabStrip getPagerTabStrip();
+    
+    public String getTitle(int position);
+    
+    public ViewPager getViewPager();
+    
+    public void setFragmentPagerAdapter(FragmentPagerAdapter adapter);
+    
+    public int getCount();
+    
+    public Fragment getItem(int position);
 }

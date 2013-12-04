@@ -17,38 +17,38 @@ import com.google.common.base.Optional;
  */
 public abstract class SQLiteHelper<T> extends SQLiteOpenHelper {
 
-	final private SparseArray<T> mCaches = new SparseArray<T>();
-	
-	protected abstract String getTableName();
-	
-	public SQLiteHelper(DatabaseStorage database) {
-		this(database.getContext(), database.getName(), database.getVersion());
-	}
-	
-	public SQLiteHelper(Context context, String name, int version) {
-		super(context, name, null, version);
-	}
+    final private SparseArray<T> mCaches = new SparseArray<T>();
+    
+    protected abstract String getTableName();
+    
+    public SQLiteHelper(DatabaseStorage database) {
+        this(database.getContext(), database.getName(), database.getVersion());
+    }
+    
+    public SQLiteHelper(Context context, String name, int version) {
+        super(context, name, null, version);
+    }
 
-	protected void putCache(int key, T data) {
-		mCaches.put(key, data);
-	}
-	
-	protected Optional<T> getCache(int key) {
-		return Optional.fromNullable(mCaches.get(key));
-	}
+    protected void putCache(int key, T data) {
+        mCaches.put(key, data);
+    }
+    
+    protected Optional<T> getCache(int key) {
+        return Optional.fromNullable(mCaches.get(key));
+    }
 
-	@Override
-	public void onCreate(SQLiteDatabase arg0) {
-		
-	}
+    @Override
+    public void onCreate(SQLiteDatabase arg0) {
+        
+    }
 
-	@Override
-	public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
-		
-	}
-	
-	protected SQLiteMakerSelect newSelect() {
-		return new SQLiteMakerSelect(getReadableDatabase(), getTableName());
-	}
+    @Override
+    public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
+        
+    }
+    
+    protected SQLiteMakerSelect newSelect() {
+        return new SQLiteMakerSelect(getReadableDatabase(), getTableName());
+    }
 
 }

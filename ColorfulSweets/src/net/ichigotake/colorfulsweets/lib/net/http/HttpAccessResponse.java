@@ -18,54 +18,54 @@ import java.net.HttpURLConnection;
  */
 public class HttpAccessResponse {
 
-	final private HttpResponse mResponse;
+    final private HttpResponse mResponse;
 
-	final private int mStatusCode;
-	
-	final private Optional<String> mContent;
+    final private int mStatusCode;
+    
+    final private Optional<String> mContent;
 
-	/**
-	 * API level 1
-	 * 
-	 * Constructor
-	 * @param response the response body.
-	 */
-	public HttpAccessResponse(HttpResponse response) {
-		mResponse = response;
-		mContent = parseContent(mResponse);
-		mStatusCode = mResponse.getStatusLine().getStatusCode();
-	}
+    /**
+     * API level 1
+     * 
+     * Constructor
+     * @param response the response body.
+     */
+    public HttpAccessResponse(HttpResponse response) {
+        mResponse = response;
+        mContent = parseContent(mResponse);
+        mStatusCode = mResponse.getStatusLine().getStatusCode();
+    }
 
-	/**
-	 * API level 1
-	 * 
-	 * Return true if response is success.
+    /**
+     * API level 1
+     * 
+     * Return true if response is success.
      *
-	 * @return true if response is success
-	 */
-	public boolean isSuccess() {
-		return HttpURLConnection.HTTP_OK == mStatusCode;
-	}
+     * @return true if response is success
+     */
+    public boolean isSuccess() {
+        return HttpURLConnection.HTTP_OK == mStatusCode;
+    }
 
-	/**
-	 * API level 1
-	 * 
-	 * Return the {@link HttpResponse}.
-	 * @return the {@link org.apache.http.HttpResponse}
-	 */
-	public HttpResponse getResponse() {
-		return mResponse;
-	}
-	
-	/**
-	 * API level 1
-	 * 
-	 * Return the response body.
-	 * @return the response body.
-	 */
-	public Optional<String> getContent() {
-		return mContent;
-	}
+    /**
+     * API level 1
+     * 
+     * Return the {@link HttpResponse}.
+     * @return the {@link org.apache.http.HttpResponse}
+     */
+    public HttpResponse getResponse() {
+        return mResponse;
+    }
+    
+    /**
+     * API level 1
+     * 
+     * Return the response body.
+     * @return the response body.
+     */
+    public Optional<String> getContent() {
+        return mContent;
+    }
 
     /**
      * API level 1
@@ -102,18 +102,18 @@ public class HttpAccessResponse {
         }
         return json;
     }
-	
-	private Optional<String> parseContent(HttpResponse response) {
-		Optional<String> content;
-		try {
-			content = Optional.of(EntityUtils.toString(response.getEntity(), "UTF-8"));
-		} catch (org.apache.http.ParseException e) {
-			content = Optional.absent();
-			e.printStackTrace();
-		} catch (IOException e) {
-			content = Optional.absent();
-			e.printStackTrace();
-		}
-		return content;
-	}
+    
+    private Optional<String> parseContent(HttpResponse response) {
+        Optional<String> content;
+        try {
+            content = Optional.of(EntityUtils.toString(response.getEntity(), "UTF-8"));
+        } catch (org.apache.http.ParseException e) {
+            content = Optional.absent();
+            e.printStackTrace();
+        } catch (IOException e) {
+            content = Optional.absent();
+            e.printStackTrace();
+        }
+        return content;
+    }
 }

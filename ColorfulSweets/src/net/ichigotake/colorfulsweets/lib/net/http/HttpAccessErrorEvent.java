@@ -7,25 +7,25 @@ package net.ichigotake.colorfulsweets.lib.net.http;
  */
 public class HttpAccessErrorEvent implements ErrorEvent {
 
-	final private HttpAccessResponse mResponse;
-	
-	/**
-	 * API level 1
-	 * 
-	 * Constructor
-	 * @param response
-	 */
-	public HttpAccessErrorEvent(HttpAccessResponse response) {
-		mResponse = response;
-	}
-	
-	/**
-	 * API level 1
-	 * 
-	 * Return the {@link HttpAccessResponse}
-	 * @return
-	 */
-	public HttpAccessResponse getResponse() {
-		return mResponse;
-	}
+    final private HttpAccessResponse mResponse;
+    
+    /**
+     * API level 1
+     * 
+     * Constructor
+     * @param response
+     */
+    public HttpAccessErrorEvent(HttpAccessResponse response) {
+        mResponse = response;
+    }
+    
+    /**
+     * API level 1
+     * 
+     * Return the {@link HttpAccessResponse}
+     * @return
+     */
+    public HttpAccessResponse getResponse() {
+        return mResponse;
+    }
 }

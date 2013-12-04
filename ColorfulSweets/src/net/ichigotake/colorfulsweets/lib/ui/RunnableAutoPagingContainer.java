@@ -1,7 +1,5 @@
 package net.ichigotake.colorfulsweets.lib.ui;
 
-import net.ichigotake.colorfulsweets.lib.ui.RunnableAutoPagingListener;
-
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -14,9 +12,9 @@ import android.widget.ListView;
  */
 public class RunnableAutoPagingContainer<T> {
 
-	final private RunnableAutoPagingListener<T> mPagiableListener;
-	
-	private ArrayAdapter<T> mAdapter;
+    final private RunnableAutoPagingListener<T> mPagiableListener;
+    
+    private ArrayAdapter<T> mAdapter;
 
     /**
      * API level 3
@@ -25,9 +23,9 @@ public class RunnableAutoPagingContainer<T> {
      *
      * @param pagiableListener
      */
-	public RunnableAutoPagingContainer(RunnableAutoPagingListener<T> pagiableListener) {
-		mPagiableListener = pagiableListener;
-	}
+    public RunnableAutoPagingContainer(RunnableAutoPagingListener<T> pagiableListener) {
+        mPagiableListener = pagiableListener;
+    }
 
     /**
      * API level 3
@@ -36,15 +34,15 @@ public class RunnableAutoPagingContainer<T> {
      *
      * @param listView
      */
-	public void initialize(ListView listView) {
-		mAdapter = mPagiableListener.getAdapter();
+    public void initialize(ListView listView) {
+        mAdapter = mPagiableListener.getAdapter();
 
         listView.setAdapter(mAdapter);
-		mAdapter.notifyDataSetChanged();
+        mAdapter.notifyDataSetChanged();
 
         mPagiableListener.onFirstLoading();
 
         listView.setOnScrollListener(mPagiableListener);
-	}
-	
+    }
+    
 }

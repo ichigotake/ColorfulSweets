@@ -9,39 +9,39 @@ package net.ichigotake.colorfulsweets.lib.model;
  */
 public class PagingParameter {
 
-	final private int mPerPage;
-	
-	private int mOffset;
-	
-	private int mCurrentPage = 1;
-	
-	public PagingParameter(int perPage) {
-		mPerPage = perPage;
-	}
-	
-	public void nextPage() {
-		mCurrentPage++;
-		mOffset += mPerPage;
-	}
+    final private int mPerPage;
+    
+    private int mOffset;
+    
+    private int mCurrentPage = 1;
+    
+    public PagingParameter(int perPage) {
+        mPerPage = perPage;
+    }
+    
+    public void nextPage() {
+        mCurrentPage++;
+        mOffset += mPerPage;
+    }
 
-	public void reset() {
-		mCurrentPage = 0;
-		mOffset = 0;
-	}
+    public void reset() {
+        mCurrentPage = 0;
+        mOffset = 0;
+    }
 
-	public int getPerPage() {
-		return mPerPage;
-	}
-	
-	public int getCurrentPage() {
-		return mCurrentPage;
-	}
-	
-	public int getLimit() {
-		return mPerPage;
-	}
-	
-	public int getOffset() {
-		return mOffset;
-	}
+    public int getPerPage() {
+        return mPerPage;
+    }
+    
+    public int getCurrentPage() {
+        return mCurrentPage;
+    }
+    
+    public int getLimit() {
+        return mPerPage;
+    }
+    
+    public int getOffset() {
+        return mOffset;
+    }
 }

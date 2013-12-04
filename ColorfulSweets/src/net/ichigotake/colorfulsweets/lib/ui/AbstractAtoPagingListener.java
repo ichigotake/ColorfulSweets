@@ -17,11 +17,11 @@ import net.ichigotake.colorfulsweets.lib.model.PagingParameter;
  */
 public abstract class AbstractAtoPagingListener<T> implements OnScrollListener {
 
-	final private PagingParameter mPagingParameter;
+    final private PagingParameter mPagingParameter;
 
     final private Handler mHandler;
-	
-	final private LoadingState mState;
+    
+    final private LoadingState mState;
 
     /**
      * API level 1
@@ -30,22 +30,22 @@ public abstract class AbstractAtoPagingListener<T> implements OnScrollListener {
      *
      * @return
      */
-	abstract protected int getPerPage();
-	
-	abstract protected void onPaging();
+    abstract protected int getPerPage();
+    
+    abstract protected void onPaging();
 
-	abstract protected ArrayAdapter<T> getAdapter();
+    abstract protected ArrayAdapter<T> getAdapter();
 
     /**
      * API level 1
      *
      * Constructor
      */
-	public AbstractAtoPagingListener() {
+    public AbstractAtoPagingListener() {
         mHandler = new Handler();
-		mPagingParameter = new PagingParameter(getPerPage());
+        mPagingParameter = new PagingParameter(getPerPage());
         mState = new LoadingState();
-	}
+    }
 
 
 
@@ -68,8 +68,8 @@ public abstract class AbstractAtoPagingListener<T> implements OnScrollListener {
      * @return
      */
     protected PagingParameter getParameter() {
-		return mPagingParameter;
-	}
+        return mPagingParameter;
+    }
 
     /**
      * API level 1
@@ -78,9 +78,9 @@ public abstract class AbstractAtoPagingListener<T> implements OnScrollListener {
      *
      * @return
      */
-	protected boolean isRequesting() {
-		return mState.isLoading();
-	}
+    protected boolean isRequesting() {
+        return mState.isLoading();
+    }
 
     /**
      * API level 1
@@ -89,9 +89,9 @@ public abstract class AbstractAtoPagingListener<T> implements OnScrollListener {
      *
      * @param requesting
      */
-	protected void setRequesting(boolean requesting) {
-		mState.setIsLoading(requesting);
-	}
+    protected void setRequesting(boolean requesting) {
+        mState.setIsLoading(requesting);
+    }
 
     /**
      * API level 1
@@ -101,12 +101,12 @@ public abstract class AbstractAtoPagingListener<T> implements OnScrollListener {
     protected void nextPage() {
         getParameter().nextPage();
     }
-	
-	@Override
-	public void onScroll(AbsListView view, int firstVisibleItem,
-			int visibleItemCount, int totalItemCount) {
-		if (! isRequesting()
-				&& (firstVisibleItem + visibleItemCount) == totalItemCount) {
+    
+    @Override
+    public void onScroll(AbsListView view, int firstVisibleItem,
+            int visibleItemCount, int totalItemCount) {
+        if (! isRequesting()
+                && (firstVisibleItem + visibleItemCount) == totalItemCount) {
 
             mHandler.post(new Runnable() {
                 @Override
@@ -114,12 +114,12 @@ public abstract class AbstractAtoPagingListener<T> implements OnScrollListener {
                     onPaging();
                 }
             });
-		}
-	}
+        }
+    }
 
-	@Override
-	public void onScrollStateChanged(AbsListView arg0, int arg1) {
-		
-	}
+    @Override
+    public void onScrollStateChanged(AbsListView arg0, int arg1) {
+        
+    }
 
 }
