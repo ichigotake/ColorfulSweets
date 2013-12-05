@@ -50,9 +50,7 @@ public abstract class NavigationDrawerActivity extends ActionBarActivity {
 
         final Optional<Drawer> drawer = createNavigationDrawer();
         mDrawer = drawer.or(new DummyDrawer());
-        if (drawer.isPresent()) {
-            ActionBarSetting.withHomeUpAsEnabled(getSupportActionBar(), R.string.app_name);
-        }
+        ActionBarSetting.withHomeUpAsEnabled(getSupportActionBar(), R.string.app_name);
 
     }
     
