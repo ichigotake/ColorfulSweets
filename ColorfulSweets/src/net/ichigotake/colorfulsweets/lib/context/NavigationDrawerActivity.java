@@ -15,6 +15,7 @@ import net.ichigotake.colorfulsweets.lib.actionbar.ActionBarSetting;
 import net.ichigotake.colorfulsweets.lib.navigation.Drawer;
 import net.ichigotake.colorfulsweets.lib.navigation.DummyDrawer;
 import net.ichigotake.colorfulsweets.lib.navigation.NavigationDrawer;
+import net.ichigotake.colorfulsweets.lib.ui.SoftInput;
 
 /**
  * API level 7
@@ -44,7 +45,7 @@ public abstract class NavigationDrawerActivity extends ActionBarActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+        SoftInput.alwaysHidden(this);
         setContentView(getLayoutResource());
 
         final Optional<Drawer> drawer = createNavigationDrawer();

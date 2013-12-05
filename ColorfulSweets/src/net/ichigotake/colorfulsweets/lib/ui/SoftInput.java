@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.IBinder;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 
@@ -14,6 +15,10 @@ import android.view.inputmethod.InputMethodManager;
  */
 public class SoftInput {
 
+    public static void alwaysHidden(Activity activity) {
+        activity.getWindow().setSoftInputMode(WindowManager.LayoutParams
+                .SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+    }
     /**
      * API level 1
      *
