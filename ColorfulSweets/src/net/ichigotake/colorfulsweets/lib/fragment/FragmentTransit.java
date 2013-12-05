@@ -19,6 +19,7 @@ public class FragmentTransit {
     final private FragmentManager mFragmentManager;
     
     private boolean mAddBackStack = true;
+    private boolean mIsAnimation = true;
     
     /**
      * API level 4
@@ -91,11 +92,13 @@ public class FragmentTransit {
             @Override
             public void run() {
                 FragmentTransaction transaction = mFragmentManager.beginTransaction();
-                transaction.setCustomAnimations(
-                        R.anim.fade_in,
-                        R.anim.fade_out,
-                        R.anim.fade_in,
-                        R.anim.fade_out);
+                if (mIsAnimation) {
+                    transaction.setCustomAnimations(
+                            R.anim.fade_in,
+                            R.anim.fade_out,
+                            R.anim.fade_in,
+                            R.anim.fade_out);
+                }
                 transaction.replace(replacementId, nextFragment);
                 if (mAddBackStack) {
                     transaction.addToBackStack(null);
@@ -118,4 +121,8 @@ public class FragmentTransit {
         fragmentManager.popBackStack();
     }
 
+    public FragmentTransit setNoAnimation() {
+        mIsAnimation = false;
+        return this;
+    }
 }
