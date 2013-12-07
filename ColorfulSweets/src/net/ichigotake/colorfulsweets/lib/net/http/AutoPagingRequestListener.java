@@ -18,16 +18,13 @@ import net.ichigotake.colorfulsweets.lib.ui.AbstractAtoPagingListener;
  * @param <T> For {@link android.widget.ArrayAdapter}
  * @param <R> Request parameter
  */
-public abstract class AutoPagingListener<T, R>
-    extends AbstractAtoPagingListener<T>
-    implements HttpAccessEventListener {
+public abstract class AutoPagingRequestListener<T, R>
+    extends AbstractAtoPagingListener<T> {
 
-    final private AsyncRequest<R> mRequest;
     final private RequestQueue mQueue;
 
-    public AutoPagingListener(Context context) {
+    public AutoPagingRequestListener(Context context) {
         super();
-        mRequest = createRequest(getParameter());
         mQueue = Volley.newRequestQueue(context);
     }
 
@@ -35,7 +32,18 @@ public abstract class AutoPagingListener<T, R>
 
     @Override
     protected void onPaging() {
+        AsyncRequest<R> mRequest = createRequest(getParameter());
+        mRequest.registerListener(new OnPagingListener());
+        mRequest.eventPost(new BeforeRequestEvent());
         mQueue.add(mRequest.createRequest());
+    }
+
+    private class OnPagingListener implements ResponseListener<R> {
+
+        @Override
+        public void onResponse(R response) {
+            nextPage();
+        }
     }
 
 }

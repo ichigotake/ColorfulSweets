@@ -11,8 +11,7 @@ import org.json.JSONObject;
 public abstract class AsyncJsonObjectRequest extends AsyncRequest<JSONObject> {
 
     public Request createRequest() {
-        registerListener(createResponse());
-        registerListener(createErrorResponse());
+        registerListeners();
         return new JsonObjectRequest(
                 getMethod(),
                 getRequestUri().toString(),

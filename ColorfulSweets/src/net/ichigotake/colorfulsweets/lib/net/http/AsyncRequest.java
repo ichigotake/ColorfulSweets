@@ -18,6 +18,10 @@ public abstract class AsyncRequest<T> {
         mEventBus = new EventBus();
     }
 
+    public void registerListener(RequestListener listener) {
+        mEventBus.register(listener);
+    }
+
     public void registerListener(ResponseListener<T> listener) {
         mEventBus.register(listener);
     }
@@ -26,12 +30,28 @@ public abstract class AsyncRequest<T> {
         mEventBus.register(listener);
     }
 
+    public void eventPost(RequestEvent event) {
+        mEventBus.post(event);
+    }
+
     public void eventPost(T event) {
         mEventBus.post(event);
     }
 
     public void eventPost(VolleyError event) {
         mEventBus.post(event);
+    }
+
+    protected void registerListeners() {
+        ResponseErrorListener errorListener = createErrorResponse();
+        if (errorListener != null) {
+            registerListener(errorListener);
+        }
+
+        ResponseListener<T> responseListener = createResponse();
+        if (responseListener != null) {
+            registerListener(responseListener);
+        }
     }
 
     abstract public Request createRequest();

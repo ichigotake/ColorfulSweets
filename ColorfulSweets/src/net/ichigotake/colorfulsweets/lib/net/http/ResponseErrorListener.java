@@ -9,5 +9,6 @@ import com.google.common.eventbus.Subscribe;
 public interface ResponseErrorListener {
 
     @Subscribe
-    public void onError(VolleyError error);
+    public void onResponse(VolleyError response);
+
 }

@@ -11,8 +11,7 @@ import org.json.JSONArray;
 public abstract class AsyncJsonArrayRequest extends AsyncRequest<JSONArray> {
 
     public Request createRequest() {
-        registerListener(createResponse());
-        registerListener(createErrorResponse());
+        registerListeners();
         return new JsonArrayRequest(
                 getRequestUri().toString(),
                 new OnResponse(),

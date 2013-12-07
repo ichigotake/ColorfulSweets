@@ -2,19 +2,18 @@ package net.ichigotake.colorfulsweets.lib.ui.dialog;
 
 import android.content.Context;
 
+import com.android.volley.VolleyError;
 import com.google.common.eventbus.Subscribe;
 
-import net.ichigotake.colorfulsweets.lib.net.http.BeforeHttpRequestEvent;
-import net.ichigotake.colorfulsweets.lib.net.http.HttpAccessErrorEvent;
-import net.ichigotake.colorfulsweets.lib.net.http.HttpAccessEventListener;
-import net.ichigotake.colorfulsweets.lib.net.http.HttpAccessResponse;
+import net.ichigotake.colorfulsweets.lib.net.http.BeforeRequestEvent;
+import net.ichigotake.colorfulsweets.lib.net.http.RequestListener;
 
 /**
  * API level 1
  * 
  * Show loading progress dialog.
  */
-public class LoadingProgressDialogListener implements HttpAccessEventListener {
+public class LoadingProgressDialogListener implements RequestListener {
 
     final private LoadingProgressDialog mDialog;
     
@@ -23,18 +22,17 @@ public class LoadingProgressDialogListener implements HttpAccessEventListener {
     }
     
     @Subscribe
-    public void before(BeforeHttpRequestEvent event) {
+    public void before(BeforeRequestEvent event) {
         mDialog.show();
     }
     
     @Subscribe
-    public void onSuccess(HttpAccessResponse response) {
+    public void onResponse(Object response) {
         mDialog.dismiss();
     }
-    
+
     @Subscribe
-    public void onError(HttpAccessErrorEvent event) {
+    public void onError(VolleyError error) {
         mDialog.dismiss();
     }
-    
 }

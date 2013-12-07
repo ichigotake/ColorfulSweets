@@ -2,17 +2,16 @@ package net.ichigotake.colorfulsweets.lib.ui.dialog;
 
 import android.content.Context;
 
-import com.google.common.eventbus.Subscribe;
+import com.android.volley.VolleyError;
 
-import net.ichigotake.colorfulsweets.lib.net.http.HttpAccessErrorEvent;
-import net.ichigotake.colorfulsweets.lib.net.http.HttpAccessEventListener;
+import net.ichigotake.colorfulsweets.lib.net.http.ResponseErrorListener;
 
 /**
  * API level 1
  * 
  * Show connection error message with dialog.
  */
-public class ShowConnectionErrorDialogListener implements HttpAccessEventListener {
+public class ShowConnectionErrorDialogListener implements ResponseErrorListener {
 
     final private MessageDialogBuilder mBuilder;
     
@@ -23,8 +22,8 @@ public class ShowConnectionErrorDialogListener implements HttpAccessEventListene
         
     }
     
-    @Subscribe
-    public void onError(HttpAccessErrorEvent event) {
+    @Override
+    public void onResponse(VolleyError response) {
         mBuilder.show();
     }
 }

@@ -4,9 +4,6 @@ import com.android.volley.VolleyError;
 
 import net.ichigotake.colorfulsweets.lib.ui.LoadingState;
 
-/**
- * Created by ichigotake on 2013/12/05.
- */
 class OnPagingErrorResponse implements ResponseErrorListener {
 
     final private LoadingState mState;
@@ -16,7 +13,7 @@ class OnPagingErrorResponse implements ResponseErrorListener {
     }
 
     @Override
-    public void onError(VolleyError volleyError) {
+    public void onResponse(VolleyError volleyError) {
         mState.complete();
     }
 }
