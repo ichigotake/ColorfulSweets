@@ -43,4 +43,15 @@ public class PagingParameterTest extends TestCase {
             assertEquals(mPerPage, mParameter.getLimit());
         }
     }
+
+    public void testReset() {
+        mParameter.nextPage();
+        assertEquals(mParameter.getCurrentPage(), 2);
+        mParameter.reset();
+
+        assertEquals(mPerPage, mParameter.getPerPage());
+        assertEquals(1, mParameter.getCurrentPage());
+        assertEquals(0, mParameter.getOffset());
+        assertEquals(mPerPage, mParameter.getLimit());
+    }
 }

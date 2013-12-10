@@ -25,7 +25,7 @@ public class PagingState {
     }
 
     public void reset() {
-        mCurrentPage = 0;
+        mCurrentPage = 1;
         mOffset = 0;
     }
 
