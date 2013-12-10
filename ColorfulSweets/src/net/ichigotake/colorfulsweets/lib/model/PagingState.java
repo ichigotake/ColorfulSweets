@@ -7,7 +7,7 @@ package net.ichigotake.colorfulsweets.lib.model;
  * 
  * TODO document for method.
  */
-public class PagingParameter {
+public class PagingState {
 
     final private int mPerPage;
     
@@ -15,7 +15,7 @@ public class PagingParameter {
     
     private int mCurrentPage = 1;
     
-    public PagingParameter(int perPage) {
+    public PagingState(int perPage) {
         mPerPage = perPage;
     }
     
