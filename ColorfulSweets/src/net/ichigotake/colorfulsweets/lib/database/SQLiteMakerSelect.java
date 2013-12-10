@@ -9,8 +9,8 @@ import android.text.TextUtils;
 
 /**
  * API level 1
- * 
- * Wrapper class for {@link Cursor}.
+ *
+ * SQLite query builder.
  */
 public class SQLiteMakerSelect {
 
