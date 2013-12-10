@@ -5,7 +5,7 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ArrayAdapter;
 
-import net.ichigotake.colorfulsweets.lib.model.PagingParameter;
+import net.ichigotake.colorfulsweets.lib.model.PagingState;
 
 /**
  * API level 1
@@ -17,7 +17,7 @@ import net.ichigotake.colorfulsweets.lib.model.PagingParameter;
  */
 public abstract class AbstractAtoPagingListener<T> implements OnScrollListener {
 
-    final private PagingParameter mPagingParameter;
+    final private PagingState mPagingState;
 
     final private Handler mHandler;
     
@@ -43,7 +43,7 @@ public abstract class AbstractAtoPagingListener<T> implements OnScrollListener {
      */
     public AbstractAtoPagingListener() {
         mHandler = new Handler();
-        mPagingParameter = new PagingParameter(getPerPage());
+        mPagingState = new PagingState(getPerPage());
         mState = new LoadingState();
     }
 
@@ -67,8 +67,8 @@ public abstract class AbstractAtoPagingListener<T> implements OnScrollListener {
      *
      * @return
      */
-    protected PagingParameter getParameter() {
-        return mPagingParameter;
+    protected PagingState getParameter() {
+        return mPagingState;
     }
 
     /**
@@ -96,7 +96,7 @@ public abstract class AbstractAtoPagingListener<T> implements OnScrollListener {
     /**
      * API level 1
      *
-     * Update {@link net.ichigotake.colorfulsweets.lib.model.PagingParameter} with forward to next page.
+     * Update {@link net.ichigotake.colorfulsweets.lib.model.PagingState} with forward to next page.
      */
     protected void nextPage() {
         getParameter().nextPage();

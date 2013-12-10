@@ -6,7 +6,7 @@ import android.widget.ListView;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
-import net.ichigotake.colorfulsweets.lib.model.PagingParameter;
+import net.ichigotake.colorfulsweets.lib.model.PagingState;
 import net.ichigotake.colorfulsweets.lib.ui.AbstractAtoPagingListener;
 
 /**
@@ -28,7 +28,7 @@ public abstract class AutoPagingRequestListener<T, R>
         mQueue = Volley.newRequestQueue(context);
     }
 
-    abstract protected AsyncRequest<R> createRequest(PagingParameter parameter);
+    abstract protected AsyncRequest<R> createRequest(PagingState parameter);
 
     @Override
     protected void onPaging() {

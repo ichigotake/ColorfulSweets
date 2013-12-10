@@ -4,7 +4,7 @@ import android.net.Uri;
 
 import com.android.volley.Request;
 
-import net.ichigotake.colorfulsweets.lib.model.PagingParameter;
+import net.ichigotake.colorfulsweets.lib.model.PagingState;
 import net.ichigotake.colorfulsweets.lib.ui.LoadingState;
 
 /**
@@ -13,12 +13,12 @@ import net.ichigotake.colorfulsweets.lib.ui.LoadingState;
 public abstract class AutoPagingJsonObjectRequest extends AsyncJsonObjectRequest {
 
     final private LoadingState mState;
-    final private PagingParameter mPagingParameter;
+    final private PagingState mPagingState;
 
-    public AutoPagingJsonObjectRequest(PagingParameter parameter) {
+    public AutoPagingJsonObjectRequest(PagingState parameter) {
         super();
         mState = new LoadingState();
-        mPagingParameter = parameter;
+        mPagingState = parameter;
     }
 
     public Request createRequest() {
@@ -28,9 +28,9 @@ public abstract class AutoPagingJsonObjectRequest extends AsyncJsonObjectRequest
     }
 
     final public Uri getRequestUri() {
-        return getRequestUri(mPagingParameter);
+        return getRequestUri(mPagingState);
     }
 
-    abstract protected Uri getRequestUri(PagingParameter parameter);
+    abstract protected Uri getRequestUri(PagingState parameter);
 
 }

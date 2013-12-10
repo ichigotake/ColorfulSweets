@@ -3,17 +3,17 @@ package net.ichigotake.colorfulsweets.lib.model;
 import junit.framework.TestCase;
 
 /**
- * Testing for {@link PagingParameter}
+ * Testing for {@link PagingState}
  */
 public class PagingParameterTest extends TestCase {
 
     final private int mPerPage = 10;
 
-    private PagingParameter mParameter;
+    private PagingState mParameter;
 
     @Override
     protected void setUp() {
-        mParameter = new PagingParameter(mPerPage);
+        mParameter = new PagingState(mPerPage);
     }
 
     public void testForDefaultParameters() {
