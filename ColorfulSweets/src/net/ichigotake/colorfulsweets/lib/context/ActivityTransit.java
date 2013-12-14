@@ -12,52 +12,48 @@ import android.os.Bundle;
  */
 public class ActivityTransit {
 
-    final private Activity mCurrentActivity;
+    final private Context mContext;
+    final private Intent mIntent;
 
-    private Bundle mExtras;
-    
-    private boolean mClearTop;
-    
-    /**
-     * API level 1
-     * 
-     * Constructor
-     * 
-     * @param the current activity.
-     */
-    public ActivityTransit(Activity activity) {
-        mCurrentActivity = activity;
+    public ActivityTransit(Context context, Class<? extends Activity> nextClazz) {
+        mContext = context;
+        mIntent = new Intent(context, nextClazz);
     }
+
     
     /**
      * API level 1
      * 
-     * Create {@link ActivityTransit} instance from {@link Context} instanceof {@link Activity}.
+     * Create {@link ActivityTransit} instance from {@link Context}.
+     * If {@link Context} not instanceof {@link Activity},
+     * when {@link #toNext} create new task with {@link Intent#FLAG_ACTIVITY_NEW_TASK}
      * 
      * @param context
      * @return
      * @throws IllegalStateException if context not instanceof {@link Activity}.
      */
-    public static ActivityTransit from(Context context) throws IllegalStateException {
-        final ActivityTransit transit;
-        if (context instanceof Activity) {
-            transit = new ActivityTransit((Activity)context);
-        } else {
-            throw new IllegalStateException("Context has not instanceof Activity.");
-        }
+    public static ActivityTransit from(Context context, Class<? extends Activity> nextClazz) {
+        ActivityTransit transit = new ActivityTransit(context, nextClazz);
+        transit.setNewTask();
         return transit;
     }
     
     /**
      * API level 1
      * 
-     * Set for "intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK)"
+     * {@link Intent#addFlags(int)} to {@link Intent#FLAG_ACTIVITY_CLEAR_TOP}
+     * and {@link Intent#FLAG_ACTIVITY_NEW_TASK).
      * 
-     * TODO more meta description.
-     * @return
+     * @return ActivityTransit myself
      */
     public ActivityTransit clearTop() {
-        mClearTop = true;
+        mIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        mIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        return this;
+    }
+
+    public ActivityTransit setNewTask() {
+        mIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         return this;
     }
 
@@ -65,21 +61,22 @@ public class ActivityTransit {
      * API level 1
      * 
      * Execute activity transition.
-     * 
-     * @param nextActivity the class.
      */
-    public void toNext(Class<? extends Activity> nextActivity) {
-        Intent intent = new Intent(mCurrentActivity, nextActivity);
-        if (null != mExtras) {
-            intent.putExtras(mExtras);
-        }
+    public void toNext() {
+        mContext.startActivity(mIntent);
+    }
 
-        if (mClearTop) {
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        }
-        mCurrentActivity.startActivity(intent);
-        if (mClearTop) {
-            mCurrentActivity.finish();
+    /**
+     * API level 1
+     *
+     * Execute {@link Activity} transition with finish to current {@link Activity}.
+     */
+    public void toNextWithFinish() throws IllegalStateException {
+        toNext();
+        if (mContext instanceof Activity) {
+            ((Activity)mContext).finish();
+        } else {
+            throw new IllegalStateException("Context not instance of Activity.");
         }
     }
 
@@ -92,7 +89,8 @@ public class ActivityTransit {
      * @return
      */
     public ActivityTransit putExtras(Bundle extras) {
-        mExtras = extras;
+        mIntent.putExtras(extras);
         return this;
     }
+
 }
