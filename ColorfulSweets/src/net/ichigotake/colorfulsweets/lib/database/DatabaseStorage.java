@@ -17,5 +17,5 @@ public interface DatabaseStorage {
     
     public int getVersion();
     
-    public boolean isExists();
+    public boolean exists();
 }
