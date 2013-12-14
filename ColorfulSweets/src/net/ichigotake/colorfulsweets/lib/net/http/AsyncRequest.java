@@ -35,8 +35,6 @@ public abstract class AsyncRequest<T> {
     }
 
     public void eventPost(VolleyError event) {
-        Log.d("AsyncRequest", "error: " + event.networkResponse.statusCode);
-        Log.d("AsyncRequest", "error: " + event.networkResponse.data.toString());
         mEventBus.post(event);
     }
 
