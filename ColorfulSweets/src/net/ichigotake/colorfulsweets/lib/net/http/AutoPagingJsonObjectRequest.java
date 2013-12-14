@@ -23,7 +23,6 @@ public abstract class AutoPagingJsonObjectRequest extends AsyncJsonObjectRequest
 
     public Request createRequest() {
         registerListener(new OnPagingResponse(mState));
-        registerListener(new OnPagingErrorResponse(mState));
         return super.createRequest();
     }
 

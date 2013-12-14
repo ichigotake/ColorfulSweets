@@ -26,10 +26,6 @@ public abstract class AsyncRequest<T> {
         mEventBus.register(listener);
     }
 
-    public void registerListener(ResponseErrorListener listener) {
-        mEventBus.register(listener);
-    }
-
     public void eventPost(RequestEvent event) {
         mEventBus.post(event);
     }
@@ -39,15 +35,12 @@ public abstract class AsyncRequest<T> {
     }
 
     public void eventPost(VolleyError event) {
+        Log.d("AsyncRequest", "error: " + event.networkResponse.statusCode);
+        Log.d("AsyncRequest", "error: " + event.networkResponse.data.toString());
         mEventBus.post(event);
     }
 
     protected void registerListeners() {
-        ResponseErrorListener errorListener = createErrorResponse();
-        if (errorListener != null) {
-            registerListener(errorListener);
-        }
-
         ResponseListener<T> responseListener = createResponse();
         if (responseListener != null) {
             registerListener(responseListener);
@@ -63,9 +56,6 @@ public abstract class AsyncRequest<T> {
     abstract protected T createRequestBody();
 
     abstract protected ResponseListener<T> createResponse();
-
-    abstract protected ResponseErrorListener createErrorResponse();
-
 
     protected class OnResponse implements Response.Listener<T> {
 

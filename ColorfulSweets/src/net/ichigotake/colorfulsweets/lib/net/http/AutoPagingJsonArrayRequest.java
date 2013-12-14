@@ -25,7 +25,6 @@ public abstract class AutoPagingJsonArrayRequest extends AsyncJsonArrayRequest {
 
     public Request createRequest() {
         registerListener(new OnPagingResponse<JSONArray>(mState));
-        registerListener(new OnPagingErrorResponse(mState));
         return super.createRequest();
     }
 

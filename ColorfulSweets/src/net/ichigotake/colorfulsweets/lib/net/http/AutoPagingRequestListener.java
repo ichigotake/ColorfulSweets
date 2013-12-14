@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.ListView;
 
 import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 
 import net.ichigotake.colorfulsweets.lib.model.PagingState;
@@ -43,6 +44,11 @@ public abstract class AutoPagingRequestListener<T, R>
         @Override
         public void onResponse(R response) {
             nextPage();
+        }
+
+        @Override
+        public void onError(VolleyError error) {
+            // do nothing
         }
     }
 

@@ -4,14 +4,14 @@ import android.content.Context;
 
 import com.android.volley.VolleyError;
 
-import net.ichigotake.colorfulsweets.lib.net.http.ResponseErrorListener;
+import net.ichigotake.colorfulsweets.lib.net.http.ResponseListener;
 
 /**
  * API level 1
  * 
  * Show connection error message with dialog.
  */
-public class ShowConnectionErrorDialogListener implements ResponseErrorListener {
+public class ShowConnectionErrorDialogListener implements ResponseListener<Object> {
 
     final private MessageDialogBuilder mBuilder;
     
@@ -21,9 +21,14 @@ public class ShowConnectionErrorDialogListener implements ResponseErrorListener 
                 .setMessage(android.R.string.httpErrorBadUrl);
         
     }
-    
+
     @Override
-    public void onResponse(VolleyError response) {
+    public void onResponse(Object response) {
+        // do nothing
+    }
+
+    @Override
+    public void onError(VolleyError response) {
         mBuilder.show();
     }
 }

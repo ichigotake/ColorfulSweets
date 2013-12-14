@@ -1,5 +1,7 @@
 package net.ichigotake.colorfulsweets.lib.net.http;
 
+import com.android.volley.VolleyError;
+
 import net.ichigotake.colorfulsweets.lib.ui.LoadingState;
 
 /**
@@ -15,6 +17,12 @@ class OnPagingResponse<T> implements ResponseListener<T> {
 
     @Override
     public void onResponse(T response) {
+        mState.complete();
+    }
+
+
+    @Override
+    public void onError(VolleyError volleyError) {
         mState.complete();
     }
 }
