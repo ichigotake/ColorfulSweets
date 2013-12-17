@@ -11,7 +11,7 @@ import net.ichigotake.colorfulsweets.lib.net.http.ResponseListener;
  * 
  * Show connection error message with dialog.
  */
-public class ShowConnectionErrorDialogListener implements ResponseListener<Object> {
+public class ShowConnectionErrorDialogListener<T> implements ResponseListener<T> {
 
     final private MessageDialogBuilder mBuilder;
     
@@ -23,7 +23,7 @@ public class ShowConnectionErrorDialogListener implements ResponseListener<Objec
     }
 
     @Override
-    public void onResponse(Object response) {
+    public void onResponse(T response) {
         // do nothing
     }
 
