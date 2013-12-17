@@ -49,11 +49,13 @@ public abstract class AutoPagingRequestListener<T, R>
 
         @Override
         public void onError(VolleyError error) {
-            // do nothing
+            finish();
+            complete();
         }
 
         @Subscribe
         public void afterResponse(AfterResponse response) {
+            finish();
             nextPage();
         }
     }

@@ -83,6 +83,10 @@ public abstract class AbstractAtoPagingListener<T> implements OnScrollListener {
         return mState.isLoading();
     }
 
+    protected void finish() {
+        mState.finish();
+    }
+
     protected void complete() {
         mState.complete();
     }

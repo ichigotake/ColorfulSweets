@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.android.volley.VolleyError;
 
+import net.ichigotake.colorfulsweets.lib.net.http.AfterResponse;
 import net.ichigotake.colorfulsweets.lib.net.http.ResponseListener;
 
 /**
@@ -30,5 +31,10 @@ public class ShowConnectionErrorDialogListener<T> implements ResponseListener<T>
     @Override
     public void onError(VolleyError response) {
         mBuilder.show();
+    }
+
+    @Override
+    public void afterResponse(AfterResponse response) {
+        // do nothing
     }
 }

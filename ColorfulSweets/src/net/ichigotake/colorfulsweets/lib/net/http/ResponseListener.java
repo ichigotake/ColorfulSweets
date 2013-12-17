@@ -12,4 +12,9 @@ public interface ResponseListener<T> {
     @Subscribe
     @SuppressWarnings("unused")
     public void onError(VolleyError error);
+
+    @Subscribe
+    @SuppressWarnings("unused")
+    public void afterResponse(AfterResponse response);
+
 }

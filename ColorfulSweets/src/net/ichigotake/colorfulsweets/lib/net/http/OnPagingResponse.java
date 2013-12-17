@@ -25,5 +25,10 @@ class OnPagingResponse<T> implements ResponseListener<T> {
     public void onError(VolleyError volleyError) {
         mState.complete();
     }
+
+    @Override
+    public void afterResponse(AfterResponse response) {
+        // do nothing
+    }
 }
 
