@@ -30,6 +30,10 @@ public abstract class AsyncRequest<T> {
         mEventBus.post(event);
     }
 
+    public void eventPost(AfterResponse event) {
+        mEventBus.post(event);
+    }
+
     public void eventPost(T event) {
         mEventBus.post(event);
     }
@@ -60,6 +64,7 @@ public abstract class AsyncRequest<T> {
         @Override
         public void onResponse(T response) {
             eventPost(response);
+            eventPost(new AfterResponse());
         }
     }
 
