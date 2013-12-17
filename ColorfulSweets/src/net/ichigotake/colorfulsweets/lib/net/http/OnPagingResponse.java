@@ -2,7 +2,7 @@ package net.ichigotake.colorfulsweets.lib.net.http;
 
 import com.android.volley.VolleyError;
 
-import net.ichigotake.colorfulsweets.lib.ui.LoadingState;
+import net.ichigotake.colorfulsweets.lib.model.LoadingState;
 
 /**
  * API level 1
@@ -17,7 +17,7 @@ class OnPagingResponse<T> implements ResponseListener<T> {
 
     @Override
     public void onResponse(T response) {
-        mState.complete();
+        mState.finish();
     }
 
 

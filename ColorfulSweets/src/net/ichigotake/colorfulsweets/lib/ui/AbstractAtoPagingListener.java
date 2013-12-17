@@ -5,6 +5,7 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ArrayAdapter;
 
+import net.ichigotake.colorfulsweets.lib.model.LoadingState;
 import net.ichigotake.colorfulsweets.lib.model.PagingState;
 
 /**
@@ -82,6 +83,10 @@ public abstract class AbstractAtoPagingListener<T> implements OnScrollListener {
         return mState.isLoading();
     }
 
+    protected void complete() {
+        mState.complete();
+    }
+
     /**
      * API level 1
      *
@@ -105,7 +110,7 @@ public abstract class AbstractAtoPagingListener<T> implements OnScrollListener {
     @Override
     public void onScroll(AbsListView view, int firstVisibleItem,
             int visibleItemCount, int totalItemCount) {
-        if (! isRequesting()
+        if (! mState.completed() && ! isRequesting()
                 && (firstVisibleItem + visibleItemCount) == totalItemCount) {
 
             mHandler.post(new Runnable() {

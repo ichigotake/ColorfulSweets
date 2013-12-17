@@ -5,7 +5,7 @@ import android.net.Uri;
 import com.android.volley.Request;
 
 import net.ichigotake.colorfulsweets.lib.model.PagingState;
-import net.ichigotake.colorfulsweets.lib.ui.LoadingState;
+import net.ichigotake.colorfulsweets.lib.model.LoadingState;
 
 /**
  * Created by ichigotake on 2013/12/04.

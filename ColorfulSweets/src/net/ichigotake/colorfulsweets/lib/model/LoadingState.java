@@ -1,4 +1,4 @@
-package net.ichigotake.colorfulsweets.lib.ui;
+package net.ichigotake.colorfulsweets.lib.model;
 
 /**
  * API level 1
@@ -6,6 +6,7 @@ package net.ichigotake.colorfulsweets.lib.ui;
 public class LoadingState {
 
     private boolean mIsLoading;
+    private boolean mCompleted;
 
     public void setIsLoading(boolean loading) {
         mIsLoading = loading;
@@ -16,10 +17,18 @@ public class LoadingState {
     }
 
     public void complete() {
-        mIsLoading = false;
+        mCompleted = true;
+    }
+
+    public boolean completed() {
+        return mCompleted;
     }
 
     public void start() {
         mIsLoading = true;
+    }
+
+    public void finish() {
+        mIsLoading = false;
     }
 }
