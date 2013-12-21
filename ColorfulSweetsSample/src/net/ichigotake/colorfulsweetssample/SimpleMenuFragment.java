@@ -1,7 +1,7 @@
 package net.ichigotake.colorfulsweetssample;
 
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenu;
-import net.ichigotake.colorfulsweets.lib.menu.SimpleMenuListFactory;
+import net.ichigotake.colorfulsweets.lib.menu.SimpleSimpleMenuListFactory;
 import net.ichigotake.colorfulsweets.lib.view.ListItemOnClickListener;
 import android.content.Context;
 import android.os.Bundle;
@@ -25,8 +25,8 @@ public class SimpleMenuFragment extends Fragment {
 		
 		ListView menuListView = (ListView) view.findViewById(R.id.menu_list);
 		ListItemOnClickListener listener = new SimpleMenuSampleOnClickListener(getActivity());
-		SimpleMenuListFactory menuFactory =
-				new SimpleMenuListFactory(SimpleMenuSample.values(), listener);
+		SimpleSimpleMenuListFactory menuFactory =
+				new SimpleSimpleMenuListFactory(SimpleMenuSample.values(), listener);
 		menuFactory.show(getActivity(), menuListView);
 		
 		return view;

@@ -1,13 +1,14 @@
 package net.ichigotake.colorfulsweets.lib.menu;
 
-import java.util.List;
-
-import net.ichigotake.colorfulsweets.R;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.widget.ListView;
 
 import com.google.common.base.Optional;
+
+import net.ichigotake.colorfulsweets.R;
+
+import java.util.List;
 
 
 /**
@@ -42,11 +43,11 @@ public class SimpleMenuList {
      * Shown menu list
      * @param Menu item list
      * @param anchor base {@link ListView}
-     * @param listItemLayout List item resource for {@link MenuItemListAdapter}
+     * @param listItemLayout List item resource for {@link SimpleMenuItemAdapter}
      */
-    public void show(List<MenuItem> menus, ListView anchor, int listItemLayout) {
+    public void show(List<SimpleMenuItem> menus, ListView anchor, int listItemLayout) {
         ListView listView = getListView();
-        MenuItemListAdapter adapter = new MenuItemListAdapter(mContext, R.layout.menu_item, menus);
+        SimpleMenuItemAdapter adapter = new SimpleMenuItemAdapter(mContext, R.layout.menu_item, menus);
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }

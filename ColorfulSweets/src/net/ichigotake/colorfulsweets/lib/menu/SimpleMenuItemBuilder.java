@@ -11,10 +11,10 @@ import net.ichigotake.colorfulsweets.lib.view.ListItemOnClickListener;
  * 
  * A modifiable sequence of elements for use in creating objects.
  */
-public class MenuItemBuilder {
+public class SimpleMenuItemBuilder {
 
     private int mDefaultIcon;
-    
+
     private int mDefaultLabelName;
     
     private Optional<String> mLabelName = Optional.absent();
@@ -27,8 +27,8 @@ public class MenuItemBuilder {
      * Returns the contents of builder
      * @return the object representation of the data in this builder.
      */
-    public MenuItem create() {
-        final MenuItem item = new MenuItem(mDefaultIcon, mDefaultLabelName);
+    public SimpleMenuItem create() {
+        final SimpleMenuItem item = new SimpleMenuItem(mDefaultIcon, mDefaultLabelName);
         if (mLabelName.isPresent()) {
             item.setLabelName(mLabelName.get());
         }
@@ -43,7 +43,7 @@ public class MenuItemBuilder {
      * @param icon the identifier for resource.
      * @return this builder.
      */
-    public MenuItemBuilder setDefaultIcon(int icon) {
+    public SimpleMenuItemBuilder setDefaultIcon(int icon) {
         mDefaultIcon = icon;
         return this;
     }
@@ -55,7 +55,7 @@ public class MenuItemBuilder {
      * @param name the identifier for resource.
      * @return this builder.
      */
-    public MenuItemBuilder setDefaultLabelName(int name) {
+    public SimpleMenuItemBuilder setDefaultLabelName(int name) {
         mDefaultLabelName = name;
         return this;
     }
@@ -67,7 +67,7 @@ public class MenuItemBuilder {
      * @param name the identifier for string
      * @return this builder
      */
-    public MenuItemBuilder setLabelName(String name) {
+    public SimpleMenuItemBuilder setLabelName(String name) {
         mLabelName = Optional.of(name);
         return this;
     }
@@ -79,7 +79,7 @@ public class MenuItemBuilder {
      * @param listener
      * @return this builder
      */
-    public MenuItemBuilder setOnClickListener(ListItemOnClickListener listener) {
+    public SimpleMenuItemBuilder setOnClickListener(ListItemOnClickListener listener) {
         mListener = listener;
         return this;
     }

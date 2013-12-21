@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * API level 1
  */
-public class SimpleMenuListFactory implements MenuItemListFactory {
+public class SimpleSimpleMenuListFactory implements SimpleMenuItemListFactory {
 
     final private SimpleMenu[] mMenu;
     
@@ -23,12 +23,12 @@ public class SimpleMenuListFactory implements MenuItemListFactory {
      * @param menu
      * @param listener
      */
-    public SimpleMenuListFactory(SimpleMenu[] menu, ListItemOnClickListener listener) {
+    public SimpleSimpleMenuListFactory(SimpleMenu[] menu, ListItemOnClickListener listener) {
         mMenu = menu;
         mListener = listener;
     }
     
-    public SimpleMenuListFactory(SimpleMenu[] menu) {
+    public SimpleSimpleMenuListFactory(SimpleMenu[] menu) {
         mMenu = menu;
         mListener = null;
     }
@@ -38,12 +38,12 @@ public class SimpleMenuListFactory implements MenuItemListFactory {
      * 
      */
     @Override
-    public List<MenuItem> create() {
-        final List<MenuItem> menus = new ArrayList<MenuItem>();
+    public List<SimpleMenuItem> create() {
+        final List<SimpleMenuItem> menus = new ArrayList<SimpleMenuItem>();
         
         int length = mMenu.length;
         for (int i=0; i<length; i++) {
-            MenuItem item = new MenuItem(mMenu[i]);
+            SimpleMenuItem item = new SimpleMenuItem(mMenu[i]);
             item.setOnClickListener(mListener);
             menus.add(item);
         }
@@ -58,7 +58,7 @@ public class SimpleMenuListFactory implements MenuItemListFactory {
      */
     @Override
     public void show(Context context, ListView listView) {
-        MenuItemListAdapter adapter = new MenuItemListAdapter(context, create());
+        SimpleMenuItemAdapter adapter = new SimpleMenuItemAdapter(context, create());
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }

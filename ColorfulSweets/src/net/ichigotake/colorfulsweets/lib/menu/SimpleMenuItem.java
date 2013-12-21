@@ -10,7 +10,7 @@ import com.google.common.base.Optional;
  * 
  * Provide item to {@link SimpleMenuList}
  */
-public class MenuItem {
+public class SimpleMenuItem {
 
     final private int mDefaultIcon;
     
@@ -26,7 +26,7 @@ public class MenuItem {
      * @param defaultIcon The identifier for resource
      * @param defaultName The identifier for resource
      */
-    public MenuItem(int defaultIcon, int defaultName) {
+    public SimpleMenuItem(int defaultIcon, int defaultName) {
         mDefaultIcon = defaultIcon;
         mDefaultLabelName = defaultName;
     }
@@ -34,10 +34,10 @@ public class MenuItem {
     /**
      * API level 1
      * 
-     * Constructs a new instance of {@link MenuItem} containing the elements of the specified menu item.
+     * Constructs a new instance of {@link SimpleMenuItem} containing the elements of the specified menu item.
      * @param the item of elements to set.
      */
-    public MenuItem(SimpleMenu item) {
+    public SimpleMenuItem(SimpleMenu item) {
         mDefaultIcon = item.getIconResource();
         mDefaultLabelName = item.getLabelName();
     }
@@ -66,7 +66,7 @@ public class MenuItem {
      * API level 1
      * 
      * Returns if this LabelName contains is not null.
-     * @return true if this {@link MenuItem} has LabelName is not null.
+     * @return true if this {@link SimpleMenuItem} has LabelName is not null.
      */
     public boolean isLabelNamePresent() {
         return mLabelName.isPresent();
@@ -75,7 +75,7 @@ public class MenuItem {
     /**
      * API level1
      * 
-     * Sets the text that this {@link MenuItem} is to display.
+     * Sets the text that this {@link SimpleMenuItem} is to display.
      * @param 
      */
     public void setLabelName(String name) {
@@ -105,7 +105,7 @@ public class MenuItem {
     /**
      * API level 1
      * 
-     * Sets the listener that this {@link MenuItem} is to set item view.
+     * Sets the listener that this {@link SimpleMenuItem} is to set item view.
      * @param listener
      */
     public void setOnClickListener(ListItemOnClickListener listener) {

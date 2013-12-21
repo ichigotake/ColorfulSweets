@@ -1,9 +1,5 @@
 package net.ichigotake.colorfulsweets.lib.menu;
 
-import java.util.List;
-
-import net.ichigotake.colorfulsweets.R;
-import net.ichigotake.colorfulsweets.lib.view.ListOnClickListener;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,13 +8,18 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import net.ichigotake.colorfulsweets.R;
+import net.ichigotake.colorfulsweets.lib.view.ListOnClickListener;
+
+import java.util.List;
+
 /**
  * API level 1
  * 
  * Shown menu list with {@link ArrayAdapter}
  * TODO replacement extends class {@link ArrayAdapter} to {@link BaseAdapter} ?
  */
-public class MenuItemListAdapter extends ArrayAdapter<MenuItem> {
+public class SimpleMenuItemAdapter extends ArrayAdapter<SimpleMenuItem> {
     
     final private LayoutInflater mInflater;
     
@@ -31,7 +32,7 @@ public class MenuItemListAdapter extends ArrayAdapter<MenuItem> {
      * @param context The current context.
      * @param menus The shown menu list.
      */
-    public MenuItemListAdapter(Context context, List<MenuItem> menus) {
+    public SimpleMenuItemAdapter(Context context, List<SimpleMenuItem> menus) {
         this(context, R.layout.menu_item, menus);
     }
     
@@ -42,9 +43,9 @@ public class MenuItemListAdapter extends ArrayAdapter<MenuItem> {
      * @param context The current context.
      * The resource ID for a layout file containing a TextView to use when instantiating views.
      * @param itemLayoutRes The resource ID for a layout file containing a {@link TextView} to use when instantiating views.
-     * @param menus The shown menu list from {@link MenuItem}
+     * @param menus The shown menu list from {@link SimpleMenuItem}
      */
-    public MenuItemListAdapter(Context context, int itemLayoutRes, List<MenuItem> menus) {
+    public SimpleMenuItemAdapter(Context context, int itemLayoutRes, List<SimpleMenuItem> menus) {
         super(context, itemLayoutRes, menus);
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mItemLayoutRes = itemLayoutRes;
@@ -56,7 +57,7 @@ public class MenuItemListAdapter extends ArrayAdapter<MenuItem> {
             convertView = mInflater.inflate(mItemLayoutRes, null);
         }
         
-        MenuItem item = getItem(position);
+        SimpleMenuItem item = getItem(position);
         
         TextView itemText = (TextView) convertView;
         if (item.isLabelNamePresent()) {

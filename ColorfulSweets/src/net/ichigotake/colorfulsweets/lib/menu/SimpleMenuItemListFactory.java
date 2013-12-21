@@ -9,9 +9,9 @@ import java.util.List;
  * API level 1
  *
  */
-public interface MenuItemListFactory {
+public interface SimpleMenuItemListFactory {
 
-    public List<MenuItem> create();
-    
+    public List<SimpleMenuItem> create();
+
     public void show(Context context, ListView listView);
 }
