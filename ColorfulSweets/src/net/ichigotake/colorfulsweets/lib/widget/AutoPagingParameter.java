@@ -1,4 +1,4 @@
-package net.ichigotake.colorfulsweets.lib.ui;
+package net.ichigotake.colorfulsweets.lib.widget;
 
 import android.widget.ArrayAdapter;
 

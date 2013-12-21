@@ -9,7 +9,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.common.eventbus.Subscribe;
 
 import net.ichigotake.colorfulsweets.lib.model.PagingState;
-import net.ichigotake.colorfulsweets.lib.ui.AbstractAtoPagingListener;
+import net.ichigotake.colorfulsweets.lib.widget.AbstractAtoPagingListener;
 
 /**
  * API level 8

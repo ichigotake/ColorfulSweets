@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * API level 1
  */
-public class SimpleSimpleMenuListFactory implements SimpleMenuItemListFactory {
+public class SimpleMenuListFactory implements SimpleMenuItemListFactory {
 
     final private SimpleMenu[] mMenu;
     
@@ -23,12 +23,12 @@ public class SimpleSimpleMenuListFactory implements SimpleMenuItemListFactory {
      * @param menu
      * @param listener
      */
-    public SimpleSimpleMenuListFactory(SimpleMenu[] menu, ListItemOnClickListener listener) {
+    public SimpleMenuListFactory(SimpleMenu[] menu, ListItemOnClickListener listener) {
         mMenu = menu;
         mListener = listener;
     }
     
-    public SimpleSimpleMenuListFactory(SimpleMenu[] menu) {
+    public SimpleMenuListFactory(SimpleMenu[] menu) {
         mMenu = menu;
         mListener = null;
     }

@@ -1,4 +1,4 @@
-package net.ichigotake.colorfulsweets.lib.ui.dialog;
+package net.ichigotake.colorfulsweets.lib.widget.dialog;
 
 import android.content.Context;
 import android.os.Handler;

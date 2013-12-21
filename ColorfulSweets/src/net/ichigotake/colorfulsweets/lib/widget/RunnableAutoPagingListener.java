@@ -1,6 +1,4 @@
-package net.ichigotake.colorfulsweets.lib.ui;
-
-import android.content.Context;
+package net.ichigotake.colorfulsweets.lib.widget;
 
 /**
  * API level 3

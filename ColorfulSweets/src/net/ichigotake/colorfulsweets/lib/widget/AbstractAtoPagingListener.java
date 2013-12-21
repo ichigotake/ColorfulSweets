@@ -1,4 +1,4 @@
-package net.ichigotake.colorfulsweets.lib.ui;
+package net.ichigotake.colorfulsweets.lib.widget;
 
 import android.os.Handler;
 import android.widget.AbsListView;
@@ -63,7 +63,7 @@ public abstract class AbstractAtoPagingListener<T> implements OnScrollListener {
     /**
      * API level 1
      *
-     * Return the {@link net.ichigotake.colorfulsweets.lib.ui.AutoPagingParameter} to current
+     * Return the {@link AutoPagingParameter} to current
      * page state.
      *
      * @return
