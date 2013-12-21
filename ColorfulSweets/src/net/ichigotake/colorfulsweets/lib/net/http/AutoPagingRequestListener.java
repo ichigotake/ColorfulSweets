@@ -34,6 +34,7 @@ public abstract class AutoPagingRequestListener<T, R>
 
     @Override
     protected void onPaging() {
+        setRequesting(true);
         AsyncRequest<R> mRequest = createRequest(getParameter());
         mRequest.registerListener(new OnPagingListener());
         mRequest.eventPost(new BeforeRequestEvent());
