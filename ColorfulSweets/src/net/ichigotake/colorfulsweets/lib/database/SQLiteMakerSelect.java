@@ -25,7 +25,8 @@ public class SQLiteMakerSelect {
     private int mLimit;
     
     private int mOffset;
-    
+    private String orderBy;
+
     /**
      * API level 1
      * 
@@ -54,7 +55,7 @@ public class SQLiteMakerSelect {
                 null,
                 null,
                 null,
-                null,
+                orderBy,
                 buildLimit());
         return new CursorSimple(c);
     }
@@ -89,7 +90,12 @@ public class SQLiteMakerSelect {
         mOffset = offset;
         return this;
     }
-    
+
+    public SQLiteMakerSelect setOrder(String field, Order order) {
+        this.orderBy = field + " " + order.name();
+        return this;
+    }
+
     /**
      * API level 1
      * 
