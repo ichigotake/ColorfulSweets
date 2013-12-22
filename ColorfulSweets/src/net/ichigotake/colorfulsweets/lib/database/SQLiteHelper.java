@@ -21,8 +21,8 @@ public abstract class SQLiteHelper<T> extends SQLiteOpenHelper {
     
     protected abstract String getTableName();
     
-    public SQLiteHelper(DatabaseStorage database) {
-        this(database.getContext(), database.getName(), database.getVersion());
+    public SQLiteHelper(Context context, DatabaseStorage database) {
+        this(context, database.getName(), database.getVersion());
     }
     
     public SQLiteHelper(Context context, String name, int version) {
