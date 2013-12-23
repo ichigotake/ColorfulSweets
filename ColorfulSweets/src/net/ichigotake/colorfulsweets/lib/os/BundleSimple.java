@@ -14,6 +14,10 @@ public class BundleSimple {
 
     final private Bundle mBundle;
 
+    public BundleSimple() {
+        mBundle = new Bundle();
+    }
+
     public BundleSimple(Bundle bundle) {
         mBundle = bundle == null ? new Bundle() : bundle;
     }
@@ -60,6 +64,10 @@ public class BundleSimple {
 
     public String getString(String key) {
         return mBundle.getString(key);
+    }
+
+    public String getString(String key, String defaultValue) {
+        return mBundle.getString(key, defaultValue);
     }
 
     public void put(String key, String[] string) {
