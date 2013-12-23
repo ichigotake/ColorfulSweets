@@ -33,6 +33,10 @@ public abstract class SpinnerContainer<I> {
         return mActivity;
     }
 
+    protected I getItem(AdapterView<?> adapterView) {
+        return (I)adapterView.getSelectedItem();
+    }
+
     abstract protected BaseAdapter createAdapter();
 
     abstract protected SpinnerSelectedEvent<I> createEvent(I item, boolean itemChanged);
@@ -50,7 +54,7 @@ public abstract class SpinnerContainer<I> {
         }
 
         private SpinnerSelectedEvent<I> createInnerEvent(AdapterView<?> adapterView, boolean itemChanged) {
-            I item = (I) adapterView.getSelectedItem();
+            I item = getItem(adapterView);
             return createEvent(item, itemChanged);
         }
     }
