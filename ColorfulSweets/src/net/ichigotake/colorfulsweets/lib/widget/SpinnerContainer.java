@@ -6,16 +6,13 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Spinner;
 
-public abstract class SpinnerContainer
-        <
-                I,
-                E extends SpinnerSelectedEvent<I>,
-                L extends SpinnerSelectedListener<E>> {
+public abstract class SpinnerContainer<I> {
 
-    final private L mListener;
+    final private SpinnerSelectedListener<SpinnerSelectedEvent<I>> mListener;
     final private Activity mActivity;
 
-    public SpinnerContainer(Activity activity, L listener) {
+    public SpinnerContainer(Activity activity,
+                            SpinnerSelectedListener<SpinnerSelectedEvent<I>> listener) {
         mActivity = activity;
         mListener = listener;
     }
@@ -38,7 +35,7 @@ public abstract class SpinnerContainer
 
     abstract protected BaseAdapter createAdapter();
 
-    abstract protected E createEvent(I item, boolean itemChanged);
+    abstract protected SpinnerSelectedEvent<I> createEvent(I item, boolean itemChanged);
 
     private class InnerListener implements AdapterView.OnItemSelectedListener {
 
@@ -52,7 +49,7 @@ public abstract class SpinnerContainer
             mListener.onItemSelected(createInnerEvent(adapterView, false));
         }
 
-        private E createInnerEvent(AdapterView<?> adapterView, boolean itemChanged) {
+        private SpinnerSelectedEvent<I> createInnerEvent(AdapterView<?> adapterView, boolean itemChanged) {
             I item = (I) adapterView.getSelectedItem();
             return createEvent(item, itemChanged);
         }
