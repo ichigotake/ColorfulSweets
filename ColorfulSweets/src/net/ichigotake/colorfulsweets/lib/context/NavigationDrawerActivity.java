@@ -70,7 +70,7 @@ public abstract class NavigationDrawerActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                if (null != getSupportParentActivityIntent()) {
+                if (hasParentActivityIntent()) {
                     NavUtils.navigateUpFromSameTask(this);
                     finish();
                     return true;
@@ -105,4 +105,10 @@ public abstract class NavigationDrawerActivity extends ActionBarActivity {
             activity.closeNavigationDrawer();
         }
     }
+
+
+    protected boolean hasParentActivityIntent() {
+        return null != getSupportParentActivityIntent();
+    }
+
 }
