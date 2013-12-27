@@ -16,7 +16,7 @@ class OnPagingResponse<T> implements ResponseListener<T> {
     }
 
     @Override
-    public void onResponse(T response) {
+    public void onResponse(AsyncResponseEvent<T> response) {
         mState.finish();
     }
 
@@ -27,7 +27,7 @@ class OnPagingResponse<T> implements ResponseListener<T> {
     }
 
     @Override
-    public void afterResponse(AfterResponse response) {
+    public void afterResponse(AfterResponseEvent response) {
         // do nothing
     }
 }

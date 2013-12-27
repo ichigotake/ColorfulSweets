@@ -7,7 +7,7 @@ public interface ResponseListener<T> {
 
     @Subscribe
     @SuppressWarnings("unused")
-    public void onResponse(T response);
+    public void onResponse(AsyncResponseEvent<T> event);
 
     @Subscribe
     @SuppressWarnings("unused")
@@ -15,6 +15,6 @@ public interface ResponseListener<T> {
 
     @Subscribe
     @SuppressWarnings("unused")
-    public void afterResponse(AfterResponse response);
+    public void afterResponse(AfterResponseEvent event);
 
 }

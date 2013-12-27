@@ -15,6 +15,6 @@ public class AsyncResponseListener<T> implements Response.Listener<T> {
 
     @Override
     public void onResponse(T response) {
-        mListener.onResponse(response);
+        mListener.onResponse(new AsyncResponseEvent(response));
     }
 }

@@ -44,7 +44,7 @@ public abstract class AutoPagingRequestListener<T, R>
     private class OnPagingListener implements ResponseListener<R> {
 
         @Override
-        public void onResponse(R response) {
+        public void onResponse(AsyncResponseEvent<R> response) {
             // do nothing
         }
 
@@ -55,7 +55,7 @@ public abstract class AutoPagingRequestListener<T, R>
         }
 
         @Subscribe
-        public void afterResponse(AfterResponse response) {
+        public void afterResponse(AfterResponseEvent response) {
             finish();
             nextPage();
         }

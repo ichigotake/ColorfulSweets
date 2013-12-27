@@ -1,4 +1,4 @@
 package net.ichigotake.colorfulsweets.lib.net.http;
 
-public class AfterResponse {
+public class AfterResponseEvent {
 }
