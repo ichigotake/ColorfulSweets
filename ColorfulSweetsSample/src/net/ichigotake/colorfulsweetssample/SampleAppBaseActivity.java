@@ -1,17 +1,21 @@
 package net.ichigotake.colorfulsweetssample;
 
-import net.ichigotake.colorfulsweets.lib.context.ActivityTransit;
-import net.ichigotake.colorfulsweets.lib.context.NavigationDrawerActivity;
-import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
-import net.ichigotake.colorfulsweets.lib.menu.SimpleMenu;
-import net.ichigotake.colorfulsweets.lib.menu.SimpleSimpleMenuListFactory;
-import net.ichigotake.colorfulsweets.lib.navigation.NavigationDrawer;
-import net.ichigotake.colorfulsweets.lib.view.ListItemOnClickListener;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.ListView;
+
+import com.google.common.base.Optional;
+
+import net.ichigotake.colorfulsweets.lib.context.ActivityTransit;
+import net.ichigotake.colorfulsweets.lib.context.NavigationDrawerActivity;
+import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
+import net.ichigotake.colorfulsweets.lib.menu.SimpleMenu;
+import net.ichigotake.colorfulsweets.lib.menu.SimpleMenuListFactory;
+import net.ichigotake.colorfulsweets.lib.navigation.Drawer;
+import net.ichigotake.colorfulsweets.lib.navigation.NavigationDrawer;
+import net.ichigotake.colorfulsweets.lib.view.ListItemOnClickListener;
 
 public abstract class SampleAppBaseActivity extends NavigationDrawerActivity {
 
@@ -21,15 +25,15 @@ public abstract class SampleAppBaseActivity extends NavigationDrawerActivity {
 	}
 	
 	@Override
-	protected NavigationDrawer createNavigationDrawer() {
+	protected Optional<Drawer> createNavigationDrawer() {
 		ListView menuListView = (ListView) findViewById(R.id.left_drawer);
 		ListItemOnClickListener listener = new NavigationSampleOnClickListener(this);
-		SimpleSimpleMenuListFactory menuFactory =
-				new SimpleSimpleMenuListFactory(NavigationSample.values(), listener);
+		SimpleMenuListFactory menuFactory =
+				new SimpleMenuListFactory(NavigationSample.values(), listener);
 		menuFactory.show(this, menuListView);
 		
 		DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		return new NavigationDrawer(this, mDrawerLayout);
+		return Optional.of((Drawer)new NavigationDrawer(this, mDrawerLayout));
 	}
 	
 	/**
@@ -76,7 +80,7 @@ public abstract class SampleAppBaseActivity extends NavigationDrawerActivity {
 			NavigationSample menu = NavigationSample.values()[position];
 			switch (menu) {
 			case ACTIVITY_TRANSIT:
-				ActivityTransit.from(mContext).toNext(ActivityTransitSampleActivity.class);
+				ActivityTransit.from(mContext, ActivityTransitSampleActivity.class).toNextWithFinish();
 				break;
 			case SIMPLE_MENU:
 				transit(mContext, SimpleMenuFragment.newInstance());

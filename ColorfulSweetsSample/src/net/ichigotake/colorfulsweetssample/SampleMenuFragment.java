@@ -1,10 +1,5 @@
 package net.ichigotake.colorfulsweetssample;
 
-import net.ichigotake.colorfulsweets.lib.context.ActivityTransit;
-import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
-import net.ichigotake.colorfulsweets.lib.menu.SimpleMenu;
-import net.ichigotake.colorfulsweets.lib.menu.SimpleSimpleMenuListFactory;
-import net.ichigotake.colorfulsweets.lib.view.ListItemOnClickListener;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+
+import net.ichigotake.colorfulsweets.lib.context.ActivityTransit;
+import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
+import net.ichigotake.colorfulsweets.lib.menu.SimpleMenu;
+import net.ichigotake.colorfulsweets.lib.menu.SimpleMenuListFactory;
+import net.ichigotake.colorfulsweets.lib.view.ListItemOnClickListener;
 
 public class SampleMenuFragment extends Fragment {
 	
@@ -25,8 +26,8 @@ public class SampleMenuFragment extends Fragment {
 		
 		ListView menuListView = (ListView) view.findViewById(R.id.menu_list);
 		ListItemOnClickListener listener = new SampleMenuOnClickListener(getActivity());
-		SimpleSimpleMenuListFactory menuFactory =
-				new SimpleSimpleMenuListFactory(SampleMenu.values(), listener);
+		SimpleMenuListFactory menuFactory =
+				new SimpleMenuListFactory(SampleMenu.values(), listener);
 		menuFactory.show(getActivity(), menuListView);
 		
 		return view;
@@ -76,7 +77,7 @@ public class SampleMenuFragment extends Fragment {
 			SampleMenu menu = SampleMenu.values()[position];
 			switch (menu) {
 			case ACTIVITY_TRANSIT:
-				new ActivityTransit(getActivity()).toNext(ActivityTransitSampleActivity.class);
+				new ActivityTransit(getActivity(), ActivityTransitSampleActivity.class).toNextWithFinish();
 				break;
 			case SIMPLE_MENU:
 				final Fragment nextFragment = SimpleMenuFragment.newInstance();
