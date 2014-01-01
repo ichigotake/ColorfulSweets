@@ -1,4 +1,4 @@
-package net.ichigotake.colorfulsweetssample;
+package net.ichigotake.colorfulsweetssample.menu;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,11 +13,12 @@ import android.widget.Toast;
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenu;
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenuListFactory;
 import net.ichigotake.colorfulsweets.lib.view.ListItemOnClickListener;
+import net.ichigotake.colorfulsweetssample.R;
 
-public class SimpleMenuFragment extends Fragment {
+public class SimpleMenuSampleFragment extends Fragment {
 
-    public static SimpleMenuFragment newInstance() {
-        return new SimpleMenuFragment();
+    public static SimpleMenuSampleFragment newInstance() {
+        return new SimpleMenuSampleFragment();
     }
 
     @Override
