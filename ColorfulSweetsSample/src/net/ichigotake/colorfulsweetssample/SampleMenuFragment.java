@@ -77,7 +77,7 @@ public class SampleMenuFragment extends Fragment {
 			SampleMenu menu = SampleMenu.values()[position];
 			switch (menu) {
 			case ACTIVITY_TRANSIT:
-				new ActivityTransit(getActivity(), ActivityTransitSampleActivity.class).toNextWithFinish();
+				new ActivityTransit(getActivity(), ActivityTransitSampleActivity.class).toNext();
 				break;
 			case SIMPLE_MENU:
 				final Fragment nextFragment = SimpleMenuFragment.newInstance();

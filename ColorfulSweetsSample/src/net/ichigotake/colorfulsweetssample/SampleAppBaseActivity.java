@@ -80,7 +80,7 @@ public abstract class SampleAppBaseActivity extends NavigationDrawerActivity {
 			NavigationSample menu = NavigationSample.values()[position];
 			switch (menu) {
 			case ACTIVITY_TRANSIT:
-				ActivityTransit.from(mContext, ActivityTransitSampleActivity.class).toNextWithFinish();
+				ActivityTransit.from(mContext, ActivityTransitSampleActivity.class).toNext();
 				break;
 			case SIMPLE_MENU:
 				transit(mContext, SimpleMenuFragment.newInstance());

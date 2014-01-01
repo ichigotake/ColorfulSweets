@@ -7,7 +7,7 @@
 
     <string name="sample_activity_transit_title">ActivityTransit</string>
     <string name="sample_activity_transit_description">Simply meta API for activity transiton.</string>
-    <string name="sample_activity_transit_code">new ActivityTransit(currentActivity, NextActivity.class).toNextWithFinish()</string>
+    <string name="sample_activity_transit_code">new ActivityTransit(currentActivity, NextActivity.class).toNext()</string>
     
     <string name="sample_menu_simple_menu">SimpleMenu</string>
     <string name="sample_menu_tab_fragment_pager">SimpleViewPagerFragment</string>
