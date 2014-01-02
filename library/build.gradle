@@ -1,0 +1,41 @@
+apply plugin: 'android-library'
+
+android {
+    compileSdkVersion 17
+    buildToolsVersion '17.0.0'
+
+    defaultConfig {
+        minSdkVersion 11
+        targetSdkVersion 17
+        versionCode 0
+        versionName "0.0.0"
+        testPackageName "net.ichigotake.colorfulsweets.lib"
+    }
+
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:+'
+    compile 'com.google.guava:guava:14.0-rc1'
+    compile files('src/libs/volley.jar')
+}
+
+
+apply plugin: 'maven'
+
+def deployTo = new File(rootDir, "repository")
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "file://${deployTo}")
+            pom.version = '0.0.1'
+            pom.groupId = 'net.ichigotake.colorfulsweets'
+            pom.artifactId = 'ColorfulSweets'
+        }
+    }
+}
+
