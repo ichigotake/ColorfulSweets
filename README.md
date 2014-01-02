@@ -16,6 +16,21 @@ ColorfulSweets is for a my own framework. The almost classes are used myself to 
 
 and... the sandbox for Android implementation.
 
+Download
+=========
+
+Via Gradle
+
+```
+repositories {
+    maven { url 'https://raw.github.com/ichigotake/ColorfulSweets/develop/repository' }
+}
+
+dependencies {
+    compile 'net.ichigotake.colorfulsweets:ColorfulSweets:0.0.2'
+}
+```
+
 Feature
 ==========
 
