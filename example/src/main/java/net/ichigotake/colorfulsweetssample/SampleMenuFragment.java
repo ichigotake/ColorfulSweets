@@ -13,6 +13,7 @@ import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenu;
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenuListFactory;
 import net.ichigotake.colorfulsweets.lib.view.ListItemOnClickListener;
+import net.ichigotake.colorfulsweetssample.preference.PreferenceSampleFragment;
 
 public class SampleMenuFragment extends Fragment {
 	
@@ -41,6 +42,7 @@ public class SampleMenuFragment extends Fragment {
 		ACTIVITY_TRANSIT(R.string.sample_activity_transit_title),
 		SIMPLE_MENU(R.string.sample_menu_simple_menu),
 		SIMPLE_TAB_FRAGMENT_PAGER(R.string.sample_menu_tab_fragment_pager),
+        PREFERENCE(R.string.sample_menu_preference),
 		;
 
 		final private int mTitle;
@@ -85,8 +87,9 @@ public class SampleMenuFragment extends Fragment {
 				break;
 			case SIMPLE_TAB_FRAGMENT_PAGER:
 				transit(mContext, SimpleViewPagerFragmentSampleFragment.newInstance());
-				break;
-			default:
+			break;
+				case PREFERENCE:
+				transit(mContext, PreferenceSampleFragment.newInstance());
 				break;
 			}
 			

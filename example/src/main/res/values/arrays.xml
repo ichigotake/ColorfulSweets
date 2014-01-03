@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="preferenceSpinner">
+        <item >uni</item>
+        <item >ikura</item>
+        <item >awabi</item>
+        <item >ootoro</item>
+        <item >ise-ebi</item>
+        <item >aburi-toro-salmon</item>
+        <item >caviar</item>
+        <item >truffle</item>
+        <item >foie gras</item>
+    </array>
+</resources>

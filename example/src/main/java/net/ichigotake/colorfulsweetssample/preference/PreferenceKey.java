@@ -1,9 +1,12 @@
-package net.ichigotake.colorfulsweets.lib.preference;
+package net.ichigotake.colorfulsweetssample.preference;
 
 import net.ichigotake.colorfulsweets.lib.os.Key;
 
-public enum PreferenceKey implements Key {
-    MODE_PRIVATE("pref_colorfulsweets_private"),
+enum PreferenceKey implements Key {
+
+    MODE_PRIVATE("mode_private"),
+    EDIT_TEXT("edit_text"),
+    SPINNER("spinner"),
     ;
 
     final private String mKey;
