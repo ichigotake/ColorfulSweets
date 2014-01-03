@@ -1,19 +1,19 @@
 package net.ichigotake.colorfulsweets.lib.widget;
 
-import android.app.Activity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Spinner;
 
+/**
+ * TODO think better of I/F
+ * @param <I>
+ */
 public abstract class SpinnerContainer<I> {
 
     final private SpinnerSelectedListener<SpinnerSelectedEvent<I>> mListener;
-    final private Activity mActivity;
 
-    public SpinnerContainer(Activity activity,
-                            SpinnerSelectedListener<SpinnerSelectedEvent<I>> listener) {
-        mActivity = activity;
+    public SpinnerContainer(SpinnerSelectedListener<SpinnerSelectedEvent<I>> listener) {
         mListener = listener;
     }
 
@@ -27,10 +27,6 @@ public abstract class SpinnerContainer<I> {
         selectorView.setOnItemSelectedListener(new InnerListener());
 
         adapter.notifyDataSetChanged();
-    }
-
-    protected Activity getActivity() {
-        return mActivity;
     }
 
     protected I getItem(AdapterView<?> adapterView) {
