@@ -42,7 +42,7 @@ public abstract class PreferenceSpinnerContainer extends SpinnerContainer<Object
         return new SpinnerSelectedEventImpl<Object>(item, itemChanged);
     }
 
-    private int getIndex(String value) {
+    protected int getIndex(String value) {
         int index = 0;
         Spinner spinner = getSpinner();
         for (int i=0,count=spinner.getCount(); i<count; i++){
