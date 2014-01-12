@@ -1,7 +1,7 @@
 package net.ichigotake.colorfulsweetssample;
 
-import net.ichigotake.colorfulsweets.lib.actionbar.ActionBarSetting;
-import net.ichigotake.colorfulsweets.lib.context.ActivityTransit;
+import net.ichigotake.colorfulsweets.lib.compat.actionbar.ActionBarSetting;
+import net.ichigotake.colorfulsweets.lib.activity.ActivityTransit;
 import android.os.Bundle;
 
 /**

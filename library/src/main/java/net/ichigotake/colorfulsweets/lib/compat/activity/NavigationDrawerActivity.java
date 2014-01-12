@@ -1,4 +1,4 @@
-package net.ichigotake.colorfulsweets.lib.context;
+package net.ichigotake.colorfulsweets.lib.compat.activity;
 
 import android.content.Context;
 import android.content.res.Configuration;
@@ -10,11 +10,11 @@ import android.view.MenuItem;
 import com.google.common.base.Optional;
 
 import net.ichigotake.colorfulsweets.R;
-import net.ichigotake.colorfulsweets.lib.actionbar.ActionBarSetting;
+import net.ichigotake.colorfulsweets.lib.compat.actionbar.ActionBarSetting;
 import net.ichigotake.colorfulsweets.lib.navigation.Drawer;
 import net.ichigotake.colorfulsweets.lib.navigation.DummyDrawer;
 import net.ichigotake.colorfulsweets.lib.navigation.NavigationDrawer;
-import net.ichigotake.colorfulsweets.lib.ui.SoftInput;
+import net.ichigotake.colorfulsweets.lib.view.inputmethod.SoftInput;
 
 /**
  * API level 7

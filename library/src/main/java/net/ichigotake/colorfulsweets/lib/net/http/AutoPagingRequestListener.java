@@ -7,8 +7,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.google.common.eventbus.Subscribe;
 
-import net.ichigotake.colorfulsweets.lib.model.PagingState;
-import net.ichigotake.colorfulsweets.lib.widget.AbstractAtoPagingListener;
+import net.ichigotake.colorfulsweets.lib.widget.paging.PagingState;
+import net.ichigotake.colorfulsweets.lib.widget.paging.AbstractAtoPagingListener;
 
 /**
  * API level 8

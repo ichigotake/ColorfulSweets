@@ -1,4 +1,4 @@
-package net.ichigotake.colorfulsweets.lib.ui;
+package net.ichigotake.colorfulsweets.lib.view.display;
 
 import android.app.Activity;
 import android.util.DisplayMetrics;

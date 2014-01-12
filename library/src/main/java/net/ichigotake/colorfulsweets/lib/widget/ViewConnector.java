@@ -3,6 +3,8 @@ package net.ichigotake.colorfulsweets.lib.widget;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import net.ichigotake.colorfulsweets.lib.view.ViewHolder;
+
 /**
  * ビューとデータの仲介役
  */

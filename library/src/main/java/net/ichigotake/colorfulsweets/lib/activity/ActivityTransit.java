@@ -1,4 +1,4 @@
-package net.ichigotake.colorfulsweets.lib.context;
+package net.ichigotake.colorfulsweets.lib.activity;
 
 import android.app.Activity;
 import android.content.Context;

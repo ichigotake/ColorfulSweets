@@ -1,4 +1,6 @@
-package net.ichigotake.colorfulsweets.lib.widget;
+package net.ichigotake.colorfulsweets.lib.widget.paging;
+
+import net.ichigotake.colorfulsweets.lib.os.AsyncRunnableTask;
 
 /**
  * API level 3

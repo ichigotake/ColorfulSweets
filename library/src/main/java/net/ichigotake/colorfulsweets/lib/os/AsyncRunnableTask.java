@@ -1,4 +1,4 @@
-package net.ichigotake.colorfulsweets.lib.widget;
+package net.ichigotake.colorfulsweets.lib.os;
 
 import android.os.AsyncTask;
 

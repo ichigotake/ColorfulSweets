@@ -8,8 +8,8 @@ import android.widget.ListView;
 
 import com.google.common.base.Optional;
 
-import net.ichigotake.colorfulsweets.lib.context.ActivityTransit;
-import net.ichigotake.colorfulsweets.lib.context.NavigationDrawerActivity;
+import net.ichigotake.colorfulsweets.lib.activity.ActivityTransit;
+import net.ichigotake.colorfulsweets.lib.compat.activity.NavigationDrawerActivity;
 import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenu;
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenuListFactory;

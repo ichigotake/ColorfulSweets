@@ -1,4 +1,4 @@
-package net.ichigotake.colorfulsweets.lib.model;
+package net.ichigotake.colorfulsweets.lib.collection;
 
 import java.util.Collection;
 

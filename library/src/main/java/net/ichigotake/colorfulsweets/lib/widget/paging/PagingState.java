@@ -1,4 +1,4 @@
-package net.ichigotake.colorfulsweets.lib.model;
+package net.ichigotake.colorfulsweets.lib.widget.paging;
 
 /**
  * API level 1

@@ -2,7 +2,7 @@ package net.ichigotake.colorfulsweets.lib.net.http;
 
 import com.android.volley.VolleyError;
 
-import net.ichigotake.colorfulsweets.lib.model.LoadingState;
+import net.ichigotake.colorfulsweets.lib.widget.paging.LoadingState;
 
 /**
  * API level 1

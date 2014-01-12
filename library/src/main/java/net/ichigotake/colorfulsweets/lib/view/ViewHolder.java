@@ -1,4 +1,4 @@
-package net.ichigotake.colorfulsweets.lib.widget;
+package net.ichigotake.colorfulsweets.lib.view;
 
 /**
  * Created by ichigotake on 2013/12/02.

@@ -1,4 +1,4 @@
-package net.ichigotake.colorfulsweets.lib.widget;
+package net.ichigotake.colorfulsweets.lib.widget.paging;
 
 import android.widget.ArrayAdapter;
 

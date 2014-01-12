@@ -1,4 +1,4 @@
-package net.ichigotake.colorfulsweets.lib.ui;
+package net.ichigotake.colorfulsweets.lib.view.inputmethod;
 
 import android.app.Activity;
 import android.content.Context;

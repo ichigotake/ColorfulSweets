@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import net.ichigotake.colorfulsweets.lib.context.ActivityTransit;
+import net.ichigotake.colorfulsweets.lib.activity.ActivityTransit;
 import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenu;
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenuListFactory;

@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.google.common.base.Optional;
 
+import net.ichigotake.colorfulsweets.lib.os.Key;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,9 +19,9 @@ import java.io.OutputStream;
 public class JsonSerializer {
 
     final private Context mContext;
-    final private SerializeKey mKey;
+    final private Key mKey;
 
-    public JsonSerializer(Context context, SerializeKey key) {
+    public JsonSerializer(Context context, Key key) {
         mContext = context;
         mKey = key;
     }

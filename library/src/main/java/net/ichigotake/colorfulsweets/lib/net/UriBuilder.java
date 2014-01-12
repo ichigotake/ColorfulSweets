@@ -2,6 +2,8 @@ package net.ichigotake.colorfulsweets.lib.net;
 
 import android.net.Uri;
 
+import net.ichigotake.colorfulsweets.lib.os.Key;
+
 /**
  * API level 1
  * 
@@ -66,7 +68,7 @@ public class UriBuilder {
      * @param value
      * @return
      */
-    public UriBuilder appendQueryParameter(QueryParameterKey key, String value) {
+    public UriBuilder appendQueryParameter(Key key, String value) {
         mBulder.appendQueryParameter(key.getKey(), value);
         return this;
     }

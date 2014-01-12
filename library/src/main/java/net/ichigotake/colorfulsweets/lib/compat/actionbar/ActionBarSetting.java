@@ -1,4 +1,4 @@
-package net.ichigotake.colorfulsweets.lib.actionbar;
+package net.ichigotake.colorfulsweets.lib.compat.actionbar;
 
 import android.content.Context;
 import android.support.v7.app.ActionBar;
