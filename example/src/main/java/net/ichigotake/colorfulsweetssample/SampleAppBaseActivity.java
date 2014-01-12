@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.common.base.Optional;
@@ -15,7 +16,6 @@ import net.ichigotake.colorfulsweets.lib.menu.SimpleMenu;
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenuListInitializer;
 import net.ichigotake.colorfulsweets.lib.navigation.Drawer;
 import net.ichigotake.colorfulsweets.lib.navigation.NavigationDrawer;
-import net.ichigotake.colorfulsweets.lib.view.ListItemOnClickListener;
 
 public abstract class SampleAppBaseActivity extends NavigationDrawerActivity {
 
@@ -27,11 +27,9 @@ public abstract class SampleAppBaseActivity extends NavigationDrawerActivity {
     @Override
     protected Optional<Drawer> createNavigationDrawer() {
         ListView menuListView = (ListView) findViewById(R.id.left_drawer);
-        ListItemOnClickListener listener = new NavigationSampleOnClickListener(this);
-        SimpleMenuListInitializer menuFactory =
-                new SimpleMenuListInitializer(NavigationSample.values(), listener);
-        menuFactory.show(this, menuListView);
-        
+        menuListView.setOnItemClickListener(new NavigationSampleOnClickListener(this));
+        new SimpleMenuListInitializer(this).initialize(menuListView, NavigationSample.values());
+
         DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         return Optional.<Drawer>of(new NavigationDrawer(this, mDrawerLayout));
     }
@@ -67,7 +65,7 @@ public abstract class SampleAppBaseActivity extends NavigationDrawerActivity {
     /**
      * item on click listener
      */
-    private class NavigationSampleOnClickListener implements ListItemOnClickListener {
+    private class NavigationSampleOnClickListener implements AdapterView.OnItemClickListener {
 
         final private Context mContext;
 
@@ -76,7 +74,7 @@ public abstract class SampleAppBaseActivity extends NavigationDrawerActivity {
         }
 
         @Override
-        public void onClick(View view, int position) {
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             NavigationSample menu = NavigationSample.values()[position];
             switch (menu) {
             case ACTIVITY_TRANSIT:

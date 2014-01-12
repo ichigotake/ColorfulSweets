@@ -11,42 +11,36 @@ import java.util.List;
  */
 public class SimpleMenuListInitializer {
 
-    final private SimpleMenu[] mMenu;
+    final private Context mContext;
     
     /**
      * API level 1
      */
-    public SimpleMenuListInitializer(SimpleMenu[] menu) {
-        mMenu = menu;
+    public SimpleMenuListInitializer(Context context) {
+        mContext = context;
     }
     
     /**
      * API level 1
-     * 
      */
-    @Override
-    public List<SimpleMenuItem> create() {
+    public void initialize(ListView listView, SimpleMenu[] menu) {
         final List<SimpleMenuItem> menus = new ArrayList<SimpleMenuItem>();
         
-        int length = mMenu.length;
+        int length = menu.length;
         for (int i=0; i<length; i++) {
-            menus.add(new SimpleMenuItem(mMenu[i]));
+            menus.add(new SimpleMenuItem(mContext, menu[i]));
         }
-        
-        return menus;
+
+        initialize(listView, menus);
     }
 
     /**
      * API level 1
-     * 
-     * Show the menu.
      */
-    @Override
-    public void show(Context context, ListView listView) {
-        SimpleMenuItemAdapter adapter = new SimpleMenuItemAdapter(context, create());
+    public void initialize(ListView listView, List<SimpleMenuItem> menu) {
+        SimpleMenuItemAdapter adapter = new SimpleMenuItemAdapter(mContext, menu);
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
-    
 
 }

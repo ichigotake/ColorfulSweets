@@ -6,13 +6,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenu;
-import net.ichigotake.colorfulsweets.lib.menu.SimpleMenuListFactory;
-import net.ichigotake.colorfulsweets.lib.view.ListItemOnClickListener;
+import net.ichigotake.colorfulsweets.lib.menu.SimpleMenuListInitializer;
 
 public class SimpleMenuFragment extends Fragment {
 
@@ -25,11 +25,10 @@ public class SimpleMenuFragment extends Fragment {
         View view = inflater.inflate(R.layout.simple_menu_list, null);
         
         ListView menuListView = (ListView) view.findViewById(R.id.menu_list);
-        ListItemOnClickListener listener = new SimpleMenuSampleOnClickListener(getActivity());
-        SimpleMenuListFactory menuFactory =
-                new SimpleMenuListFactory(SimpleMenuSample.values(), listener);
-        menuFactory.show(getActivity(), menuListView);
-        
+        menuListView.setOnItemClickListener(new SimpleMenuSampleOnClickListener(getActivity()));
+        new SimpleMenuListInitializer(getActivity())
+                .initialize(menuListView, SimpleMenuSample.values());
+
         return view;
     }
 
@@ -70,7 +69,7 @@ public class SimpleMenuFragment extends Fragment {
     /**
      * item on click listener
      */
-    private class SimpleMenuSampleOnClickListener implements ListItemOnClickListener {
+    private class SimpleMenuSampleOnClickListener implements AdapterView.OnItemClickListener {
 
         final private Context mContext;
 
@@ -79,11 +78,12 @@ public class SimpleMenuFragment extends Fragment {
         }
 
         @Override
-        public void onClick(View view, int position) {
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             TextView itemView = (TextView) view;
             String message = new StringBuilder().append("clicked item: ")
                     .append(itemView.getText().toString()).toString();
             Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
         }
+
     }
 }

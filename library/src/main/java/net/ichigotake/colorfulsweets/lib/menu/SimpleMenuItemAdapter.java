@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import net.ichigotake.colorfulsweets.R;
-import net.ichigotake.colorfulsweets.lib.view.ListOnClickListener;
 
 import java.util.List;
 
@@ -59,15 +58,9 @@ public class SimpleMenuItemAdapter extends ArrayAdapter<SimpleMenuItem> {
         SimpleMenuItem item = getItem(position);
         
         TextView itemText = (TextView) convertView;
-        if (item.isLabelNamePresent()) {
-            itemText.setText(item.getLabelName().get());
-        } else {
-            itemText.setText(item.getDefaultLabelName());
-        }
-        
-        itemText.setCompoundDrawablesWithIntrinsicBounds(item.getDefaultIcon(), 0, 0, 0);
-        itemText.setOnClickListener(new ListOnClickListener(position, item.getOnClickListener()));
-        
+        itemText.setText(item.getLabelName());
+        itemText.setCompoundDrawablesWithIntrinsicBounds(item.getIconResource(), 0, 0, 0);
+
         return convertView;
     }
     
