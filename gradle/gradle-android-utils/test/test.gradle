@@ -1,0 +1,44 @@
+apply from: '../build.gradle'
+
+task check
+
+private def tempFile(String name) {
+    def f = file(name)
+    f.deleteOnExit()
+    return f
+}
+
+check.dependsOn(task("iconToGrayScale") << {
+    def inputFile = file("data/ic_launcher.png")
+    def outputFile = tempFile("gray.png")
+    iconToGrayScale(inputFile, outputFile)
+    assert outputFile.exists()
+})
+
+check.dependsOn(task("initSdkDir") << {
+    def localPropFile = tempFile("local.properties")
+    initSdkDir()
+    assert localPropFile.exists()
+})
+
+check.dependsOn(task("writeResources") << {
+    def resFile = tempFile("test.xml")
+    writeResources(resFile, [foo: "aaa", bar: "bbb"])
+    assert resFile.exists()
+    def records = new XmlParser().parse(resFile)
+    assert records.name() == "resources"
+    assert records.children().size() == 2
+})
+
+check.dependsOn(task("readVersion") << {
+    def versionFile = tempFile("VERSION\r\n")
+    versionFile.write("1.2.30")
+    def v = readVersion(versionFile)
+    assert v.major == 1
+    assert v.minor == 2
+    assert v.patchLevel == 30
+    assert v.toVersionName() == "1.2.30"
+    assert v.toVersionCode() == 1002030
+    assert v.toString() == "1.2.30 (1002030)"
+})
+
