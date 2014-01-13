@@ -34,7 +34,7 @@ uploadArchives {
     repositories {
         mavenDeployer {
             repository(url: "file://${deployTo}")
-            pom.version = version.toVersionName
+            pom.version = version.toVersionName()
             pom.groupId = 'net.ichigotake.colorfulsweets'
             pom.artifactId = 'ColorfulSweets'
         }
