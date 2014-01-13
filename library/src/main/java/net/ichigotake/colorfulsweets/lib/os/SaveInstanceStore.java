@@ -40,17 +40,9 @@ public class SaveInstanceStore {
         return bundle.toBundle();
     }
 
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
-        if (savedInstanceState != null) {
-            mStore.putAll(savedInstanceState);
-        }
-    }
-
-    public void onActivityCreated(Bundle savedInstanceState) {
-        onRestoreInstanceState(savedInstanceState);
-    }
-
     public void putAll(Bundle bundle) {
-        mStore.putAll(bundle);
+        if (bundle != null) {
+            mStore.putAll(bundle);
+        }
     }
 }

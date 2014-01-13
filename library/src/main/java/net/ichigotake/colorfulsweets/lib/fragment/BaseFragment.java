@@ -11,21 +11,24 @@ import java.io.Serializable;
 
 public class BaseFragment extends Fragment {
 
-    private SaveInstanceStore mStore;
+    private static SaveInstanceStore mStore;
 
     protected void putSaveInstanceStore(Bundle args) {
-        mStore.putAll(args);
+        getSaveInstanceStore().putAll(args);
     }
 
     protected void putSaveInstanceStore(String key, Serializable value) {
-        mStore.put(key, value);
+        getSaveInstanceStore().put(key, value);
     }
 
     protected void putSaveInstanceStore(Key key, Serializable value) {
         putSaveInstanceStore(key.getKey(), value);
     }
 
-    protected SaveInstanceStore getSaveInstanceStore() {
+    protected static SaveInstanceStore getSaveInstanceStore() {
+        if (mStore == null) {
+            mStore = new SaveInstanceStore();
+        }
         return mStore;
     }
 
@@ -33,18 +36,20 @@ public class BaseFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mStore = new SaveInstanceStore(savedInstanceState);
+        mStore.putAll(getArguments());
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        BundleSimple bundle = new BundleSimple(outState);
-        super.onSaveInstanceState(bundle.toBundle());
+        BundleSimple store = new BundleSimple(outState);
+        store.putAll(getSaveInstanceStore().toBundle());
+        super.onSaveInstanceState(store.toBundle());
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mStore.onActivityCreated(savedInstanceState);
+        mStore.putAll(savedInstanceState);
     }
 
 }
