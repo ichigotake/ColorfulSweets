@@ -59,7 +59,7 @@ public abstract class AbstractAtoPagingListener<T> implements OnScrollListener {
     /**
      * API level 1
      *
-     * Return the {@link AutoPagingParameter} to current
+     * Return the {@link AutoPagingEvent} to current
      * page state.
      *
      * @return
