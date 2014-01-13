@@ -1,7 +1,6 @@
 package net.ichigotake.colorfulsweets.lib.database;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.SparseArray;
 
@@ -37,16 +36,6 @@ public abstract class SQLiteHelper<T> extends SQLiteOpenHelper {
         return Optional.fromNullable(mCaches.get(key));
     }
 
-    @Override
-    public void onCreate(SQLiteDatabase arg0) {
-        
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
-        
-    }
-    
     protected SQLiteMakerSelect newSelect() {
         return new SQLiteMakerSelect(getReadableDatabase(), getTableName());
     }
