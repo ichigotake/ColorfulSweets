@@ -1,11 +1,8 @@
-package net.ichigotake.colorfulsweetssample;
+package net.ichigotake.colorfulsweetssample.menu;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -13,23 +10,21 @@ import android.widget.Toast;
 
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenu;
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenuListInitializer;
+import net.ichigotake.colorfulsweetssample.BaseActivity;
+import net.ichigotake.colorfulsweetssample.R;
 
-public class SimpleMenuFragment extends Fragment {
-
-    public static SimpleMenuFragment newInstance() {
-        return new SimpleMenuFragment();
-    }
+public class SimpleMenuActivity extends BaseActivity {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.simple_menu_list, null);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.simple_menu_list);
         
-        ListView menuListView = (ListView) view.findViewById(R.id.menu_list);
-        menuListView.setOnItemClickListener(new SimpleMenuSampleOnClickListener(getActivity()));
-        new SimpleMenuListInitializer(getActivity())
+        ListView menuListView = (ListView) findViewById(R.id.menu_list);
+        menuListView.setOnItemClickListener(new SimpleMenuSampleOnClickListener(this));
+        new SimpleMenuListInitializer(this)
                 .initialize(menuListView, SimpleMenuSample.values());
 
-        return view;
     }
 
     /**

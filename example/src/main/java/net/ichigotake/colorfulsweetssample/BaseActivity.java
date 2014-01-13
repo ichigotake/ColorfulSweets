@@ -1,7 +1,6 @@
 package net.ichigotake.colorfulsweetssample;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,13 +10,17 @@ import com.google.common.base.Optional;
 
 import net.ichigotake.colorfulsweets.lib.activity.ActivityTransit;
 import net.ichigotake.colorfulsweets.lib.compat.activity.NavigationDrawerActivity;
-import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenu;
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenuListInitializer;
 import net.ichigotake.colorfulsweets.lib.navigation.Drawer;
 import net.ichigotake.colorfulsweets.lib.navigation.NavigationDrawer;
+import net.ichigotake.colorfulsweetssample.activity.ActivityTransitSampleActivity;
+import net.ichigotake.colorfulsweetssample.fragment.viewpager.SimpleViewPagerFragmentSampleActivity;
+import net.ichigotake.colorfulsweetssample.menu.SimpleMenuActivity;
+import net.ichigotake.colorfulsweetssample.preference.PreferenceSampleActivity;
+import net.ichigotake.colorfulsweetssample.view.paging.AutoPagingActivity;
 
-public abstract class SampleAppBaseActivity extends NavigationDrawerActivity {
+public abstract class BaseActivity extends NavigationDrawerActivity {
 
     @Override
     protected int getLayoutResource() {
@@ -30,8 +33,12 @@ public abstract class SampleAppBaseActivity extends NavigationDrawerActivity {
         menuListView.setOnItemClickListener(new NavigationSampleOnClickListener(this));
         new SimpleMenuListInitializer(this).initialize(menuListView, NavigationSample.values());
 
-        DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        return Optional.<Drawer>of(new NavigationDrawer(this, mDrawerLayout));
+        if (hasParentActivityIntent()) {
+            return Optional.absent();
+        } else {
+            DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+            return Optional.<Drawer>of(new NavigationDrawer(this, mDrawerLayout));
+        }
     }
     
     /**
@@ -40,8 +47,10 @@ public abstract class SampleAppBaseActivity extends NavigationDrawerActivity {
     private enum NavigationSample implements SimpleMenu {
 
         ACTIVITY_TRANSIT(R.string.sample_activity_transit_title),
+        AUTO_PAGING(R.string.sample_menu_auto_paging),
         SIMPLE_MENU(R.string.sample_menu_simple_menu),
         SIMPLE_TAB_FRAGMENT_PAGER(R.string.sample_menu_tab_fragment_pager),
+        PREFERENCE(R.string.sample_menu_preference),
         ;
 
         final private int mTitle;
@@ -77,25 +86,26 @@ public abstract class SampleAppBaseActivity extends NavigationDrawerActivity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             NavigationSample menu = NavigationSample.values()[position];
             switch (menu) {
-            case ACTIVITY_TRANSIT:
-                ActivityTransit.from(mContext, ActivityTransitSampleActivity.class).toNext();
-                break;
-            case SIMPLE_MENU:
-                transit(mContext, SimpleMenuFragment.newInstance());
-                break;
-            case SIMPLE_TAB_FRAGMENT_PAGER:
-                transit(mContext, SimpleViewPagerFragmentSampleFragment.newInstance());
-                break;
-            default:
-                break;
+                case ACTIVITY_TRANSIT:
+                    ActivityTransit.from(mContext, ActivityTransitSampleActivity.class).toNext();
+                    break;
+                case AUTO_PAGING:
+                    ActivityTransit.from(mContext, AutoPagingActivity.class).toNext();
+                    break;
+                case SIMPLE_MENU:
+                    ActivityTransit.from(mContext, SimpleMenuActivity.class).toNext();
+                    break;
+                case SIMPLE_TAB_FRAGMENT_PAGER:
+                    ActivityTransit.from(mContext, SimpleViewPagerFragmentSampleActivity.class).toNext();
+                    break;
+                case PREFERENCE:
+                    ActivityTransit.from(mContext, PreferenceSampleActivity.class).toNext();
+                    break;
             }
             
             NavigationDrawerActivity.closeNavigationDrawer(mContext);
         }
         
-        private void transit(Context context, Fragment nextFragment) {
-            FragmentTransit.from(mContext).toReplace(R.id.content, nextFragment);
-        }
     }
     
 }

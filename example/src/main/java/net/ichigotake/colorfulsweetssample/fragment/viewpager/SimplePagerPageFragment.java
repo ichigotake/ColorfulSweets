@@ -1,13 +1,15 @@
-package net.ichigotake.colorfulsweetssample;
+package net.ichigotake.colorfulsweetssample.fragment.viewpager;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class SimplePagerPageFragment extends Fragment {
+import net.ichigotake.colorfulsweets.lib.fragment.BaseFragment;
+import net.ichigotake.colorfulsweetssample.R;
+
+public class SimplePagerPageFragment extends BaseFragment {
 
     final private static String KEY_POSITION = "key_position";
     

@@ -1,9 +1,10 @@
 package net.ichigotake.colorfulsweetssample;
 
-import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
 import android.os.Bundle;
 
-public class SampleActivity extends SampleAppBaseActivity {
+import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
+
+public class SampleActivity extends BaseActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

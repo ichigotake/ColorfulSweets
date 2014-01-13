@@ -24,10 +24,40 @@
         </activity>
         
         <activity
-            android:name="net.ichigotake.colorfulsweetssample.ActivityTransitSampleActivity"
-            android:label="@string/app_name" />
+            android:name=".activity.ActivityTransitSampleActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="net.ichigotake.colorfulsweetssample.SampleActivity"/>
+        </activity>
 
-        <activity android:name=".view.paging.AutoPagingActivity" />
+        <activity
+            android:name=".view.paging.AutoPagingActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="net.ichigotake.colorfulsweetssample.SampleActivity"/>
+        </activity>
+
+        <activity
+            android:name=".preference.PreferenceSampleActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="net.ichigotake.colorfulsweetssample.SampleActivity"/>
+        </activity>
+
+        <activity
+            android:name=".menu.SimpleMenuActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="net.ichigotake.colorfulsweetssample.SampleActivity"/>
+        </activity>
+
+        <activity
+            android:name=".fragment.viewpager.SimpleViewPagerFragmentSampleActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="net.ichigotake.colorfulsweetssample.SampleActivity"/>
+        </activity>
+
     </application>
 
 </manifest>

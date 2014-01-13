@@ -7,10 +7,10 @@ import android.widget.ListView;
 
 import net.ichigotake.colorfulsweets.lib.widget.paging.RunnableAutoPagingContainer;
 import net.ichigotake.colorfulsweets.lib.widget.paging.RunnableAutoPagingListener;
+import net.ichigotake.colorfulsweetssample.BaseActivity;
 import net.ichigotake.colorfulsweetssample.R;
-import net.ichigotake.colorfulsweetssample.SampleAppBaseActivity;
 
-public class AutoPagingActivity extends SampleAppBaseActivity {
+public class AutoPagingActivity extends BaseActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,8 +41,8 @@ public class AutoPagingActivity extends SampleAppBaseActivity {
                         @Override
                         public void run() {
                             final int size = getAdapter().getCount();
-                            for (int i=0; i<20; i++) {
-                                getAdapter().add("item " + (size+i));
+                            for (int i = 0; i < 20; i++) {
+                                getAdapter().add("item " + (size + i));
                             }
                             getAdapter().notifyDataSetChanged();
                             finish();

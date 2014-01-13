@@ -1,10 +1,12 @@
-package net.ichigotake.colorfulsweetssample;
+package net.ichigotake.colorfulsweetssample.fragment.viewpager;
 
-import net.ichigotake.colorfulsweets.lib.fragment.viewpager.SimpleViewPagerFragment;
-import net.ichigotake.colorfulsweets.lib.fragment.viewpager.SimpleViewPagerTab;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.view.View;
+
+import net.ichigotake.colorfulsweets.lib.fragment.viewpager.SimpleViewPagerFragment;
+import net.ichigotake.colorfulsweets.lib.fragment.viewpager.SimpleViewPagerTab;
+import net.ichigotake.colorfulsweetssample.R;
 
 public class SimpleViewPagerFragmentSampleFragment extends SimpleViewPagerFragment {
 

@@ -1,6 +1,5 @@
 package net.ichigotake.colorfulsweetssample;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,10 +9,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import net.ichigotake.colorfulsweets.lib.activity.ActivityTransit;
-import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenu;
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenuListInitializer;
-import net.ichigotake.colorfulsweetssample.preference.PreferenceSampleFragment;
+import net.ichigotake.colorfulsweetssample.activity.ActivityTransitSampleActivity;
+import net.ichigotake.colorfulsweetssample.fragment.viewpager.SimpleViewPagerFragmentSampleActivity;
+import net.ichigotake.colorfulsweetssample.menu.SimpleMenuActivity;
+import net.ichigotake.colorfulsweetssample.preference.PreferenceSampleActivity;
 import net.ichigotake.colorfulsweetssample.view.paging.AutoPagingActivity;
 
 public class SampleMenuFragment extends Fragment {
@@ -27,7 +28,7 @@ public class SampleMenuFragment extends Fragment {
         View view = inflater.inflate(R.layout.simple_menu_list, null);
         
         ListView menuListView = (ListView) view.findViewById(R.id.menu_list);
-        menuListView.setOnItemClickListener(new SampleMenuOnClickListener(getActivity()));
+        menuListView.setOnItemClickListener(new SampleMenuOnClickListener());
         new SimpleMenuListInitializer(getActivity()).initialize(menuListView, SampleMenu.values());
 
         return view;
@@ -68,38 +69,27 @@ public class SampleMenuFragment extends Fragment {
      */
     private class SampleMenuOnClickListener implements AdapterView.OnItemClickListener {
 
-        final private Context mContext;
-
-        public SampleMenuOnClickListener(Context context) {
-            mContext = context;
-        }
-
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             SampleMenu menu = SampleMenu.values()[position];
             switch (menu) {
-            case ACTIVITY_TRANSIT:
-                new ActivityTransit(getActivity(), ActivityTransitSampleActivity.class).toNext();
+                case ACTIVITY_TRANSIT:
+                    new ActivityTransit(getActivity(), ActivityTransitSampleActivity.class).toNext();
+                    break;
+                case AUTO_PAGING:
+                    new ActivityTransit(getActivity(), AutoPagingActivity.class).toNext();
+                    break;
+                case SIMPLE_MENU:
+                    new ActivityTransit(getActivity(), SimpleMenuActivity.class).toNext();
+                    break;
+                case SIMPLE_TAB_FRAGMENT_PAGER:
+                    new ActivityTransit(getActivity(), SimpleViewPagerFragmentSampleActivity.class).toNext();
                 break;
-            case AUTO_PAGING:
-                new ActivityTransit(getActivity(), AutoPagingActivity.class).toNext();
-                break;
-            case SIMPLE_MENU:
-                final Fragment nextFragment = SimpleMenuFragment.newInstance();
-                transit(nextFragment);
-                break;
-            case SIMPLE_TAB_FRAGMENT_PAGER:
-                transit(SimpleViewPagerFragmentSampleFragment.newInstance());
-            break;
                 case PREFERENCE:
-                transit(PreferenceSampleFragment.newInstance());
+                    new ActivityTransit(getActivity(), PreferenceSampleActivity.class).toNext();
                 break;
             }
             
-        }
-        
-        private void transit(Fragment nextFragment) {
-            FragmentTransit.from(mContext).toReplace(R.id.content, nextFragment);
         }
 
     }
