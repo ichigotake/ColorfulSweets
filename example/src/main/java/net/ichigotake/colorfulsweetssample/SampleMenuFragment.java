@@ -14,6 +14,7 @@ import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenu;
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenuListInitializer;
 import net.ichigotake.colorfulsweetssample.preference.PreferenceSampleFragment;
+import net.ichigotake.colorfulsweetssample.view.paging.AutoPagingActivity;
 
 public class SampleMenuFragment extends Fragment {
     
@@ -38,6 +39,7 @@ public class SampleMenuFragment extends Fragment {
     private enum SampleMenu implements SimpleMenu {
 
         ACTIVITY_TRANSIT(R.string.sample_activity_transit_title),
+        AUTO_PAGING(R.string.sample_menu_auto_paging),
         SIMPLE_MENU(R.string.sample_menu_simple_menu),
         SIMPLE_TAB_FRAGMENT_PAGER(R.string.sample_menu_tab_fragment_pager),
         PREFERENCE(R.string.sample_menu_preference),
@@ -78,6 +80,9 @@ public class SampleMenuFragment extends Fragment {
             switch (menu) {
             case ACTIVITY_TRANSIT:
                 new ActivityTransit(getActivity(), ActivityTransitSampleActivity.class).toNext();
+                break;
+            case AUTO_PAGING:
+                new ActivityTransit(getActivity(), AutoPagingActivity.class).toNext();
                 break;
             case SIMPLE_MENU:
                 final Fragment nextFragment = SimpleMenuFragment.newInstance();

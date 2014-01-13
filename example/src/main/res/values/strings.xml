@@ -8,12 +8,13 @@
     <string name="sample_activity_transit_title">ActivityTransit</string>
     <string name="sample_activity_transit_description">Simply meta API for activity transiton.</string>
     <string name="sample_activity_transit_code">new ActivityTransit(currentActivity).toNext(NextActivity.class)</string>
-    
+
     <string name="sample_menu_simple_menu">SimpleMenu</string>
+    <string name="sample_menu_auto_paging">RunnableAutoPaging</string>
     <string name="sample_menu_tab_fragment_pager">SimpleViewPagerFragment</string>
     <string name="sample_menu_tab_fragment_pager_item">tab %d</string>
     <string name="sample_menu_preference">preference</string>
-    
+
     <string name="simple_menu_item_sample1">item 1</string>
     <string name="simple_menu_item_sample2">item 2</string>
     <string name="simple_menu_item_sample3">item 3</string>
