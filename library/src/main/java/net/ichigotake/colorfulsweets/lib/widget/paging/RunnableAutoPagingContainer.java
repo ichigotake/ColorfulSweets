@@ -12,21 +12,6 @@ import android.widget.ListView;
  */
 public class RunnableAutoPagingContainer<T> {
 
-    final private RunnableAutoPagingListener<T> mPagiableListener;
-    
-    private ArrayAdapter<T> mAdapter;
-
-    /**
-     * API level 3
-     *
-     * Constructor.
-     *
-     * @param pagiableListener
-     */
-    public RunnableAutoPagingContainer(RunnableAutoPagingListener<T> pagiableListener) {
-        mPagiableListener = pagiableListener;
-    }
-
     /**
      * API level 3
      *
@@ -34,15 +19,15 @@ public class RunnableAutoPagingContainer<T> {
      *
      * @param listView
      */
-    public void initialize(ListView listView) {
-        mAdapter = mPagiableListener.getAdapter();
+    public void initialize(ListView listView, RunnableAutoPagingListener<T> pagiableListener) {
+        ArrayAdapter<T> adapter = pagiableListener.getAdapter();
 
-        listView.setAdapter(mAdapter);
-        mAdapter.notifyDataSetChanged();
+        listView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 
-        mPagiableListener.onFirstLoading();
+        pagiableListener.onFirstLoading();
 
-        listView.setOnScrollListener(mPagiableListener);
+        listView.setOnScrollListener(pagiableListener);
     }
     
 }
