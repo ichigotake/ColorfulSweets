@@ -53,7 +53,6 @@ public abstract class AbstractAtoPagingListener<T> implements OnScrollListener {
      * Run the first loading before auto paging.
      */
     public void onFirstLoading() {
-        setRequesting(true);
         onPaging();
     }
 
