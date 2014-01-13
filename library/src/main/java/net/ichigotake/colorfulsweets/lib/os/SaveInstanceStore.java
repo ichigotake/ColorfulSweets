@@ -50,4 +50,7 @@ public class SaveInstanceStore {
         onRestoreInstanceState(savedInstanceState);
     }
 
+    public void putAll(Bundle bundle) {
+        mStore.putAll(bundle);
+    }
 }

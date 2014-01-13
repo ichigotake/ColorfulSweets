@@ -13,6 +13,10 @@ public class BaseFragment extends Fragment {
 
     private SaveInstanceStore mStore;
 
+    protected void putSaveInstanceStore(Bundle args) {
+        mStore.putAll(args);
+    }
+
     protected void putSaveInstanceStore(String key, Serializable value) {
         mStore.put(key, value);
     }
