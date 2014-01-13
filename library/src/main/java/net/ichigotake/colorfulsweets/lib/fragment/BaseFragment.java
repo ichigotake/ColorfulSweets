@@ -2,6 +2,7 @@ package net.ichigotake.colorfulsweets.lib.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 
 import net.ichigotake.colorfulsweets.lib.os.BundleSimple;
 import net.ichigotake.colorfulsweets.lib.os.Key;
@@ -52,4 +53,7 @@ public class BaseFragment extends Fragment {
         mStore.putAll(savedInstanceState);
     }
 
+    protected ActionBarActivity getActionBarActivity() {
+        return ((ActionBarActivity)getActivity());
+    }
 }
