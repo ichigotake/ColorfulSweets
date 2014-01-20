@@ -21,7 +21,15 @@ ext.iconToGrayScale = { File inputFile, File outputFile ->
         }
     }
 
+    outputFile.getParentFile().mkdirs()
     ImageIO.write(img, "png", outputFile)
+}
+
+ext.makeGrayscaleLauncherIcon = { File dir, String name ->
+    fileTree(dir: dir, include: "res/drawable*/$name").each { File ic ->
+        def outputFile = file(ic.getPath().replaceAll("/main/", "/debug/"))
+        iconToGrayScale(ic, outputFile)
+    }
 }
 
 ext.writeProperties = { File propertiesFile, Map<String, String> dict ->
@@ -49,6 +57,9 @@ ext.initSdkDir = {
             }
         }
 
+        if (!localPropFile.exists()) {
+            throw new RuntimeException("No Android SDK found.")
+        }
     }
 }
 
@@ -73,7 +84,7 @@ public class Version {
     public final String source;
 
     public Version(String v) {
-        source = v
+        source = v.trim()
 
         def parts = source.split("\\.", 3)
         major = Integer.valueOf(parts[0])

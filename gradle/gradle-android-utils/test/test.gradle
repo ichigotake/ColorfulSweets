@@ -31,7 +31,7 @@ check.dependsOn(task("writeResources") << {
 })
 
 check.dependsOn(task("readVersion") << {
-    def versionFile = tempFile("VERSION\r\n")
+    def versionFile = tempFile("VERSION")
     versionFile.write("1.2.30")
     def v = readVersion(versionFile)
     assert v.major == 1
