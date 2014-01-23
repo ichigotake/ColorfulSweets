@@ -24,11 +24,6 @@ public class AutoPagingFragmentSampleFragment extends AutoPagingFragment {
     }
 
     @Override
-    protected void onFirstLoading() {
-        onPaging();
-    }
-
-    @Override
     protected void onPaging() {
         new Handler().postDelayed(new Runnable() {
             @Override

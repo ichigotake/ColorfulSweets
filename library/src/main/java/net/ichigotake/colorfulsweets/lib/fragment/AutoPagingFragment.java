@@ -42,7 +42,10 @@ abstract public class AutoPagingFragment extends BaseFragment {
         return sPagingParameter;
     }
 
-    abstract protected void onFirstLoading();
+    protected void onFirstLoading() {
+        onPaging();
+    }
+
 
     abstract protected void onPaging();
 
