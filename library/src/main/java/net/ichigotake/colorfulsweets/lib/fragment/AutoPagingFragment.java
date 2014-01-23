@@ -78,8 +78,7 @@ abstract public class AutoPagingFragment extends BaseFragment {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                getProgressView(getView()).findViewById(R.id.colorfullsweets_progressBar)
-                        .setVisibility(View.GONE);
+                getProgressView(getView()).setVisibility(View.GONE);
             }
         });
     }
@@ -121,8 +120,7 @@ abstract public class AutoPagingFragment extends BaseFragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        getProgressView(getView()).findViewById(R.id.colorfullsweets_progressBar)
-                                .setVisibility(View.VISIBLE);
+                        getProgressView(getView()).setVisibility(View.VISIBLE);
                     }
                 });
                 getLoadingState().start();
