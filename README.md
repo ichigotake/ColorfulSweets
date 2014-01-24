@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-    compile 'net.ichigotake.colorfulsweets:ColorfulSweets:0.0.3'
+    compile 'net.ichigotake.colorfulsweets:ColorfulSweets:0.0.9'
 }
 ```
 
