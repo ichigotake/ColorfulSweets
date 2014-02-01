@@ -38,6 +38,16 @@ public abstract class NavigationDrawerActivity extends ActionBarActivity {
      * @return
      */
     abstract protected Drawer createNavigationDrawer();
+
+    private Drawer getDrawer() {
+        if (mDrawer == null) {
+            mDrawer = createNavigationDrawer();
+            if (mDrawer == null) {
+                mDrawer = new DummyDrawer();
+            }
+        }
+        return mDrawer;
+    }
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,23 +55,19 @@ public abstract class NavigationDrawerActivity extends ActionBarActivity {
         SoftInput.alwaysHidden(this);
         setContentView(getLayoutResource());
 
-        mDrawer = createNavigationDrawer();
-        if (mDrawer == null) {
-            mDrawer = new DummyDrawer();
-        }
         ActionBarSetting.withHomeUpAsEnabled(getSupportActionBar(), R.string.app_name);
     }
     
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        mDrawer.onPostCreate();
+        getDrawer().onPostCreate();
     }
     
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        mDrawer.onConfigurationChanged(newConfig);
+        getDrawer().onConfigurationChanged(newConfig);
     }
     
     @Override
@@ -75,7 +81,7 @@ public abstract class NavigationDrawerActivity extends ActionBarActivity {
                 }
         }
         
-        if (mDrawer.onOptionsItemSelected(item)) {
+        if (getDrawer().onOptionsItemSelected(item)) {
             return true;
         }
         
@@ -88,7 +94,7 @@ public abstract class NavigationDrawerActivity extends ActionBarActivity {
      * Close navigation drawer.
      */
     public void closeNavigationDrawer() {
-        mDrawer.close();
+        getDrawer().close();
     }
     
     /**
