@@ -6,13 +6,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.google.common.base.Optional;
-
 import net.ichigotake.colorfulsweets.lib.activity.ActivityTransit;
 import net.ichigotake.colorfulsweets.lib.compat.activity.NavigationDrawerActivity;
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenu;
 import net.ichigotake.colorfulsweets.lib.menu.SimpleMenuListInitializer;
 import net.ichigotake.colorfulsweets.lib.navigation.Drawer;
+import net.ichigotake.colorfulsweets.lib.navigation.DummyDrawer;
 import net.ichigotake.colorfulsweets.lib.navigation.NavigationDrawer;
 import net.ichigotake.colorfulsweetssample.activity.ActivityTransitSampleActivity;
 import net.ichigotake.colorfulsweetssample.fragment.viewpager.SimpleViewPagerFragmentSampleActivity;
@@ -28,16 +27,16 @@ public abstract class BaseActivity extends NavigationDrawerActivity {
     }
     
     @Override
-    protected Optional<Drawer> createNavigationDrawer() {
+    protected Drawer createNavigationDrawer() {
         ListView menuListView = (ListView) findViewById(R.id.left_drawer);
         menuListView.setOnItemClickListener(new NavigationSampleOnClickListener(this));
         new SimpleMenuListInitializer(this).initialize(menuListView, NavigationSample.values());
 
         if (hasParentActivityIntent()) {
-            return Optional.absent();
+            return new DummyDrawer();
         } else {
             DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-            return Optional.<Drawer>of(new NavigationDrawer(this, mDrawerLayout));
+            return new NavigationDrawer(this, mDrawerLayout);
         }
     }
     

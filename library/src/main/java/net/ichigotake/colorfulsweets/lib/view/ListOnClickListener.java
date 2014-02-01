@@ -3,8 +3,6 @@ package net.ichigotake.colorfulsweets.lib.view;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-import com.google.common.base.Optional;
-
 /**
  * API level 1
  * 
@@ -14,7 +12,7 @@ public class ListOnClickListener implements OnClickListener {
 
     final private int mPosition;
     
-    final private Optional<ListItemOnClickListener> mListener;
+    final private ListItemOnClickListener mListener;
     
     /**
      * API level 1
@@ -24,7 +22,7 @@ public class ListOnClickListener implements OnClickListener {
      * @param position
      */
     public ListOnClickListener(int position, ListItemOnClickListener listener) {
-        mListener = Optional.fromNullable(listener);
+        mListener = listener;
         mPosition = position;
     }
     
@@ -36,8 +34,8 @@ public class ListOnClickListener implements OnClickListener {
      */
     @Override
     public void onClick(View view) {
-        if (mListener.isPresent()) {
-            mListener.get().onClick(view, mPosition);
+        if (mListener != null) {
+            mListener.onClick(view, mPosition);
         }
     }
 

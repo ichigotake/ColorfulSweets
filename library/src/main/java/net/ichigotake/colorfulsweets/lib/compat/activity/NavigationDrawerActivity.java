@@ -7,8 +7,6 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 
-import com.google.common.base.Optional;
-
 import net.ichigotake.colorfulsweets.R;
 import net.ichigotake.colorfulsweets.lib.compat.actionbar.ActionBarSetting;
 import net.ichigotake.colorfulsweets.lib.navigation.Drawer;
@@ -39,7 +37,7 @@ public abstract class NavigationDrawerActivity extends ActionBarActivity {
      * Create {@link NavigationDrawer} .
      * @return
      */
-    abstract protected Optional<Drawer> createNavigationDrawer();
+    abstract protected Drawer createNavigationDrawer();
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,10 +45,11 @@ public abstract class NavigationDrawerActivity extends ActionBarActivity {
         SoftInput.alwaysHidden(this);
         setContentView(getLayoutResource());
 
-        final Optional<Drawer> drawer = createNavigationDrawer();
-        mDrawer = drawer.or(new DummyDrawer());
+        mDrawer = createNavigationDrawer();
+        if (mDrawer == null) {
+            mDrawer = new DummyDrawer();
+        }
         ActionBarSetting.withHomeUpAsEnabled(getSupportActionBar(), R.string.app_name);
-
     }
     
     @Override

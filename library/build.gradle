@@ -22,8 +22,6 @@ repositories {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:+'
-    compile 'com.google.guava:guava:14.0-rc1'
-    compile files('src/libs/volley.jar')
 }
 
 

@@ -2,8 +2,6 @@ package net.ichigotake.colorfulsweets.lib.content;
 
 import android.content.Context;
 
-import com.google.common.base.Optional;
-
 import net.ichigotake.colorfulsweets.lib.os.Key;
 
 import org.json.JSONException;
@@ -43,7 +41,7 @@ public class JsonSerializer {
     }
 
     public JSONObject deserialize() throws IllegalStateException {
-        Optional<JSONObject> json = Optional.absent();
+        JSONObject json = null;
 
         InputStream stream = null;
         try {
@@ -54,7 +52,7 @@ public class JsonSerializer {
                 fileContent.append(new String(buffer));
             }
             stream.close();
-            json = Optional.of(new JSONObject(fileContent.toString()));
+            json = new JSONObject(fileContent.toString());
         } catch (FileNotFoundException e) {
             throw new IllegalStateException(e);
         } catch (JSONException e) {
@@ -67,10 +65,10 @@ public class JsonSerializer {
             }
         }
 
-        if (! json.isPresent()) {
+        if (json == null) {
             throw new IllegalStateException("");
         }
 
-        return json.get();
+        return json;
     }
 }

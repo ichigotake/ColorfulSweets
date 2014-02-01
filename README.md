@@ -9,13 +9,6 @@ Lightweight Android application framework for me
 
 __This software is still alpha quality. Its API may change without notice.__
 
-Description
-==========
-
-ColorfulSweets is for a my own framework. The almost classes are used myself to fill up the gap before the found wonderful libraries or frameworks.
-
-and... the sandbox for Android implementation.
-
 Download
 =========
 
@@ -31,8 +24,17 @@ dependencies {
 }
 ```
 
-Feature
+Description
 ==========
+
+ColorfulSweets is for a my own framework. The almost classes are used myself to fill up the gap before the found wonderful libraries or frameworks.
+
+and... the sandbox for Android implementation.
+
+Feature and Policy
+==========
+
+ColofulSweetsのポシリーとして、外部ライブラリへの依存を無しにAndroidアプリの実装で利用するインターフェースを提供します。 *TODO: be English*
 
 sorry, not enough to documentation...
 

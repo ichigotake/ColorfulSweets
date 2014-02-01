@@ -4,8 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.widget.ListView;
 
-import com.google.common.base.Optional;
-
 import net.ichigotake.colorfulsweets.R;
 
 import java.util.List;
@@ -19,8 +17,8 @@ public class SimpleMenuList {
 
     final private Context mContext;
     
-    private Optional<ListView> mListView = Optional.absent();
-    
+    private ListView mListView;
+
     /**
      * API level 1
      * @param context
@@ -35,7 +33,7 @@ public class SimpleMenuList {
      * @param listView
      */
     public void setListView(ListView listView) {
-        mListView = Optional.fromNullable(listView);
+        mListView = listView;
     }
 
     /**
@@ -58,8 +56,8 @@ public class SimpleMenuList {
      */
     private ListView getListView() {
         final ListView listView;
-        if (mListView.isPresent()) {
-            listView = mListView.get();
+        if (mListView == null) {
+            listView = mListView;
         } else {
             listView = (ListView) LayoutInflater.from(mContext).inflate(R.layout.menu_list, null);
         }

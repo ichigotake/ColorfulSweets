@@ -3,8 +3,6 @@ package net.ichigotake.colorfulsweets.lib.preference;
 import android.content.SharedPreferences;
 import android.widget.Spinner;
 
-import com.google.common.base.Optional;
-
 import net.ichigotake.colorfulsweets.lib.os.Key;
 import net.ichigotake.colorfulsweets.lib.widget.SpinnerContainer;
 import net.ichigotake.colorfulsweets.lib.widget.SpinnerSelectedEvent;
@@ -17,15 +15,14 @@ public abstract class PreferenceSpinnerContainer extends SpinnerContainer<Object
     final private Key mPreferenceKey;
 
     public PreferenceSpinnerContainer(SharedPreferences pref, Key preferenceKey) {
-        super(new PreferenceListener(pref, preferenceKey,
-                Optional.<SpinnerSelectedListener<SpinnerSelectedEvent<Object>>>absent()));
+        super(new PreferenceListener(pref, preferenceKey));
         mPref = pref;
         mPreferenceKey = preferenceKey;
     }
 
     public PreferenceSpinnerContainer(SharedPreferences pref, Key preferenceKey,
                                       SpinnerSelectedListener<SpinnerSelectedEvent<Object>> listener) {
-        super(new PreferenceListener(pref, preferenceKey, Optional.of(listener)));
+        super(new PreferenceListener(pref, preferenceKey, listener));
         mPref = pref;
         mPreferenceKey = preferenceKey;
     }
@@ -58,10 +55,14 @@ public abstract class PreferenceSpinnerContainer extends SpinnerContainer<Object
 
         final private SharedPreferences mPref;
         final private Key mKey;
-        final private Optional<SpinnerSelectedListener<SpinnerSelectedEvent<Object>>> mListener;
+        final private SpinnerSelectedListener<SpinnerSelectedEvent<Object>> mListener;
+
+        PreferenceListener(SharedPreferences pref, Key key) {
+            this(pref, key, null);
+        }
 
         PreferenceListener(SharedPreferences pref, Key key,
-                           Optional<SpinnerSelectedListener<SpinnerSelectedEvent<Object>>> listener) {
+                           SpinnerSelectedListener<SpinnerSelectedEvent<Object>> listener) {
             mPref = pref;
             mKey = key;
             mListener = listener;
@@ -73,8 +74,8 @@ public abstract class PreferenceSpinnerContainer extends SpinnerContainer<Object
             editor.putString(mKey.getKey(), event.getItem().toString());
             editor.commit();
 
-            if (mListener.isPresent()) {
-                mListener.get().onItemSelected(event);
+            if (mListener != null) {
+                mListener.onItemSelected(event);
             }
         }
     }
