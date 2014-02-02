@@ -20,8 +20,28 @@ public class ActivityTransitSampleActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_transit);
-        ActionBarSetting.show(getSupportActionBar(), R.string.sample_activity_transit_title);
-        
+        new FragmentTransit(this)
+                .setAddBackStack(false)
+                .setNextFragment(R.id.content, ActivityTransitSampleFragment.newInstance());
+    }
+
+    public static class ActivityTransitSampleFragment extends BaseFragment {
+
+        static ActivityTransitSampleFragment newInstance() {
+            return new ActivityTransitSampleFragment();
+        }
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            ActionBarSetting.show(getSupportActionBar(), R.string.sample_activity_transit_title);
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflate, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            return inflate.inflate(R.layout.activity_transit, null);
+        }
+
     }
 }
