@@ -74,19 +74,19 @@ public class SampleMenuFragment extends Fragment {
             SampleMenu menu = SampleMenu.values()[position];
             switch (menu) {
                 case ACTIVITY_TRANSIT:
-                    new ActivityTransit(getActivity(), ActivityTransitSampleActivity.class).toNext();
+                    new ActivityTransit(getActivity(), ActivityTransitSampleActivity.class).transition();
                     break;
                 case AUTO_PAGING:
-                    new ActivityTransit(getActivity(), AutoPagingActivity.class).toNext();
+                    new ActivityTransit(getActivity(), AutoPagingActivity.class).transition();
                     break;
                 case SIMPLE_MENU:
-                    new ActivityTransit(getActivity(), SimpleMenuActivity.class).toNext();
+                    new ActivityTransit(getActivity(), SimpleMenuActivity.class).transition();
                     break;
                 case SIMPLE_TAB_FRAGMENT_PAGER:
-                    new ActivityTransit(getActivity(), SimpleViewPagerFragmentSampleActivity.class).toNext();
+                    new ActivityTransit(getActivity(), SimpleViewPagerFragmentSampleActivity.class).transition();
                 break;
                 case PREFERENCE:
-                    new ActivityTransit(getActivity(), PreferenceSampleActivity.class).toNext();
+                    new ActivityTransit(getActivity(), PreferenceSampleActivity.class).transition();
                 break;
             }
             

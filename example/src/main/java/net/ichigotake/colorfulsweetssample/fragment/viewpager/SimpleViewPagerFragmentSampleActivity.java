@@ -14,6 +14,7 @@ public class SimpleViewPagerFragmentSampleActivity extends BaseActivity {
 
         new FragmentTransit(this)
                 .setAddBackStack(false)
-                .toReplace(R.id.content, SimpleViewPagerFragmentSampleFragment.newInstance());
+                .setNextFragment(R.id.content, SimpleViewPagerFragmentSampleFragment.newInstance())
+                .transition();
     }
 }

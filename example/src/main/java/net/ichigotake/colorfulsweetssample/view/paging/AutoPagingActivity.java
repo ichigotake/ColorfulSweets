@@ -14,7 +14,8 @@ public class AutoPagingActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         new FragmentTransit(this)
                 .setAddBackStack(false)
-                .toReplace(R.id.content, AutoPagingFragmentSampleFragment.newInstance());
+                .setNextFragment(R.id.content, AutoPagingFragmentSampleFragment.newInstance())
+                .transition();
     }
 
 }

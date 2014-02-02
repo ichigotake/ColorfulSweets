@@ -1,9 +1,14 @@
 package net.ichigotake.colorfulsweetssample.activity;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import net.ichigotake.colorfulsweets.lib.activity.ActivityTransit;
 import net.ichigotake.colorfulsweets.lib.compat.actionbar.ActionBarSetting;
+import net.ichigotake.colorfulsweets.lib.fragment.BaseFragment;
+import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
 import net.ichigotake.colorfulsweetssample.BaseActivity;
 import net.ichigotake.colorfulsweetssample.R;
 

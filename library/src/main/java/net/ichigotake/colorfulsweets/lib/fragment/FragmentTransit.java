@@ -9,18 +9,21 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 
 import net.ichigotake.colorfulsweets.R;
+import net.ichigotake.colorfulsweets.lib.widget.Transition;
 
 /**
  * API level 4
  * 
  * Fragment transition.
  */
-public class FragmentTransit {
+public class FragmentTransit implements Transition {
 
     final private FragmentManager mFragmentManager;
     
     private boolean mAddBackStack = true;
     private boolean mIsAnimation = true;
+    private Fragment mNextFragment;
+    private int mTargetViewId;
     
     /**
      * API level 4
@@ -66,7 +69,12 @@ public class FragmentTransit {
         }
         return transit;
     }
-    
+
+    public FragmentTransit setNextFragment(int targetViewId, Fragment nextFragment) {
+        mTargetViewId = targetViewId;
+        mNextFragment = nextFragment;
+        return this;
+    }
     /**
      * API level 4
      * 
@@ -83,10 +91,11 @@ public class FragmentTransit {
      * API level 4
      * 
      * Replace to current fragment.
-     * @param replacementId
-     * @param nextFragment
      */
-    public void toReplace(final int replacementId, final Fragment nextFragment) {
+    @Override
+    public void transition() {
+        final int targetViewId = mTargetViewId;
+        final Fragment nextFragment = mNextFragment;
         
         Runnable runnable = new Runnable() {
             
@@ -100,7 +109,7 @@ public class FragmentTransit {
                             R.anim.fade_in,
                             R.anim.fade_out);
                 }
-                transaction.replace(replacementId, nextFragment);
+                transaction.replace(targetViewId, nextFragment);
                 if (mAddBackStack) {
                     transaction.addToBackStack(null);
                 }

@@ -13,6 +13,7 @@ public class PreferenceSampleActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         new FragmentTransit(this)
                 .setAddBackStack(false)
-                .toReplace(R.id.content, PreferenceSampleFragment.newInstance());
+                .setNextFragment(R.id.content, PreferenceSampleFragment.newInstance())
+                .transition();
     }
 }

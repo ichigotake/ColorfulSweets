@@ -86,19 +86,19 @@ public abstract class BaseActivity extends NavigationDrawerActivity {
             NavigationSample menu = NavigationSample.values()[position];
             switch (menu) {
                 case ACTIVITY_TRANSIT:
-                    ActivityTransit.from(mContext, ActivityTransitSampleActivity.class).toNext();
+                    ActivityTransit.from(mContext, ActivityTransitSampleActivity.class).transition();
                     break;
                 case AUTO_PAGING:
-                    ActivityTransit.from(mContext, AutoPagingActivity.class).toNext();
+                    ActivityTransit.from(mContext, AutoPagingActivity.class).transition();
                     break;
                 case SIMPLE_MENU:
-                    ActivityTransit.from(mContext, SimpleMenuActivity.class).toNext();
+                    ActivityTransit.from(mContext, SimpleMenuActivity.class).transition();
                     break;
                 case SIMPLE_TAB_FRAGMENT_PAGER:
-                    ActivityTransit.from(mContext, SimpleViewPagerFragmentSampleActivity.class).toNext();
+                    ActivityTransit.from(mContext, SimpleViewPagerFragmentSampleActivity.class).transition();
                     break;
                 case PREFERENCE:
-                    ActivityTransit.from(mContext, PreferenceSampleActivity.class).toNext();
+                    ActivityTransit.from(mContext, PreferenceSampleActivity.class).transition();
                     break;
             }
             
