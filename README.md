@@ -1,7 +1,7 @@
 ColorfulSweets
 ==============
 
-Lightweight Android application framework for me
+Lightweight Android application framework **for me**
 
 
 !!Caution!!
