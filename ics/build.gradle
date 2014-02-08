@@ -3,17 +3,24 @@ apply plugin: 'android-library'
 def version = readVersion(file("VERSION"))
 
 android {
-    compileSdkVersion 17
-    buildToolsVersion '17.0.0'
+    compileSdkVersion 19
+    buildToolsVersion "19.0.1"
 
     defaultConfig {
-        minSdkVersion 7
-        targetSdkVersion 17
+        minSdkVersion 14
+        targetSdkVersion 19
         versionCode version.toVersionCode()
         versionName version.toVersionName()
-        testPackageName "net.ichigotake.colorfulsweets.lib"
     }
 
+    release {
+        runProguard false
+        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+    }
+}
+
+dependencies {
+    compile project(':library')
 }
 
 apply plugin: 'maven'
@@ -25,7 +32,7 @@ uploadArchives {
             repository(url: "file://${deployTo}")
             pom.version = version.toVersionName()
             pom.groupId = 'net.ichigotake.colorfulsweets'
-            pom.artifactId = 'ColorfulSweets'
+            pom.artifactId = 'ics'
         }
     }
 }

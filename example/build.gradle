@@ -1,7 +1,7 @@
 apply plugin: 'android'
 
 dependencies {
-    compile project(':library')
+    compile project(':appcompat')
 }
 
 android {
@@ -9,7 +9,7 @@ android {
     buildToolsVersion '17.0.0'
 
     defaultConfig {
-        minSdkVersion 11
+        minSdkVersion 7
         targetSdkVersion 17
         versionCode 1
         versionName "1.0"
