@@ -20,7 +20,7 @@ android {
 }
 
 dependencies {
-    compile 'net.ichigotake.colorfulsweets:common:0.0.12'
+    compile 'net.ichigotake.colorfulsweets:common:0.0.13'
 }
 
 apply plugin: 'maven'
