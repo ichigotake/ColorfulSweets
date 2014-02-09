@@ -3,7 +3,6 @@ package net.ichigotake.colorfulsweets.sample;
 import android.os.Bundle;
 
 import net.ichigotake.colorfulsweets.appcompat.fragment.FragmentTransit;
-import net.ichigotake.colorfulsweets.sample.R;
 
 public class SampleActivity extends BaseActivity {
 

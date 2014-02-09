@@ -7,8 +7,8 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Handler;
 
+import net.ichigotake.colorfulsweets.common.widget.Transition;
 import net.ichigotake.colorfulsweets.ics.R;
-import net.ichigotake.colorfulsweets.lib.widget.Transition;
 
 /**
  * API level 4
