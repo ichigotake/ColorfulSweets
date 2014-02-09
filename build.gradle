@@ -12,13 +12,13 @@ buildscript {
 
 allprojects {
     group = 'net.ichigotake.colorfulsweets'
+    def repository = new File(rootDir, "repository")
 
     repositories {
         mavenCentral()
         mavenLocal()
-        maven {
-            url "${System.env.HOME}/.m2/repository"
-        }
+        maven { url "${System.env.HOME}/.m2/repository" }
+        maven { url "file://${repository}" }
     }
 
     tasks.withType(Compile) {
