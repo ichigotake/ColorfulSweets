@@ -5,9 +5,9 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 
-import net.ichigotake.colorfulsweets.lib.os.BundleSimple;
-import net.ichigotake.colorfulsweets.lib.os.Key;
-import net.ichigotake.colorfulsweets.lib.os.SaveInstanceStore;
+import net.ichigotake.colorfulsweets.common.os.BundleSimple;
+import net.ichigotake.colorfulsweets.common.os.Key;
+import net.ichigotake.colorfulsweets.common.os.SaveInstanceStore;
 
 import java.io.Serializable;
 

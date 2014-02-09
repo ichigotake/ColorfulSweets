@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import net.ichigotake.colorfulsweets.appcompat.R;
 import net.ichigotake.colorfulsweets.appcompat.navigation.Drawer;
 import net.ichigotake.colorfulsweets.appcompat.navigation.DummyDrawer;
-import net.ichigotake.colorfulsweets.lib.view.inputmethod.SoftInput;
+import net.ichigotake.colorfulsweets.common.view.inputmethod.SoftInput;
 
 /**
  * API level 7

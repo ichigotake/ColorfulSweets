@@ -9,7 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 
 import net.ichigotake.colorfulsweets.appcompat.R;
-import net.ichigotake.colorfulsweets.lib.widget.Transition;
+import net.ichigotake.colorfulsweets.common.widget.Transition;
 
 /**
  * API level 4

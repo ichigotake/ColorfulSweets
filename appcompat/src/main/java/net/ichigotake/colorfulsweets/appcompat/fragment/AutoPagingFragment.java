@@ -9,8 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 
 import net.ichigotake.colorfulsweets.appcompat.R;
-import net.ichigotake.colorfulsweets.lib.widget.paging.LoadingState;
-import net.ichigotake.colorfulsweets.lib.widget.paging.PagingState;
+import net.ichigotake.colorfulsweets.common.widget.paging.LoadingState;
+import net.ichigotake.colorfulsweets.common.widget.paging.PagingState;
 
 /**
  * The Fragment for auto paging container.
