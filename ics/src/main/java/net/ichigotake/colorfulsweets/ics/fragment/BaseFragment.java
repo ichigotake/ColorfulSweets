@@ -3,9 +3,9 @@ package net.ichigotake.colorfulsweets.ics.fragment;
 import android.app.Fragment;
 import android.os.Bundle;
 
-import net.ichigotake.colorfulsweets.lib.os.BundleSimple;
-import net.ichigotake.colorfulsweets.lib.os.Key;
-import net.ichigotake.colorfulsweets.lib.os.SaveInstanceStore;
+import net.ichigotake.colorfulsweets.common.os.BundleSimple;
+import net.ichigotake.colorfulsweets.common.os.Key;
+import net.ichigotake.colorfulsweets.common.os.SaveInstanceStore;
 
 import java.io.Serializable;
 
