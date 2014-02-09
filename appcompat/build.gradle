@@ -21,7 +21,7 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:+'
-    compile 'net.ichigotake.colorfulsweets:ColorfulSweets:0.0.11'
+    compile 'net.ichigotake.colorfulsweets:common:0.0.12'
 }
 
 apply plugin: 'maven'
