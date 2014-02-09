@@ -1,2 +1,2 @@
-include ':library', ':appcompat', ':ics'
+include ':appcompat', ':ics', 'common'
 include ':example'

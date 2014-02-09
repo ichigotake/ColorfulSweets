@@ -1,0 +1,31 @@
+apply plugin: 'android-library'
+
+def version = readVersion(file("VERSION"))
+
+android {
+    compileSdkVersion 17
+    buildToolsVersion '17.0.0'
+
+    defaultConfig {
+        minSdkVersion 7
+        targetSdkVersion 17
+        versionCode version.toVersionCode()
+        versionName version.toVersionName()
+        testPackageName "net.ichigotake.colorfulsweets.common"
+    }
+
+}
+
+apply plugin: 'maven'
+
+def deployTo = new File(rootDir, "repository")
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "file://${deployTo}")
+            pom.version = version.toVersionName()
+            pom.groupId = 'net.ichigotake.colorfulsweets'
+            pom.artifactId = 'common'
+        }
+    }
+}
