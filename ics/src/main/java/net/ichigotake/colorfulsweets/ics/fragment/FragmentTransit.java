@@ -8,10 +8,9 @@ import android.content.Context;
 import android.os.Handler;
 
 import net.ichigotake.colorfulsweets.common.widget.Transition;
-import net.ichigotake.colorfulsweets.ics.R;
 
 /**
- * API level 4
+ * API level 11
  * 
  * Fragment transition.
  */
@@ -20,7 +19,6 @@ public class FragmentTransit implements Transition {
     final private FragmentManager mFragmentManager;
     
     private boolean mAddBackStack = true;
-    private boolean mIsAnimation = true;
     private Fragment mNextFragment;
     private int mTargetViewId;
     
@@ -64,7 +62,7 @@ public class FragmentTransit implements Transition {
     }
     
     /**
-     * API level 4
+     * API level 11
      * 
      * Replace to current fragment.
      */
@@ -78,13 +76,6 @@ public class FragmentTransit implements Transition {
             @Override
             public void run() {
                 FragmentTransaction transaction = mFragmentManager.beginTransaction();
-                if (mIsAnimation) {
-                    transaction.setCustomAnimations(
-                            R.anim.fade_in,
-                            R.anim.fade_out,
-                            R.anim.fade_in,
-                            R.anim.fade_out);
-                }
                 transaction.replace(targetViewId, nextFragment);
                 if (mAddBackStack) {
                     transaction.addToBackStack(null);
@@ -98,7 +89,7 @@ public class FragmentTransit implements Transition {
     }
     
     /**
-     * API level 4
+     * API level 11
      * 
      * Preview to fragment back stack.
      */
@@ -107,8 +98,4 @@ public class FragmentTransit implements Transition {
         fragmentManager.popBackStack();
     }
 
-    public FragmentTransit setNoAnimation() {
-        mIsAnimation = false;
-        return this;
-    }
 }
