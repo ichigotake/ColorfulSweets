@@ -8,15 +8,14 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import net.ichigotake.colorfulsweets.lib.activity.ActivityTransit;
-import net.ichigotake.colorfulsweets.lib.menu.SimpleMenu;
-import net.ichigotake.colorfulsweets.lib.menu.SimpleMenuListInitializer;
-import net.ichigotake.colorfulsweets.sample.R;
+import net.ichigotake.colorfulsweets.common.activity.ActivityTransit;
+import net.ichigotake.colorfulsweets.common.menu.SimpleMenu;
+import net.ichigotake.colorfulsweets.common.menu.SimpleMenuListInitializer;
 import net.ichigotake.colorfulsweets.sample.activity.ActivityTransitSampleActivity;
 import net.ichigotake.colorfulsweets.sample.fragment.viewpager.SimpleViewPagerFragmentSampleActivity;
 import net.ichigotake.colorfulsweets.sample.menu.SimpleMenuActivity;
-import net.ichigotake.colorfulsweets.sample.preference.PreferenceSampleActivity;
 import net.ichigotake.colorfulsweets.sample.paging.AutoPagingActivity;
+import net.ichigotake.colorfulsweets.sample.preference.PreferenceSampleActivity;
 
 public class SampleMenuFragment extends Fragment {
     

@@ -7,10 +7,10 @@ import android.widget.BaseAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import net.ichigotake.colorfulsweets.lib.os.Key;
-import net.ichigotake.colorfulsweets.lib.preference.PreferenceSpinnerContainer;
-import net.ichigotake.colorfulsweets.lib.widget.SpinnerSelectedEvent;
-import net.ichigotake.colorfulsweets.lib.widget.SpinnerSelectedListener;
+import net.ichigotake.colorfulsweets.common.os.Key;
+import net.ichigotake.colorfulsweets.common.preference.PreferenceSpinnerContainer;
+import net.ichigotake.colorfulsweets.common.widget.SpinnerSelectedEvent;
+import net.ichigotake.colorfulsweets.common.widget.SpinnerSelectedListener;
 import net.ichigotake.colorfulsweets.sample.R;
 
 class PreferenceSpinnerContainerImpl extends PreferenceSpinnerContainer {

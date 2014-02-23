@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import net.ichigotake.colorfulsweets.lib.preference.PreferenceEditTextCreator;
+import net.ichigotake.colorfulsweets.common.preference.PreferenceEditTextCreator;
 import net.ichigotake.colorfulsweets.sample.R;
 
 public class PreferenceSampleFragment extends Fragment {

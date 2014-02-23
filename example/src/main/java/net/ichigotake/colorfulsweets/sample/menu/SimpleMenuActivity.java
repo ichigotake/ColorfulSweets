@@ -8,8 +8,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import net.ichigotake.colorfulsweets.lib.menu.SimpleMenu;
-import net.ichigotake.colorfulsweets.lib.menu.SimpleMenuListInitializer;
+import net.ichigotake.colorfulsweets.common.menu.SimpleMenu;
+import net.ichigotake.colorfulsweets.common.menu.SimpleMenuListInitializer;
 import net.ichigotake.colorfulsweets.sample.BaseActivity;
 import net.ichigotake.colorfulsweets.sample.R;
 

@@ -3,7 +3,7 @@ package net.ichigotake.colorfulsweets.sample.preference;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import net.ichigotake.colorfulsweets.lib.preference.Pref;
+import net.ichigotake.colorfulsweets.common.preference.Pref;
 
 class AppPref {
 

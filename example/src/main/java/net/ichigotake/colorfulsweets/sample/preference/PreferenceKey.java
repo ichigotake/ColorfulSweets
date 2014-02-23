@@ -1,6 +1,6 @@
 package net.ichigotake.colorfulsweets.sample.preference;
 
-import net.ichigotake.colorfulsweets.lib.os.Key;
+import net.ichigotake.colorfulsweets.common.os.Key;
 
 enum PreferenceKey implements Key {
 

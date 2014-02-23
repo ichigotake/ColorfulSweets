@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import net.ichigotake.colorfulsweets.appcompat.app.ActionBarSetting;
 import net.ichigotake.colorfulsweets.appcompat.fragment.BaseFragment;
 import net.ichigotake.colorfulsweets.appcompat.fragment.FragmentTransit;
-import net.ichigotake.colorfulsweets.lib.activity.ActivityTransit;
 import net.ichigotake.colorfulsweets.sample.BaseActivity;
 import net.ichigotake.colorfulsweets.sample.R;
 
