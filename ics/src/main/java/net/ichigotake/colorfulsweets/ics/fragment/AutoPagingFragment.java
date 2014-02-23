@@ -1,5 +1,6 @@
 package net.ichigotake.colorfulsweets.ics.fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,9 +77,14 @@ abstract public class AutoPagingFragment extends BaseFragment {
     }
 
     protected void finish() {
+        final Activity activity = getActivity();
+        if (activity == null) {
+            return ;
+        }
+
         nextPage();
         getLoadingState().finish();
-        getActivity().runOnUiThread(new Runnable() {
+        activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 getProgressView(getView()).setVisibility(View.GONE);
@@ -117,10 +123,11 @@ abstract public class AutoPagingFragment extends BaseFragment {
 
         @Override
         public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-            if (! getLoadingState().completed() && ! isRequesting()
+            final Activity activity = getActivity();
+            if (activity != null && !getLoadingState().completed() && ! isRequesting()
                     && (firstVisibleItem + visibleItemCount) == totalItemCount) {
 
-                getActivity().runOnUiThread(new Runnable() {
+                activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         getProgressView(getView()).setVisibility(View.VISIBLE);
