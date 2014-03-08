@@ -1,21 +1,17 @@
 apply plugin: 'android-library'
+apply from: '../gradle/common.gradle'
 
 def version = readVersion(file("VERSION"))
 
 android {
-    compileSdkVersion 17
-    buildToolsVersion "17.0.0"
+    compileSdkVersion androidSdkVersion
+    buildToolsVersion androidBuildToolsVersion
 
     defaultConfig {
         minSdkVersion 7
-        targetSdkVersion 17
+        targetSdkVersion androidSdkVersion
         versionCode version.toVersionCode()
         versionName version.toVersionName()
-    }
-
-    release {
-        runProguard false
-        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
     }
 }
 

@@ -1,16 +1,17 @@
 apply plugin: 'android'
+apply from: '../gradle/common.gradle'
 
 dependencies {
     compile project(':appcompat')
 }
 
 android {
-    compileSdkVersion 17
-    buildToolsVersion '17.0.0'
+    compileSdkVersion androidSdkVersion
+    buildToolsVersion androidBuildToolsVersion
 
     defaultConfig {
         minSdkVersion 7
-        targetSdkVersion 17
+        targetSdkVersion androidSdkVersion
         versionCode 1
         versionName "1.0"
     }

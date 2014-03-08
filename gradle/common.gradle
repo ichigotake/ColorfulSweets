@@ -1,0 +1,10 @@
+project.ext {
+    androidBuildToolsVersion = "19.0.3"
+    androidSdkVersion = 19
+}
+
+rootProject.ext.properties.each { key, value ->
+    if (!project.ext.has(key)) {
+        project.ext.set(key, value)
+    }
+}
