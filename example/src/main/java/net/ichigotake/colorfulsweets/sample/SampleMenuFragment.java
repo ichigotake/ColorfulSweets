@@ -15,7 +15,6 @@ import net.ichigotake.colorfulsweets.sample.activity.ActivityTransitSampleActivi
 import net.ichigotake.colorfulsweets.sample.fragment.viewpager.SimpleViewPagerFragmentSampleActivity;
 import net.ichigotake.colorfulsweets.sample.menu.SimpleMenuActivity;
 import net.ichigotake.colorfulsweets.sample.paging.AutoPagingActivity;
-import net.ichigotake.colorfulsweets.sample.preference.PreferenceSampleActivity;
 
 public class SampleMenuFragment extends Fragment {
     
@@ -43,7 +42,6 @@ public class SampleMenuFragment extends Fragment {
         AUTO_PAGING(R.string.sample_menu_auto_paging),
         SIMPLE_MENU(R.string.sample_menu_simple_menu),
         SIMPLE_TAB_FRAGMENT_PAGER(R.string.sample_menu_tab_fragment_pager),
-        PREFERENCE(R.string.sample_menu_preference),
         ;
 
         final private int mTitle;
@@ -84,9 +82,6 @@ public class SampleMenuFragment extends Fragment {
                     break;
                 case SIMPLE_TAB_FRAGMENT_PAGER:
                     new ActivityTransit(getActivity(), SimpleViewPagerFragmentSampleActivity.class).transition();
-                break;
-                case PREFERENCE:
-                    new ActivityTransit(getActivity(), PreferenceSampleActivity.class).transition();
                 break;
             }
             

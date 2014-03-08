@@ -32,13 +32,6 @@
         </activity>
 
         <activity
-            android:name=".preference.PreferenceSampleActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="net.ichigotake.colorfulsweets.sample.SampleActivity"/>
-        </activity>
-
-        <activity
             android:name=".menu.SimpleMenuActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
