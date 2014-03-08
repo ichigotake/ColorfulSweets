@@ -37,10 +37,6 @@ public class PagingState {
         return mCurrentPage;
     }
     
-    public int getLimit() {
-        return mPerPage;
-    }
-    
     public int getOffset() {
         return mOffset;
     }

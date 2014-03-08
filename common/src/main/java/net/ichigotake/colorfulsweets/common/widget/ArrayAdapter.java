@@ -5,11 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import net.ichigotake.colorfulsweets.common.view.ViewHolder;
-
 import java.util.List;
 
-public abstract class ArrayAdapter<H extends ViewHolder, T> extends android.widget.ArrayAdapter<T> {
+public abstract class ArrayAdapter<H, T> extends android.widget.ArrayAdapter<T> {
 
     final private LayoutInflater mInflater;
     final private ViewConnector<H, T> mConnector;

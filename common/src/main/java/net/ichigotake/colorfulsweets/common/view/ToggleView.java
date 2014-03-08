@@ -21,7 +21,7 @@ public class ToggleView {
      * API Level 1
      * Toggle view visible state.
      * @param targetView
-     * @param invisibleMode View.VISIBLE or View.INVISIBLE
+     * @param invisibleMode View.GONE or View.INVISIBLE
      */
     public static void toggle(View targetView, int invisibleMode) {
         switch (targetView.getVisibility()) {

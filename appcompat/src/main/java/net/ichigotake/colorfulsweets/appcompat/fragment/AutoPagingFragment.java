@@ -1,6 +1,7 @@
 package net.ichigotake.colorfulsweets.appcompat.fragment;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,7 @@ import net.ichigotake.colorfulsweets.common.widget.paging.PagingState;
 /**
  * The Fragment for auto paging container.
  */
-abstract public class AutoPagingFragment extends BaseFragment {
+abstract public class AutoPagingFragment extends Fragment {
 
     private static BaseAdapter sAdapter;
     private static LoadingState sLoadingState;

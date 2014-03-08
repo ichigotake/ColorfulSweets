@@ -1,13 +1,13 @@
 package net.ichigotake.colorfulsweets.sample.activity;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import net.ichigotake.colorfulsweets.appcompat.app.ActionBarSetting;
-import net.ichigotake.colorfulsweets.appcompat.fragment.BaseFragment;
 import net.ichigotake.colorfulsweets.appcompat.fragment.FragmentTransit;
+import net.ichigotake.colorfulsweets.sample.ActionBar;
 import net.ichigotake.colorfulsweets.sample.BaseActivity;
 import net.ichigotake.colorfulsweets.sample.R;
 
@@ -25,7 +25,7 @@ public class ActivityTransitSampleActivity extends BaseActivity {
                 .transition();
     }
 
-    public static class ActivityTransitSampleFragment extends BaseFragment {
+    public static class ActivityTransitSampleFragment extends Fragment {
 
         static ActivityTransitSampleFragment newInstance() {
             return new ActivityTransitSampleFragment();
@@ -34,7 +34,7 @@ public class ActivityTransitSampleActivity extends BaseActivity {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            ActionBarSetting.show(getSupportActionBar(), R.string.sample_activity_transit_title);
+            ActionBar.get(getActivity()).setTitle(R.string.sample_activity_transit_title);
         }
 
         @Override

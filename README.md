@@ -38,8 +38,6 @@ dependencies {
 Feature and Policy
 ==========
 
-ColofulSweetsのポシリーとして、外部ライブラリへの依存を無しにAndroidアプリの実装で利用するインターフェースを提供します。 *TODO: be English*
-
 sorry, not enough to documentation...
 
 but you can see reference from projects to ColorfulSweetsSample or ColorfulSweets!
