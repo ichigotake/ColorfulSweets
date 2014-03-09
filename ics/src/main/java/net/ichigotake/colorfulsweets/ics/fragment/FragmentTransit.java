@@ -21,7 +21,8 @@ public class FragmentTransit implements Transition {
     private boolean mAddBackStack = true;
     private Fragment mNextFragment;
     private int mTargetViewId;
-    
+    private String mTag;
+
     /**
      * APi level 11
      * 
@@ -60,6 +61,11 @@ public class FragmentTransit implements Transition {
         mAddBackStack = flag;
         return this;
     }
+
+    public FragmentTransit setTag(String tag) {
+        mTag = tag;
+        return this;
+    }
     
     /**
      * API level 11
@@ -76,7 +82,7 @@ public class FragmentTransit implements Transition {
             @Override
             public void run() {
                 FragmentTransaction transaction = mFragmentManager.beginTransaction();
-                transaction.replace(targetViewId, nextFragment);
+                transaction.replace(targetViewId, nextFragment, mTag);
                 if (mAddBackStack) {
                     transaction.addToBackStack(null);
                 }

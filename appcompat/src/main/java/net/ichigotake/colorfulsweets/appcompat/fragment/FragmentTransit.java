@@ -24,6 +24,7 @@ public class FragmentTransit implements Transition {
     private boolean mIsAnimation = true;
     private Fragment mNextFragment;
     private int mTargetViewId;
+    private String mTag;
     
     /**
      * API level 4
@@ -86,7 +87,12 @@ public class FragmentTransit implements Transition {
         mAddBackStack = flag;
         return this;
     }
-    
+
+    public FragmentTransit setTag(String tag) {
+        mTag = tag;
+        return this;
+    }
+
     /**
      * API level 4
      * 
@@ -109,7 +115,7 @@ public class FragmentTransit implements Transition {
                             R.anim.fade_in,
                             R.anim.fade_out);
                 }
-                transaction.replace(targetViewId, nextFragment);
+                transaction.replace(targetViewId, nextFragment, mTag);
                 if (mAddBackStack) {
                     transaction.addToBackStack(null);
                 }
